@@ -115,7 +115,7 @@ critical, since missing values could change the outcome of a study. This
 could mean the work cannot be reproduced, and worse, may lead scientists
 and practitioners to the wrong outcome.
 
-It is imperative that missing data (or lack thereof -- Absence of
+It is imperative that missing data (or lack thereof --Absence of
 evidence is not evidence of absence) are reported. However, outside of
 sports science, researchers seldom consider missing data [@Schafer2002].
 Moreover, while there has been significant interest in modelling missing
