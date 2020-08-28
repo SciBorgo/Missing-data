@@ -1,0 +1,331 @@
+---
+title: "Supplement 3"
+output: html_document
+---
+
+(Content pulled from the google doc)
+
+Rob's idea \[case study section\]:
+
+-   Including a spectrum of worst practice - best practice
+
+    -   Worst
+
+        -   Missing data can be observed in how statistical methods are
+            > reported
+
+            -   e.g., missing meters gained
+
+    -   less worse
+
+        -   Missing data reported, but no handling stated
+
+            -   e.g., 17% of data is missing, nothing mentioned about
+                > deletion/imputation\
+                > [[https://www.sciencedirect.com/science/article/pii/S0167945719301939?casa_token=QfaCiQJaBQMAAAAA:tL3pKZG7s8-umTgU-cVZ53ZuPLchja5OExOEnkohWhjLH4NPGtqeFkSWlZq0EiPG9ip-ZnQ]{.ul}](https://www.sciencedirect.com/science/article/pii/S0167945719301939?casa_token=QfaCiQJaBQMAAAAA:tL3pKZG7s8-umTgU-cVZ53ZuPLchja5OExOEnkohWhjLH4NPGtqeFkSWlZq0EiPG9ip-ZnQ)
+
+            -   e.g., N = 18, and statistical analysis reports N = 14
+                > (Robin, tweet, Dave to request paper)
+
+    -   neutral?
+
+        -   There is missing data, and this is reported?
+
+    -   good
+
+        -   Missing data reported, handling is reported, might be bad
+            > imputation like mean imputation / data not shared.
+
+    -   best
+
+        -   Missing data reported, handling is reported, appropriate
+            > imputation, data shared.
+
+Appendix of techniques for dealing with missing values
+
+-   scripts for exploring missingness
+
+-   How to unpack the missingness in the paper text
+
+```{=html}
+<!-- -->
+```
+-   Ways to visualise missing data for reviewers, and readers of paper
+    > to get a feel of how much to take away.
+
+    -   So the meters gained example, I think a vis could be something
+        > like the figure below. Also a way to visualise missing values
+        > in athlete studies over time, if for whatever reason on
+        > X1,x7,x35 day couldn't do a measurement on athlete 1.
+        > \^\^instead of google sheet something ggplot\^\^
+
+        -   vis_miss from visdat/naniar:
+
+![](media/image2.png){width="6.267716535433071in"
+height="0.8888888888888888in"}
+
+\^\^Background in sports and exercise science\^\^
+
+-   Missing data (or the absence of missing data) is often not reported
+
+-   In general, imputation is not used
+
+-   Missing data is never really discussed
+
+-   Data are usually fit with ANOVA's, therefore values are subbed in,
+    > e.g., mean. (really common practice)
+
+**Notes/examples**
+
+Example 1:
+[[https://www.sciencedirect.com/science/article/abs/pii/S1440244018303141]{.ul}](https://www.sciencedirect.com/science/article/abs/pii/S1440244018303141)
+
+Problem---The most important predictor, meters gained relative isn\'t
+available in the vast majority of the dataset (2001-2008 for example)
+(which is where the \'\'prediction accuracy\'\' was the worst. This
+isn\'t mentioned anywhere in the paper, that their most important
+predictor isn\'t available. So as a reviewer, unless data is provided,
+or code shared. You are relying on domain knowledge to know this.
+
+The supplementary materials which provides coefficients for the GLMS
+fitted
+
+![](media/image13.png){width="6.270833333333333in"
+height="5.888888888888889in"}
+
+No meters gained? This is weird right, talk about a circle, we have
+meters gained most important, but GLM perform similar to decision tree
+but the GLM doesn't have meters gained (the most important variable)
+according to the decision trees?
+
+Oh and meters gained isn't available throughout the dataset.
+
+"GLMs were also created to predict Score Margin in each timeframe and
+the prediction accuracies are similar for each time frame but are higher
+than the decision tree prediction accuracies."
+
+And whats with figure 2?
+
+![](media/image15.png){width="6.270833333333333in" height="4.375in"}
+
+The end buckets are supposed to be meters gained difference, but we have
+a ?
+
+Example 2:
+[[https://twitter.com/championdata/status/472174368059957248]{.ul}](https://twitter.com/championdata/status/472174368059957248)
+
+![](media/image5.png){width="3.7031255468066493in"
+height="4.275152012248469in"}
+
+![](media/image3.png){width="6.270833333333333in"
+height="2.8333333333333335in"}
+
+So if meters gained was first recorded in 2007, what does this mean for
+the time frames being compared?
+
+![](media/image11.png){width="6.270833333333333in"
+height="2.2222222222222223in"}
+
+Like OK that is 2009-2016, but what about the 2001-2016 was meters
+gained only used for 2007-2016 so what was inputted 2001-2007 and if we
+compared it to 2009-2016 where meters gained was FULLY available we have
+a worse win/loss pred and a in the dataset with the MOST IMPORTANT
+VARIABLE AVAILABLE ALL THE WAY THROUGH IT I am really confused.
+
+**Modelling Match Outcome in Australian Football: Improved accuracy with
+large databases **
+
+(similar authors as above---Tran, Young etc)
+
+![](media/image10.png){width="3.1875240594925636in"
+height="0.7656889763779527in"}
+
+Problem: The most important variable, in 2019 published without
+mentioning its availability, nor are results presented in a way that
+gives the reader an idea of what was done? Seriously your trying to
+predict an outcome and literally the variable doesn\'t EXIST what was
+entered in?
+
+Data sharing/code sharing would have made this available to reviewers
+and perhaps changed the tone of the papers. 
+
+Example 3:\
+[[https://shapeamerica.tandfonline.com/doi/abs/10.1080/02640414.2015.1066026\#.XpkfaFMzZhE]{.ul}](https://protect-au.mimecast.com/s/FqW3CZYMqwSk7AkMsKELku?domain=shapeamerica.tandfonline.com)
+
+These results on data available to public (basic stuff like counting of
+kicks isn\'t reproducible)---i.e., the table here:
+
+![](media/image9.png){width="3.557292213473316in"
+height="2.951379046369204in"}
+
+Means should be available?
+
+Example 4:
+[[https://journals.sagepub.com/eprint/Pv3bEcp6EQMnPAa24cuP/full]{.ul}](https://journals.sagepub.com/eprint/Pv3bEcp6EQMnPAa24cuP/full)
+
+Problem:
+[[https://twitter.com/RankingSw/status/961502281874092032]{.ul}](https://twitter.com/RankingSw/status/961502281874092032)
+
+![A screenshot of a cell phone Description automatically
+generated](media/image7.png){width="1.4457130358705161in"
+height="2.085090769903762in"}
+
+![](media/image14.png){width="1.4609733158355205in"
+height="1.6510684601924759in"}
+
+So why didn\'t the authors of the paper know this? Was it because the
+underlying model (AFLPR) wasn\'t available at the time? etc But
+certainly as a reviewer this is a thing someone should know before
+reviewing?
+
+Example 5:
+[[https://www.tandfonline.com/doi/abs/10.1080/02640414.2015.1066511]{.ul}](https://www.tandfonline.com/doi/abs/10.1080/02640414.2015.1066511)
+
+Figure below seems odd:
+
+![](media/image4.png){width="2.2067705599300087in"
+height="1.4527034120734907in"}
+
+-   Progression of science, self-correction and the need for
+    > 'self-correction to not be strike against your name'
+
+-   Speak about the content in the papers wanting to push the knowledge,
+    > not just get rushed for the purpose of a publication.
+
+Recommendations -- Ask the question: what am I being provided here to
+review?
+
+-   Barriers
+
+    -   Data privacy agreements (e.g., NDA), the reviewer would have to
+        > sign one, maybe this is something that's not can occur, so
+        > what's the minimum.
+
+    -   Betting privacy, players union---you couldn't ever share who the
+        > slowest player in the NRL same with the AFL
+
+```{=html}
+<!-- -->
+```
+-   Framed from the reviewer's point of view, needs to be a minimum
+    > understanding of what is being done in the paper.
+
+-   Exploratory and missingness (common problem in sports, maybe not
+    > able to get access to the player)
+
+```{=html}
+<!-- -->
+```
+-   Minimum requirements: please give the summary stats, i.e., the
+    > variable name, description, the dates collect, number of [missing
+    > values]{.ul}, etc.
+
+    -   Describe the data in some type of meaningful sense
+
+    -   If there's definitions, over what period does the definition
+        > hold for.
+
+-   Idea scenario: Start data, end date.
+
+Example from Twitter message
+
+Dave sent a twitter message about this paper here.
+
+[[https://sci-hub.tw/https://doi.org/10.1080/02640414.2020.1740490]{.ul}](https://sci-hub.tw/https://doi.org/10.1080/02640414.2020.1740490)
+
+From the Paper
+
+This study used commercially available data from the 2015 AFL season
+supplied by Champion Data, the official statistics provider for the AFL.
+An exemption from ethics review was granted by the institutional ethics
+committee. The original data set included all 149,449 possession events
+from all matches played during the 2015 AFL season (18 teams, 665
+players, 206 regular season and finals series games). A data subset was
+created to focus the analysis on regular season matches in order to
+explore wholeof-league patterns (i.e., finals matches were omitted as
+they are only played by teams in the top 8 end-of-season ladder
+positions). This subset was filtered further to include only those
+sequences of possession events that i) started with a kick-in following
+a behind, and ii) ended with the offensive team losing possession
+through a score, stoppage, or turnover. These sequences are referred to
+herein as "kick-in possession chains", where a sequence begins with the
+player who first receives the ball from a kick-in and excludes the
+initial disposal out of the goal square, unless the player starting with
+possession "plays on" to himself. Possession chains that involved only
+one player or were incomplete due to end-of-quarter time restrictions
+were excluded. Chains from 2 drawn matches were also excluded. The final
+data set used for analysis comprised a total of 1,720 kick-in possession
+chains from 194 games.
+
+Now thankfully we can use fitzRoy to check out how many behinds there
+were in 2015 as per the subset.
+
+> fitzRoy::get_afltables_stats(start_date=\"2015-01-01\",
+> end_date=\"2016-01-01\")%\>% \#Season chosen
+>
+> select(Season,Home.score, Away.score, Round, Home.team, Away.team,
+> Round, AQ4B, HQ4B)%\>%\# variables needed
+>
+> filter(!Round %in% c(\"EF\", \"SF\",\"QF\",\"PF\", \"GF\"))%\>%
+> \#excluding finals
+>
+> filter(Home.score != Away.score)%\>% \#excluding draws
+>
+> distinct()%\>%
+>
+> mutate(totalbehinds=AQ4B+HQ4B)%\>% \#away behinds + home behinds
+>
+> summarise(totalbehindsin2015=sum(totalbehinds))
+>
+> totalbehindsin2015
+>
+> \<int\>
+>
+> 1 4275
+>
+> \>
+>
+> So if each quarter ended with a invalid observation (didn't result in
+> a score, turnover etc) this would be pretty high I'd imagine but help
+> illustrate the point
+>
+> 4\*194
+>
+> So we have 4275 kick ins from behinds, of which at MOST 194\*4 (776)
+> would be excluded say if every quarter had a kick after the siren that
+> resulted in a behind.
+>
+> So that leaves us with 4275-776 total kick ins which is 3499 kick in
+> ins total
+>
+> **So this data suggests that only 1720/3499 or 0.491569 of kick ins
+> resulted in a chain? in the study.**
+>
+> This seems not good.
+>
+> To put another way,
+>
+> out of the total behinds or ''opportunities for chains to start'' if
+> we take the exclusion rule. **" Possession chains that involved only
+> one player or were incomplete due to end-of-quarter time restrictions
+> were excluded."**
+>
+> **Then**
+>
+> **(4275-1720 )/ 4275 or 0.5976608 of chains are EXCLUDED that seems
+> massive!**
+
+![](media/image12.png){width="6.270833333333333in"
+height="1.8194444444444444in"}
+
+New Paper: Recommending how to share data in sports science
+
+-   Simplest approach
+
+    -   If you report the summary statistics for each variable
+
+    -   Then recreate the data from that
+
+        -   The min-max and sample evenly
+
+        -   the distribution
