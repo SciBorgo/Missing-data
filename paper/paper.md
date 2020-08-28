@@ -9,19 +9,9 @@ output:
 bibliography: references.bib
 ---
 
-```{r setup, echo = FALSE}
-knitr::opts_chunk$set(out.width = "75%",
-                      dev = "png",
-                      fig.align = "center",
-                      echo = FALSE)
-```
 
-```{r libraries, message = FALSE}
-library(tidyverse)
-library(naniar)
-library(visdat)
-library(patchwork)
-```
+
+
 
 
 Affiliations: 
@@ -53,9 +43,34 @@ Melbourne, Australia
 
 **Word count**
 
-```{r count-words}
-wordcountaddin::text_stats()
+
 ```
+## For information on available language packages for 'koRpus', run
+## 
+##   available.koRpus.lang()
+## 
+## and see ?install.koRpus.lang()
+```
+
+```
+## 
+## Attaching package: 'koRpus'
+```
+
+```
+## The following object is masked from 'package:readr':
+## 
+##     tokenize
+```
+
+
+
+|Method          |koRpus       |stringi       |
+|:---------------|:------------|:-------------|
+|Word count      |2329         |2204          |
+|Character count |15147        |15567         |
+|Sentence count  |170          |Not available |
+|Reading time    |11.6 minutes |11 minutes    |
 
 
 # Abstract {-}
@@ -144,37 +159,7 @@ published in 2019; (b) written in English; (c) had an accessible
 full-text; and (d) included quantitative data. The search process is
 summarised in Figure 1.
 
-```{r prisma-example, eval = FALSE}
-require(PRISMAstatement)
 
-prisma()
-
-[[https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html]{.ul}](https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html)
-
-library(PRISMAstatement)
-
-e.g.,
-
-prisma(found = x,
-
-found_other = x,
-
-no_dupes = x,
-
-screened = x,
-
-screen_exclusions = x,
-
-full_text = x,
-
-full_text_exclusions = x,
-
-qualitative = x,
-
-quantitative = x,
-
-width = 800, height = 800)
-```
 
 +---------------------------------+-----------------------------------+
 | Imported                        | 3,863                             |
@@ -299,10 +284,10 @@ can arise include: bad joins when merging data without corresponding
 values, surveys, an inability to collect a biological sample (e.g.,
 venous blood), equipment malfunction or failure, or or not being worn.
 
-```{r implicit-missings, fig.cap = "Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed."}
-
-knitr::include_graphics(here::here("paper/figures/tables.png"))
-```
+<div class="figure" style="text-align: center">
+<img src="/Users/ntie0001/github/njtierney/sportmiss/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
+<p class="caption">Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed.</p>
+</div>
 
 
 ## Visualising missing values
@@ -312,23 +297,10 @@ Graphics section in [@Tierney2018], For example, overview plots [@Tierney2017].
 
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data.
 
-```{r missing-overview, fig.cap = "Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)", fig.height = 10}
-
-aq_vis_miss <- vis_miss(airquality)
-
-aq_upset <- gg_miss_upset(airquality)
-
-aq_fct <- gg_miss_fct(airquality, Month)
-
-aq_miss_var <- gg_miss_var(airquality) + labs(title = "A")
-aq_miss_case <- gg_miss_case(airquality) + labs(title = "B")
-aq_vis_miss <- vis_miss(airquality) + labs(title = "C")
-
-(aq_miss_var | aq_miss_case) / (aq_vis_miss) / (aq_fct)
-
-# can
-
-```
+<div class="figure" style="text-align: center">
+<img src="paper_files/figure-html/missing-overview-1.png" alt="Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)" width="75%" />
+<p class="caption">Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)</p>
+</div>
 
 To learn more about exploring missing values, we recommend the vignettes
 in naniar [@naniar], and the methods in (@Tierney2018)
