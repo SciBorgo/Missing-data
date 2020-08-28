@@ -68,7 +68,7 @@ Melbourne, Australia
 |Method          |koRpus       |stringi       |
 |:---------------|:------------|:-------------|
 |Word count      |2329         |2204          |
-|Character count |15147        |15567         |
+|Character count |15148        |15568         |
 |Sentence count  |170          |Not available |
 |Reading time    |11.6 minutes |11 minutes    |
 
@@ -102,7 +102,7 @@ appropriately representative.
 # Introduction {#intro}
 
 Missing data can undermine the validity of research results
-[@Sainani2015; @Nakagawa2008; Sterne2009]. Data can go
+[@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
 analysis, missing data must be handled, with values typically deleted or

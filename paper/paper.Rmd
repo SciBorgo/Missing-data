@@ -87,7 +87,7 @@ appropriately representative.
 # Introduction {#intro}
 
 Missing data can undermine the validity of research results
-[@Sainani2015; @Nakagawa2008; Sterne2009]. Data can go
+[@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
 analysis, missing data must be handled, with values typically deleted or
@@ -237,7 +237,7 @@ visualising and reporting missingness.
 
 ## Missing data across the analysis pathway
 
-Problem: *Unreported missing values*. While not always the case, even if
+Case study: *Unreported missing values*. While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
 relationship between match performance indicators and outcome, in
 Australian Football between the 2001 and 2016. Problematically, at least
@@ -254,7 +254,7 @@ missing data statement when data are missing is not unique to the study
 above [@Young2019]. Authors should include a missing data statement,
 irrespective of whether data is missing, or not.
 
-Problem: *Mean imputation.* The default of most statistical software for
+Case study: *Mean imputation.* The default of most statistical software for
 handling missing data in modelling is listwise deletion. Listwise
 deletion removes entire rows that contain missing observations from the
 analysis. At best, listwise deletion reduces the power in analysis by
@@ -274,7 +274,7 @@ strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
 be considered. This is discussed in the recommendations section.
 
-Problem: *Not evaluating the effect, or choice, of imputation.* The
+Case study: *Not evaluating the effect, or choice, of imputation.* The
 imputation method used to impute missing data has the potential to
 affect the outcome of a study. Therefore, it is important that authors
 understand, and document, how imputation affected the goal of the
