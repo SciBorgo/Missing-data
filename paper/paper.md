@@ -65,12 +65,12 @@ Melbourne, Australia
 
 
 
-|Method          |koRpus       |stringi       |
-|:---------------|:------------|:-------------|
-|Word count      |2329         |2204          |
-|Character count |15148        |15568         |
-|Sentence count  |170          |Not available |
-|Reading time    |11.6 minutes |11 minutes    |
+Method            koRpus         stringi       
+----------------  -------------  --------------
+Word count        2344           2215          
+Character count   15238          15658         
+Sentence count    171            Not available 
+Reading time      11.7 minutes   11.1 minutes  
 
 
 # Abstract {-}
@@ -84,12 +84,12 @@ data statement, highlight several improvable practices in relation to
 missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
 studied. A survey of 137 articles, sampled at random, was conducted to
-determine whether a missing data was included. As expected, the
+determine whether a missing data statement was included. As expected, the
 proportion of studies in football research including a missing data
-statement was low, at only X%; which suggests that this aspect of data
-analysis is seldom considered by researchers. We suspect that this
-result is consistent with the wider sports science literature. We
-recommend researchers describe the number and percentage of missing
+statement was low, at only X% [95% confidence interval; X% to X%];
+suggesting that this aspect of data analysis is seldom considered by researchers.
+We suspect that this result is consistent with the wider sports science literature.
+We recommend researchers describe the number and percentage of missing
 values, including when there are no missing values. Exploratory analysis
 should be conducted to explore missing values, and visualisations
 describing missingness overall should be provided in the paper or at
@@ -222,7 +222,7 @@ visualising and reporting missingness.
 
 ## Missing data across the analysis pathway
 
-Problem: *Unreported missing values*. While not always the case, even if
+Case study: *Unreported missing values*. While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
 relationship between match performance indicators and outcome, in
 Australian Football between the 2001 and 2016. Problematically, at least
@@ -239,7 +239,7 @@ missing data statement when data are missing is not unique to the study
 above [@Young2019]. Authors should include a missing data statement,
 irrespective of whether data is missing, or not.
 
-Problem: *Mean imputation.* The default of most statistical software for
+Case study: *Mean imputation.* The default of most statistical software for
 handling missing data in modelling is listwise deletion. Listwise
 deletion removes entire rows that contain missing observations from the
 analysis. At best, listwise deletion reduces the power in analysis by
@@ -259,7 +259,7 @@ strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
 be considered. This is discussed in the recommendations section.
 
-Problem: *Not evaluating the effect, or choice, of imputation.* The
+Case study: *Not evaluating the effect, or choice, of imputation.* The
 imputation method used to impute missing data has the potential to
 affect the outcome of a study. Therefore, it is important that authors
 understand, and document, how imputation affected the goal of the
@@ -285,7 +285,7 @@ values, surveys, an inability to collect a biological sample (e.g.,
 venous blood), equipment malfunction or failure, or or not being worn.
 
 <div class="figure" style="text-align: center">
-<img src="/Users/ntie0001/github/njtierney/sportmiss/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
+<img src="/Users/david/Dropbox/Research projects/Editorial - Missing data in sport and exercise science research/Missing data/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
 <p class="caption">Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed.</p>
 </div>
 
@@ -415,3 +415,11 @@ Research should consider these recommendations, and pay greater
 attention to missing data and its influence on research results.
 
 # References {-}
+
+# Supplement 1
+
+# Supplement 2
+
+# Supplement 3
+
+
