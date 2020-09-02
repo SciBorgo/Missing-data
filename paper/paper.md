@@ -1,5 +1,5 @@
 ---
-title: "Missing data in sports science: Current practice in football research and recommendations for reporting missingness"
+title: "Missing data: Current practice in football research and recommendations for reporting missingness"
 authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 output: 
   html_document:
@@ -67,16 +67,16 @@ Melbourne, Australia
 
 Method            koRpus         stringi       
 ----------------  -------------  --------------
-Word count        2344           2215          
-Character count   15238          15658         
-Sentence count    171            Not available 
-Reading time      11.7 minutes   11.1 minutes  
+Word count        2350           2222          
+Character count   15296          15716         
+Sentence count    172            Not available 
+Reading time      11.8 minutes   11.1 minutes  
 
 
 # Abstract {-}
 
 Missing data are often unavoidable. The reason values go missing, along
-with decisions made in how missing data are handled (deleted or
+with decisions made of how missing data are handled (deleted or
 imputed), can have a profound effect on the validity, usability and
 accuracy of a study's results. In this article, we aimed to: estimate
 the proportion of studies in football research that included a missing
@@ -85,30 +85,30 @@ missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
 studied. A survey of 137 articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
-proportion of studies in football research including a missing data
-statement was low, at only X% [95% confidence interval; X% to X%];
-suggesting that this aspect of data analysis is seldom considered by researchers.
-We suspect that this result is consistent with the wider sports science literature.
-We recommend researchers describe the number and percentage of missing
+proportion of studies in football research that included a missing data
+statement was low, at only X% [95% confidence interval; X% to X%]; suggesting that 
+missingness is seldom considered by researchers. We suspect that this result 
+is consistent with the wider sports science literature. We recommend 
+researchers describe the number and percentage of missing
 values, including when there are no missing values. Exploratory analysis
 should be conducted to explore missing values, and visualisations
-describing missingness overall should be provided in the paper or at
+describing missingness overall should be provided in the paper, or at
 least supplementary materials. Missing values should almost always be
 imputed, and imputation methods should be explored to ensure they are
 appropriately representative.
 
-**Keywords:** Imputation, missingness, missings, naniar, sport, football
+**Keywords:** Exercise, imputation, missingness, missings, naniar, sport
 
 # Introduction {#intro}
 
-Missing data can undermine the validity of research results
+Missing data can undermine the validity and accuracy of research results
 [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
 analysis, missing data must be handled, with values typically deleted or
-imputed. There is no universal approach to handling missing data with
-contextual factors -- such as, the study design and objective, and
-pattern of missingness -- determining how to handle missings on a
+imputed. There is no universal approach to handling missing data. 
+Contextual factors--such as, the study design and objective, and
+pattern of missingness--determine how missings should be handled, on a
 case-by-case basis [@Sainani2015].
 The effect of missing data on the validity and accuracy of a study's
 results is largely determined by the reasons for missingness, and how
@@ -120,17 +120,17 @@ at Random (MCAR), Missing at Random (MAR), and Missing Not at Random
 (MNAR). These categorisations help describe whether the missingness
 occurs by chance (MCAR), due to some observed variable (MAR) or an
 unobserved variable (MNAR), with MCAR being benign and the latter two
-biased. Football relevant examples are provided in Supplement X, and
+biased. Football relevant examples are provided in Supplement 1, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
 [@Sainani2015; @Nakagawa2008; Sterne2009].
 
 The three categorisations of missingness types provide a useful
-framework to describe bias arising from missing data. If you strongly
-suspect data is MCAR, you can be more certain your data isn't biased,
-otherwise there may be bias in your sample. This does not mean data MAR
+framework to describe bias arising from missing data. If one strongly
+suspects data is MCAR, one can be more certain your data isn't biased,
+otherwise there may be bias in your sample. This does not mean that data MAR
 or MNAR make data invalid, instead it identifies potential biases, which
-can help improve future research design. However, these categorisations
-do not necessarily guide the user in their subsequent actions in
+can help improve future research design **(Nick, can we look at this sentence please)**. However, these categorisations
+do not necessarily guide a researcher in their subsequent actions in
 analysis, or describe specifically how values go missing. To identify
 possible mechanisms for missingness, the data must be explored. It can
 be challenging to identify the missingness mechanism in data, but it is

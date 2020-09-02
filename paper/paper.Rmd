@@ -123,14 +123,13 @@ critical, since missing values could change the outcome of a study. This
 could mean the work cannot be reproduced, and worse, may lead scientists
 and practitioners to the wrong outcome.
 
-It is imperative that missing data (or lack thereof --Absence of
-evidence is not evidence of absence) are reported. However, outside of
-sports science, researchers seldom consider missing data [@Schafer2002].
-Moreover, while there has been significant interest in modelling missing
-data [@refs], the exploration and reporting of missing data have received
+It is imperative that missing data, including lack thereof, are reported. However, outside of 
+sports science, there is evidence that researchers seldom consider missing data [@Schafer2002]. 
+While there has been significant interest in modelling missing
+data [@refs], the exploration and reporting of missings have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
 of articles that report missing data in football research; (2) highlight
-several bad missing data practices; and (3) provide recommendations for
+several improvable missing data practices; and (3) provide recommendations for
 exploring and reporting missingness.
 
 # Methods and materials
