@@ -86,7 +86,7 @@ appropriately representative.
 
 # Introduction {#intro}
 
-Missing data can undermine the validity of research results
+Missing data can undermine the validity and accuracy of research results
 [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
@@ -105,7 +105,7 @@ at Random (MCAR), Missing at Random (MAR), and Missing Not at Random
 (MNAR). These categorisations help describe whether the missingness
 occurs by chance (MCAR), due to some observed variable (MAR) or an
 unobserved variable (MNAR), with MCAR being benign and the latter two
-biased. Football relevant examples are provided in Supplement X, and
+biased. Football relevant examples are provided in Supplement 1, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
 [@Sainani2015; @Nakagawa2008; Sterne2009].
 
