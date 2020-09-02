@@ -101,24 +101,24 @@ The effect of missing data on the validity and accuracy of a study's
 results is largely determined by the reasons for missingness, and how
 missing data are handled.
 
-For a value to be missing, it should have been observed in the data, but was not. For example, a goal scored in football takes place, but the scorekeeper wasn't paying attention and did not record an event. This "goal" is now a missing value. Compare this to a game being rained out and no game taking place. There is no data to be observed, so there is no missing data. 
+A missing value should have been observed or measured in the data, but was not. For example, a goal scored in football takes place, but the scorekeeper wasn't paying attention and did not record an event. This "goal" is now a missing value. Compare this to a game being rained out and no game taking place. There is no missing data because there is no data to be observed. A final example - a study screens out individuals who do not meet criteria for the study. These are not missing values, because there was no intent for these to be observed or measured.
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
 at Random (MCAR), Missing at Random (MAR), and Missing Not at Random
 (MNAR). These categorisations help describe whether the missingness
 occurs by chance (MCAR), due to some observed variable (MAR) or an
-unobserved variable (MNAR), with MCAR being benign and the latter two
-biased. Football relevant examples are provided in Supplement X, and
+unobserved variable (MNAR), with MCAR being the least harmful, and MAR and MNAR
+biased [@Newman2014]. Football relevant examples are provided in Supplement X, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
 [@Sainani2015; @Nakagawa2008; Sterne2009].
 
 The three categorisations of missingness types provide a useful
 framework to describe bias arising from missing data. If you strongly
-suspect data is MCAR, you can be more certain your data isn't biased,
-otherwise there may be bias in your sample. This does not mean data MAR
-or MNAR make data invalid, instead it identifies potential biases, which
-can help improve future research design. However, these categorisations
+suspect data is MCAR, your results are less likely to be biased. If you suspect
+MAR or MNAR, there is bias in your results. This does not mean data MAR
+or MNAR make results invalid, instead it identifies potential bias, which can be
+used to help improve future research design. However, these categorisations
 do not necessarily guide the user in their subsequent actions in
 analysis, or describe specifically how values go missing. To identify
 possible mechanisms for missingness, the data must be explored. It can
@@ -129,7 +129,7 @@ and practitioners to the wrong outcome.
 
 It is imperative that missing data (or lack thereof --Absence of
 evidence is not evidence of absence) are reported. However, outside of
-sports science, researchers seldom consider missing data [@Schafer2002].
+sports science, researchers seldom consider missing data [@Schafer2002] (<< NOTE - I'm not sure we mean that?).
 Moreover, while there has been significant interest in modelling missing
 data [@refs], the exploration and reporting of missing data have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
