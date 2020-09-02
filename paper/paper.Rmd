@@ -86,7 +86,9 @@ appropriately representative.
 
 # Introduction {#intro}
 
-Missing data can undermine the validity and accuracy of research results
+Missing data are values that should have been observed, but were not. Since the
+values are unobserved, this can mean the population of interest might not be 
+properly sampled, inducing bias into study results. Left undetected or poorly handled, missing data can undermine the validity and accuracy of research results
 [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
@@ -98,6 +100,8 @@ case-by-case basis [@Sainani2015].
 The effect of missing data on the validity and accuracy of a study's
 results is largely determined by the reasons for missingness, and how
 missing data are handled.
+
+For a value to be missing, it should have been observed in the data, but was not. For example, a goal scored in football takes place, but the scorekeeper wasn't paying attention and did not record an event. This "goal" is now a missing value. Compare this to a game being rained out and no game taking place. There is no data to be observed, so there is no missing data. 
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
