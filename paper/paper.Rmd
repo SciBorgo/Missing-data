@@ -61,7 +61,7 @@ wordcountaddin::text_stats()
 # Abstract {-}
 
 Missing data are often unavoidable. The reason values go missing, along
-with decisions made in how missing data are handled (deleted or
+with decisions made of how missing data are handled (deleted or
 imputed), can have a profound effect on the validity, usability and
 accuracy of a study's results. In this article, we aimed to: estimate
 the proportion of studies in football research that included a missing
@@ -70,11 +70,11 @@ missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
 studied. A survey of 137 articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
-proportion of studies in football research including a missing data
-statement was low, at only X% [95% confidence interval; X% to X%];
-suggesting that this aspect of data analysis is seldom considered by researchers.
-We suspect that this result is consistent with the wider sports science literature.
-We recommend researchers describe the number and percentage of missing
+proportion of studies in football research that included a missing data
+statement was low, at only X% [95% confidence interval; X% to X%]; suggesting that 
+missingness is seldom considered by researchers. We suspect that this result 
+is consistent with the wider sports science literature. We recommend 
+researchers describe the number and percentage of missing
 values, including when there are no missing values. Exploratory analysis
 should be conducted to explore missing values, and visualisations
 describing missingness overall should be provided in the paper or at
