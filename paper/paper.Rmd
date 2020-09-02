@@ -110,12 +110,12 @@ more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
 [@Sainani2015; @Nakagawa2008; Sterne2009].
 
 The three categorisations of missingness types provide a useful
-framework to describe bias arising from missing data. If you strongly
-suspect data is MCAR, you can be more certain your data isn't biased,
-otherwise there may be bias in your sample. This does not mean data MAR
+framework to describe bias arising from missing data. If one strongly
+suspects data is MCAR, one can be more certain your data isn't biased,
+otherwise there may be bias in your sample. This does not mean that data MAR
 or MNAR make data invalid, instead it identifies potential biases, which
-can help improve future research design. However, these categorisations
-do not necessarily guide the user in their subsequent actions in
+can help improve future research design **(Nick, can we look at this sentence please)**. However, these categorisations
+do not necessarily guide a researcher in their subsequent actions in
 analysis, or describe specifically how values go missing. To identify
 possible mechanisms for missingness, the data must be explored. It can
 be challenging to identify the missingness mechanism in data, but it is
