@@ -82,18 +82,18 @@ least supplementary materials. Missing values should almost always be
 imputed, and imputation methods should be explored to ensure they are
 appropriately representative.
 
-**Keywords:** Imputation, missingness, missings, naniar, sport, football
+**Keywords:** Exercise, imputation, missingness, missings, naniar, sport
 
 # Introduction {#intro}
 
-Missing data can undermine the validity and accuracy of research results
+Missing data can undermine the validity of research results
 [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go
 missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
 analysis, missing data must be handled, with values typically deleted or
 imputed. There is no universal approach to handling missing data. 
 Contextual factors--such as, the study design and objective, and
-pattern of missingness--determine how to handle missings on a
+pattern of missingness--determine how missings should be handled, on a
 case-by-case basis [@Sainani2015].
 The effect of missing data on the validity and accuracy of a study's
 results is largely determined by the reasons for missingness, and how
