@@ -97,11 +97,8 @@ imputed. There is no universal approach to handling missing data.
 Contextual factors--such as, the study design and objective, and
 pattern of missingness--determine how to handle missings on a
 case-by-case basis [@Sainani2015].
-The effect of missing data on the validity and accuracy of a study's
-results is largely determined by the reasons for missingness, and how
-missing data are handled.
 
-A missing value should have been observed or measured in the data, but was not. For example, a goal scored in football takes place, but the scorekeeper wasn't paying attention and did not record an event. This "goal" is now a missing value. Compare this to a game being rained out and no game taking place. There is no missing data because there is no data to be observed. A final example - a study screens out individuals who do not meet criteria for the study. These are not missing values, because there was no intent for these to be observed or measured.
+For clarity, we describe some examples of missingness. An Australian football data collector was taking lunch during the third quarter, so no data was recorded for this time period. Compare this to an AFL game being cancelled due to COVID19. There is no missing data because there is no data to be observed. If a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured.
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
