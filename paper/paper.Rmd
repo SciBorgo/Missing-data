@@ -140,45 +140,15 @@ articles published in 2019 were studied. Three major sports medicine
 databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The search process is
-summarised in Figure 1.
-
-```{r prisma-example, eval = FALSE}
-require(PRISMAstatement)
-
-prisma()
-
-[[https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html]{.ul}](https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html)
-
-library(PRISMAstatement)
-
-e.g.,
-
-prisma(found = 3863,
-
-found_other = NA,
-
-no_dupes = 1909,
-
-screened = 1954,
-
-random_sample = 199,
-
-full_text = 199,
-
-full_text_exclusions = 62,
-
-width = 800, height = 800)
-```
-
-**Figure 1.** PRISMA flow chart.
+summarised in the PRISMA figure provided in Supplement 2.
 
 Our intention was to survey, at random, 10% of the total articles found
 (after title and abstract screening). We were primarily interested in
 whether missing data were reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information about how missing
-values were handled was also extracted (see Supplement 1). Two authors
+values were handled was also extracted (see Supplement 2). Two authors
 independently extracted the data (X% agreement). Findings are reported
-as the proportion and 95% confidence interval. Supplement 1 provides
+as the proportion and 95% confidence interval. Supplement 2 provides
 further details of the search.
 
 # Results
