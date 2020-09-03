@@ -1,5 +1,5 @@
 ---
-title: "Missing data: Current practice in football research and recommendations for reporting missingness"
+title: "Missing data: Current practice in football research and recommendations for improvement"
 authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 output: 
   html_document:
@@ -39,8 +39,6 @@ Melbourne, Australia
 Frontiers (ACEMS), Melbourne, Australia
 
 **Acknowledgement/conflict of interest**
-
-NJT naniar package?
 
 **Corresponding author**
 
