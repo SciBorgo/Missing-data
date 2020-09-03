@@ -71,7 +71,7 @@ reporting missingness. Football related articles, published in 2019 were
 studied. A survey of 137 articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
 proportion of studies in football research that included a missing data
-statement was low, at only X% [95% confidence interval; X% to X%]; suggesting that 
+statement was low, at only X% (95% confidence interval; X% to X%); suggesting that 
 missingness is seldom considered by researchers. We suspect that this result 
 is consistent with the wider sports science literature. We recommend 
 researchers describe the number and percentage of missing

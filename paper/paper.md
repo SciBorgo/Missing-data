@@ -67,10 +67,10 @@ Melbourne, Australia
 
 Method            koRpus         stringi       
 ----------------  -------------  --------------
-Word count        2350           2222          
-Character count   15296          15716         
-Sentence count    172            Not available 
-Reading time      11.8 minutes   11.1 minutes  
+Word count        2239           2177          
+Character count   14823          14816         
+Sentence count    169            Not available 
+Reading time      11.2 minutes   10.9 minutes  
 
 
 # Abstract {-}
@@ -138,59 +138,32 @@ critical, since missing values could change the outcome of a study. This
 could mean the work cannot be reproduced, and worse, may lead scientists
 and practitioners to the wrong outcome.
 
-It is imperative that missing data (or lack thereof --Absence of
-evidence is not evidence of absence) are reported. However, outside of
-sports science, researchers seldom consider missing data [@Schafer2002].
-Moreover, while there has been significant interest in modelling missing
-data [@refs], the exploration and reporting of missing data have received
+It is imperative that missing data, or lack thereof, are reported. However, there is 
+evidence that outside of sports science, researchers seldom consider missing data [@Schafer2002]. 
+While there has been significant interest in modelling missing
+data [@refs], the exploration and reporting of missings have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
 of articles that report missing data in football research; (2) highlight
-several bad missing data practices; and (3) provide recommendations for
+several improvable missing data practices; and (3) provide recommendations for
 exploring and reporting missingness.
 
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@Schafer2002]. Football related
+football research, we conducted a systematic search [@Schafer2002] **(should this reference be here?)**. Football related
 articles published in 2019 were studied. Three major sports medicine
 databases (SPORTDiscus, Embase and Cinahl) were searched, using key
-terms and search limits (Supplement 1). Included articles were: (a)
-published in 2019; (b) written in English; (c) had an accessible
-full-text; and (d) included quantitative data. The search process is
-summarised in Figure 1.
-
-
-
-+---------------------------------+-----------------------------------+
-| Imported                        | 3,863                             |
-+=================================+===================================+
-| After duplicates removed        | 1,954                             |
-+---------------------------------+-----------------------------------+
-| After title and abstract screen | 1,373                             |
-+---------------------------------+-----------------------------------+
-| Random sample full-text         | 199 (needed for 10% sample)       |
-+---------------------------------+-----------------------------------+
-| Full-text included              | 137                               |
-+---------------------------------+-----------------------------------+
-| Full-text excluded              | Full-text papers excluded (n=62)  |
-|                                 | with reasons:                     |
-|                                 |                                   |
-|                                 | Qualitative study (n=)            |
-|                                 |                                   |
-|                                 | Not in english (n=)               |
-|                                 |                                   |
-|                                 | Unable to access full-text (n=)   |
-+---------------------------------+-----------------------------------+
-
-**Figure 1.** PRISMA flow chart.
+terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
+full-text; and (c) included quantitative data. The search process is
+summarised in the PRISMA figure provided in Supplement 2.
 
 Our intention was to survey, at random, 10% of the total articles found
 (after title and abstract screening). We were primarily interested in
 whether missing data were reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information about how missing
-values were handled was also extracted (see Supplement 1). Two authors
+values were handled was also extracted (see Supplement 2). Two authors
 independently extracted the data (X% agreement). Findings are reported
-as the proportion and 95% confidence interval. Supplement 1 provides
+as the proportion and 95% confidence interval. Supplement 2 provides
 further details of the search.
 
 # Results
