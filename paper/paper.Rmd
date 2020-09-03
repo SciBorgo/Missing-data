@@ -98,7 +98,7 @@ Contextual factors--such as, the study design and objective, and
 pattern of missingness--determine how missings should be handled, on a
 case-by-case basis [@Sainani2015].
 
-For clarity, we describe some examples of missingness. An Australian football data collector was taking lunch during the third quarter, so no data was recorded for this time period. Compare this to an AFL game being cancelled due to COVID19. There is no missing data because there is no data to be observed. If a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured.
+For clarity, we describe some examples of missingness. An Australian football data collector was taking lunch during the third quarter, so no data was recorded for this time period. Compare this to an AFL game being cancelled due to COVID19. There is no missing data because there is no data to be observed. If a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured. 
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
@@ -287,7 +287,10 @@ the majority or more missing than not). With respect to a 'rule of
 thumb' for when data should be imputed, we deliberately do not suggest
 any specific threshold (e.g., impute values when >5% of data are
 missing otherwise delete rows with <5% missing) and caution against
-such practice. Rather, we recommend values should generally be imputed..
+such practice. Rather, we recommend values should generally be imputed.
+
+Missing values can occur in the both the predictors (the "independent variables") and response variable (the "dependent variables"). Care should be taken when imputing data, as typically only predictors should be imputed. For discussion on imputing the response value, see ... [@refs]. (note: take a look again) 
+
 We recommend avoiding imputation methods that impute the same value,
 such as mean or median imputation, and instead suggest using imputation
 methods such as: linear regression, k nearest neighbours, or expectation
@@ -321,8 +324,7 @@ example of this approach is described in the Case Study in
 
 # Recommendations
 
-The current state of reporting missing data in the sports literature is
-poor. In this section we discuss recommended practices for exploring and
+The current state of reporting missing data in the sports literature has room for improvement. In this section we discuss recommended practices for exploring and
 reporting missing data. Our intention is not to provide a 'cookbook'
 style approach to missing data, but rather broad recommendations to help
 researchers when writing the methods and results sections of a study,
