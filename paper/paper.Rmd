@@ -135,12 +135,11 @@ exploring and reporting missingness.
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@Schafer2002]. Football related
+football research, we conducted a systematic search [@Schafer2002] **(should this reference be here?)**. Football related
 articles published in 2019 were studied. Three major sports medicine
 databases (SPORTDiscus, Embase and Cinahl) were searched, using key
-terms and search limits (Supplement 1). Included articles were: (a)
-published in 2019; (b) written in English; (c) had an accessible
-full-text; and (d) included quantitative data. The search process is
+terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
+full-text; and (c) included quantitative data. The search process is
 summarised in Figure 1.
 
 ```{r prisma-example, eval = FALSE}
@@ -154,47 +153,22 @@ library(PRISMAstatement)
 
 e.g.,
 
-prisma(found = x,
+prisma(found = 3863,
 
-found_other = x,
+found_other = NA,
 
-no_dupes = x,
+no_dupes = 1909,
 
-screened = x,
+screened = 1954,
 
-screen_exclusions = x,
+random_sample = 199,
 
-full_text = x,
+full_text = 199,
 
-full_text_exclusions = x,
-
-qualitative = x,
-
-quantitative = x,
+full_text_exclusions = 62,
 
 width = 800, height = 800)
 ```
-
-+---------------------------------+-----------------------------------+
-| Imported                        | 3,863                             |
-+=================================+===================================+
-| After duplicates removed        | 1,954                             |
-+---------------------------------+-----------------------------------+
-| After title and abstract screen | 1,373                             |
-+---------------------------------+-----------------------------------+
-| Random sample full-text         | 199 (needed for 10% sample)       |
-+---------------------------------+-----------------------------------+
-| Full-text included              | 137                               |
-+---------------------------------+-----------------------------------+
-| Full-text excluded              | Full-text papers excluded (n=62)  |
-|                                 | with reasons:                     |
-|                                 |                                   |
-|                                 | Qualitative study (n=)            |
-|                                 |                                   |
-|                                 | Not in english (n=)               |
-|                                 |                                   |
-|                                 | Unable to access full-text (n=)   |
-+---------------------------------+-----------------------------------+
 
 **Figure 1.** PRISMA flow chart.
 
