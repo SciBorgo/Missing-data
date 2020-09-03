@@ -2,6 +2,7 @@
 title: "Supplement 2"
 output: 
   bookdown::html_document2
+  # bookdown::pdf_document2
 bibliography: "supp-2.bib"
 ---
 
@@ -87,7 +88,7 @@ expectation that 30% of the articles from the additional sample would
 also be ineligible\--so to preserve a 10% screen of the total papers
 published on football related topics in 2019. Figure \@ref(fig:prisma) summarises the search process.
 
-```{r prisma}
+```{r prisma, fig.cap = "Write the figure caption here"}
   # | Imported                        | 3,863                             |
   # | After duplicates removed        | 1,954                             |
   # | After title and abstract screen | 1,373                             |
