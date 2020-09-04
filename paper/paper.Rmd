@@ -149,7 +149,7 @@ Our intention was to survey, at random, 10% of the total articles found, after
 title and abstract screening. We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
-values were treated was also extracted (Supplement 2). Two authors
+values were treated was also extracted (see Supplement 2). Two authors
 independently extracted the data (X% agreement). Findings are reported
 as the proportion and 95% confidence interval. 
 Further details of the search can be found in Supplement 2.
