@@ -98,12 +98,10 @@ Contextual factors--such as, the study design and objective, and
 pattern of missingness--determine how missings should be handled, on a
 case-by-case basis [@Sainani2015].
 
-For clarity, we describe an example of missingness. An Australian Rules Football data collector 
+For clarity, we describe an example of missingness. An Australian Football data collector 
 was taking lunch during the third quarter, so no data was recorded for this time period. This
 would be considered missing data. Compare this to the game being cancelled due to a pandemic. 
-There is no missing data because there is no data to be observed. Similiarly, if a study screens out individuals who 
-do not meet inclusion criteria, this is not a missing value, because there is no intent for these 
-values to be observed or measured. 
+There is no missing data because there is no data to be observed. Similiarly, if a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured. 
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
@@ -111,7 +109,7 @@ at Random (MCAR), Missing at Random (MAR), and Missing Not at Random
 (MNAR). These categorisations help describe whether the missingness
 occurs by chance (MCAR), due to some observed variable (MAR) or an
 unobserved variable (MNAR), with MCAR being the least harmful, and MAR and MNAR
-biased [@Newman2014]. Football relevant examples are provided in Supplement X, and
+biased [@Newman2014]. Football relevant examples are provided in Supplement 1, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
 [@Sainani2015; @Nakagawa2008; Sterne2009].
 
@@ -134,7 +132,7 @@ While there has been significant interest in modelling missing
 data [@refs], the exploration and reporting of missings have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
 of articles that report missing data in football research; (2) highlight
-several improvable missing data practices; and (3) provide recommendations for
+several practices that should be avoided; and (3) provide recommendations for
 exploring and reporting missingness.
 
 # Methods and materials
@@ -147,14 +145,14 @@ terms and search limits (Supplement 2). Included articles were: (a) written in E
 full-text; and (c) included quantitative data. The search process is
 summarised in the PRISMA figure provided in Supplement 2.
 
-Our intention was to survey, at random, 10% of the total articles found
-(after title and abstract screening). We were primarily interested in
-whether missing data were reported or acknowledged; and if not, whether
-a dataset was shared. Where applicable, information about how missing
-values were handled was also extracted (see Supplement 2). Two authors
+Our intention was to survey, at random, 10% of the total articles found, after 
+title and abstract screening. We were primarily interested in
+whether missing data was reported or acknowledged; and if not, whether
+a dataset was shared. Where applicable, information relating to how missing
+values were treated was also extracted (Supplement 2). Two authors
 independently extracted the data (X% agreement). Findings are reported
-as the proportion and 95% confidence interval. Supplement 2 provides
-further details of the search.
+as the proportion and 95% confidence interval. 
+Further details of the search can be found in Supplement 2.
 
 # Results
 
