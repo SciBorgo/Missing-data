@@ -145,8 +145,8 @@ terms and search limits (Supplement 2). Included articles were: (a) written in E
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
 
-Our intention was to survey, at random, 10% of the total articles found, after 
-title and abstract screening. We were primarily interested in
+Our intention was to survey, at random, 10% of the total articles found (after 
+title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
