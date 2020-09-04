@@ -142,7 +142,8 @@ football research, we conducted a systematic search [@PRISMA]. Football related
 articles published in 2019 were studied. Three major sports medicine
 databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
-full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process. 
+full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
+and further details of the search can also be found in Supplement 2. 
 
 Our intention was to survey, at random, 10% of the total articles found, after 
 title and abstract screening. We were primarily interested in
@@ -150,8 +151,7 @@ whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
 independently extracted the data (X% agreement). Findings are reported
-as the proportion and 95% confidence interval. 
-Further details of the search can be found in Supplement 2.
+as the proportion and 95% confidence interval.
 
 # Results
 
