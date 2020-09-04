@@ -175,32 +175,30 @@ Our survey of 136 articles published on football related topics found
 that only about one in 20 papers reported missing data. It is reasonable
 to assume that this result is representative of current practices in the
 wider sports science literature. This finding may be largely explained
-by a lack of awareness and education on missing data practices (Kristin
-BJSM paper), similar to other areas of sciences (refs-education and
-ecology examples)(2). Below we discuss several poor practices in
+by a lack of awareness and education on missing data practices (https://bjsm.bmj.com/content/early/2020/08/19/bjsports-2020-102607.abstract), 
+similar to other areas of sciences (refs-education and
+ecology examples)(2). Below we discuss several practices to avoid in
 relation to missing data, and provide recommendations for exploring,
 visualising and reporting missingness.
 
 ## Missing data across the analysis pathway
 
-Case study: *Unreported missing values*. While not always the case, even if
+*Unreported missing values*. While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
 relationship between match performance indicators and outcome, in
-Australian Football between the 2001 and 2016. Problematically, at least
-one of the 91 team performance indicators included in the analysis was
-not available over the entire 2001-2016 period [@Young2019]. The variable
-'meters gained' was not collected over the specified duration [@ref].
+Australian Football between the 2001 and 2016. Of the 91 team performance indicators included in the analysis,
+at least one variable (i.e., 'meters gained') was not available over the entire 2001-2016 period [@Young2019]**Check this reference**.
 This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
 and/or extend the ideas presented in the paper, or reproduce the
 analysis. It is also difficult for a reader to evaluate how the
-missingness could bias the results. Unfortunately, the absence of a
+missingness could bias the results. The absence of a
 missing data statement when data are missing is not unique to the study
-above [@Young2019]. Authors should include a missing data statement,
-irrespective of whether data is missing, or not.
+above [@Young2019]**Check this reference**. Authors should include a missing data statement,
+irrespective of whether there is data missing, or not.
 
-Case study: *Mean imputation.* The default of most statistical software for
+*Mean imputation.* The default of most statistical software for
 handling missing data in modelling is listwise deletion. Listwise
 deletion removes entire rows that contain missing observations from the
 analysis. At best, listwise deletion reduces the power in analysis by
@@ -209,7 +207,7 @@ injured participants are removed from a study on injury prevention.
 Imputing values removes the need to conduct listwise deletion. However,
 it is critical how these values are imputed, and that the imputation
 method is documented. One imputation method is imputing the mean value
-(e.g., participant or group average) [@Young2019]. While imputing the mean
+(e.g., participant or group average) [@Young2019]**Check this reference**. While imputing the mean
 preserves the study sample size (and point estimates), it also reduces
 the variance, can alter the relationship between the variable with
 missing observations and other variables, and can bias (underestimate)
@@ -220,7 +218,7 @@ strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
 be considered. This is discussed in the recommendations section.
 
-Case study: *Not evaluating the effect, or choice, of imputation.* The
+*Not evaluating the effect, or choice, of imputation.* The
 imputation method used to impute missing data has the potential to
 affect the outcome of a study. Therefore, it is important that authors
 understand, and document, how imputation affected the goal of the
