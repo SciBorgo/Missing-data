@@ -171,13 +171,12 @@ normality (e.g., Kruskall-Wallis test).
 
 Our survey of 136 articles published on football related topics found
 that only about one in 20 papers reported missing data. It is reasonable
-to assume that this result is representative of current practices in the
-wider sports science literature. This finding may be largely explained
-by a lack of awareness and education on missing data practices (https://bjsm.bmj.com/content/early/2020/08/19/bjsports-2020-102607.abstract), 
+to assume that this result is representative of current practice in the wider sports science literature. 
+The low proportion of papers reporting missingness could be explained by a lack of awareness and education on missing data (https://bjsm.bmj.com/content/early/2020/08/19/bjsports-2020-102607.abstract), 
 similar to other areas of sciences (refs-education and
-ecology examples)(2). Below we discuss several practices to avoid in
-relation to missing data, and provide recommendations for exploring,
-visualising and reporting missingness.
+ecology examples)(2)**references needed**. Below we discuss several practices to avoid in
+relation to missingness, and provide recommendations for exploring,
+visualising and reporting missing data.
 
 ## Missing data across the analysis pathway
 
