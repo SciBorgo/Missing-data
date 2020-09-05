@@ -378,9 +378,10 @@ below:
 
 Our survey of 2019 articles on football related topics
 showed that current practice of reporting missing data is poor, 
-with only about one in 20 studies reported missing data. To address this issue,
-we have provided recommendations for reporting and exploring missing data, to assist researchers 
-during this important process in the analytical pipeline.
+with only about one in 20 studies reported missing data. 
+This could suggest that this aspect of data anlaysis receives little attention. 
+To address this issue and assist researchers,
+we have provided recommendations for reporting and exploring missing data.
 Research should consider these recommendations, and pay greater
 attention to missing data and its influence on research results.
 
