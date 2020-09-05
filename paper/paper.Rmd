@@ -186,7 +186,7 @@ Practice to avoid: *Unreported missing values.* While not always the case, even 
 not reported, missing data can be obvious. A recent paper examined the
 relationship between match performance indicators and outcome, in
 Australian Football between the 2001 and 2016. Of the 91 team performance indicators included in the analysis,
-at least one variable (i.e., 'meters gained') was not available over the entire 2001-2016 period [@Young2019]**Check this reference**.
+at least one variable (i.e., 'meters gained') was not available over the entire 2001-2016 period [@Young2019]**Check this reference**. **We might need to add a sentence about 'question mark' in the figures?**
 This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
