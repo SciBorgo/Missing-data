@@ -217,16 +217,16 @@ strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
 be considered. This is discussed in the recommendations section.
 
-Practice to avoid: *Not evaluating the effect, or choice, of imputation.* The
-imputation method used to impute missing data has the potential to
-affect the outcome of a study. Therefore, it is important that authors
+Practice to avoid: *Not evaluating the effect, or choice, of imputation.* The 
+method used to impute missing data has the potential to
+affect the outcome of a study. It is important that authors
 understand, and document, how imputation affected the goal of the
 analysis (i.e., inference, prediction, or both). For example,
 understanding the implications in using mean imputation, compared to
-K-nearest neighbour imputation -- the effect on parameter estimates
+K-nearest neighbour imputation--in terms of the effect on parameter estimates
 ('significant' versus 'not significant'), and the (un)certainty of the
 coefficients (i.e., less/more). When using imputation, authors need to
-perform a sensitivity analysis (ref circulation article-Nick). This is
+perform a sensitivity analysis (**ref circulation article-Nick**). This is
 discussed below.
 
 ## Common causes of missing values
@@ -238,9 +238,9 @@ information in the data. For example, in  Table \@ref(tab:implicit-missings), pl
 missing values for quarters two and four. Sometimes values like these
 can be logically imputed, as it might be known that these values are
 recorded as 0 in this format, rather than NA. Other places missing data
-can arise include: bad joins when merging data without corresponding
+can arise include: through joins when merging data without corresponding
 values, surveys, an inability to collect a biological sample (e.g.,
-venous blood), equipment malfunction or failure, or or not being worn.
+venous blood), equipment malfunction, failure, or not being worn.
 
 ```{r implicit-missings, fig.cap = "Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed."}
 
@@ -251,7 +251,7 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 ## Visualising missing values
 
 We recommend that researchers use missing data overview graphics (see
-Graphics section in [@Tierney2018], For example, overview plots [@Tierney2017].
+Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data.
 
@@ -274,7 +274,7 @@ aq_vis_miss <- vis_miss(airquality) + labs(title = "C")
 ```
 
 To learn more about exploring missing values, we recommend the vignettes
-in naniar [@naniar], and the methods in (@Tierney2018)
+in naniar [@naniar], and the methods in (@Tierney2018).
 
 ## Understanding imputation
 
@@ -287,22 +287,22 @@ the majority or more missing than not). With respect to a 'rule of
 thumb' for when data should be imputed, we deliberately do not suggest
 any specific threshold (e.g., impute values when >5% of data are
 missing otherwise delete rows with <5% missing) and caution against
-such practice. Rather, we recommend values should generally be imputed.
-
-Missing values can occur in the both the predictors (the "independent variables") and response variable (the "dependent variables"). Care should be taken when imputing data, as typically only predictors should be imputed. For discussion on imputing the response value, see ... [@refs]. (note: take a look again) 
-
+such practice. Rather, we recommend values should generally be imputed. 
 We recommend avoiding imputation methods that impute the same value,
-such as mean or median imputation, and instead suggest using imputation
-methods such as: linear regression, k nearest neighbours, or expectation
-maximisation.
+such as the mean or median, and instead suggest using imputation
+methods such as: linear regression, k-nearest neighbours, or expectation
+maximisation. Missing values can occur in the both the predictors (the "independent variables") 
+and response variable (the "dependent variables"). Care should be taken 
+when imputing data, as typically only predictors should be imputed. 
+For discussion on imputing the response value, see ... [@refs]. **(note: take a look again)**
 
 Much in the way of there is no single 'best' statistical method, there
 is no perfect, one-size-fits-all approach for imputing data. The goal is
-to generate similar values that might have been otherwise recorded -
-sometimes this means using a neighborhood approach of finding similar
-values, other times this means predicting responses using linear or tree
-models, and other times the most likely value might have been 0 or the
-last or first value carried forward. For detailed descriptions and a
+to generate similar values that might have been otherwise recorded.
+Sometimes this means using a neighborhood approach of finding similar
+values. Or it could mean predicting responses using linear or tree
+models. Other times the most likely value might have been 0 or the
+last or first value carried forward. For detailed descriptions, and a
 summary of these methods, we suggest [@Van_Buuren2012; @Schafer2002; @Cheema2014].
 
 The imputation methods discussed so far impute a single value for each
@@ -314,7 +314,7 @@ best method to get the most reasonable inference from the data, as it
 reflects the uncertainty in the missing values. For more information on
 using multiple imputation, we recommend Stefan van Buuren's book, @Van_Buuren2012.
 
-No matter the imputation method used, it is essential to compare results
+Irrespective of the imputation method used, it is essential to compare results
 of different missing data handling to understand how they may bias the
 results. For example, comparing analysis results from applying listwise
 deletion, compared to mean imputation, compared to linear regression
@@ -326,7 +326,7 @@ example of this approach is described in the Case Study in
 
 The current state of reporting missing data in the sports literature has room for improvement. In this section we discuss recommended practices for exploring and
 reporting missing data. Our intention is not to provide a 'cookbook'
-style approach to missing data, but rather broad recommendations to help
+style approach to missing data, but rather, broad recommendations to help
 researchers when writing the methods and results sections of a study,
 and assist researchers when evaluating a study during the peer-review
 process.
@@ -376,14 +376,11 @@ below:
 
 # Conclusion
 
-More often than not, researchers will be faced with missing data. The
-reasons for the missingness, along with the decision of how missing data
-are treated, can have a profound effect on the validity and accuracy of
-a study's results. A survey of 2019 articles on football related topics
-showed that current practice is poor. Only about one in 20 studies
-reported missing data. To help address this issue, we have discussed
-recommendations for exploring and reporting missing data, to assist
-researchers during this important process in the analytical pipeline.
+Our survey of 2019 articles on football related topics
+showed that current practice of reporting missing data is poor, 
+with only about one in 20 studies reported missing data. To address this issue,
+we have provided recommendations for reporting and exploring missing data, to assist researchers 
+during this important process in the analytical pipeline.
 Research should consider these recommendations, and pay greater
 attention to missing data and its influence on research results.
 
