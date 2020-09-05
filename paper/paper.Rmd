@@ -1,6 +1,6 @@
 ---
 title: "Missing data: Current practice in football research and recommendations for improvement"
-authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
+authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
 output: 
   html_document:
     toc: true
@@ -28,13 +28,15 @@ Affiliations:
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: University of New South Wales, Department of Statistics, School of
+2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
+
+3: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia.
 
-3: Monash University, Department of Econometrics and Business Statistics,
+4: Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
 
-4: Australian Centre of Excellence for Mathematical and Statistical
+5: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia.
 
 **Acknowledgement/conflict of interest**
@@ -179,6 +181,9 @@ relation to missingness, and provide recommendations for exploring,
 visualising and reporting missing data.
 
 ## Missing data across the analysis pathway
+
+Missing data requires careful consideration across the entire analysis pathway. 
+Here we present several practices to avoid.
 
 *Unreported missing values*. While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
