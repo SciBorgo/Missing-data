@@ -182,10 +182,7 @@ visualising and reporting missing data.
 
 ## Missing data across the analysis pathway
 
-Missing data requires careful consideration across the entire analysis pathway. 
-Here we present several practices to avoid.
-
-*Unreported missing values*. While not always the case, even if
+Practice to avoid: *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
 relationship between match performance indicators and outcome, in
 Australian Football between the 2001 and 2016. Of the 91 team performance indicators included in the analysis,
@@ -200,7 +197,7 @@ missing data statement when data are missing is not unique to the study
 above [@Young2019]**Check this reference**. Authors should include a missing data statement,
 irrespective of whether there is data missing, or not.
 
-*Mean imputation.* The default of most statistical software for
+Practice to avoid: *Mean imputation.* The default of most statistical software for
 handling missing data in modelling is listwise deletion. Listwise
 deletion removes entire rows that contain missing observations from the
 analysis. At best, listwise deletion reduces the power in analysis by
@@ -220,7 +217,7 @@ strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
 be considered. This is discussed in the recommendations section.
 
-*Not evaluating the effect, or choice, of imputation.* The
+Practice to avoid: *Not evaluating the effect, or choice, of imputation.* The
 imputation method used to impute missing data has the potential to
 affect the outcome of a study. Therefore, it is important that authors
 understand, and document, how imputation affected the goal of the
