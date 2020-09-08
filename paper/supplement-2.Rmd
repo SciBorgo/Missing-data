@@ -33,15 +33,15 @@ was provided to support the undertaking of the search.
 
 # Objective
 
-This review aimed to estimate the proportion of articles published on
-the topic area of football in 2019 that reported on missing data.
+This review aimed to estimate the proportion of articles that reported 
+missing data in football research.
 
 # Method
 
-Football related articles, published in 2019 were studied. Three major
-sports medicine databases were searched using the key terms and limits,
-on May 20, 2020. The databases were: SPORTDiscus, Embase and Cinahl. A
-list of search terms and complete search statements are provided in
+Football related articles published in 2019 were studied. Three major
+sports medicine databases were searched on May 20, 2020, using key terms and limits. 
+The databases were: SPORTDiscus, Embase and Cinahl. A
+list of the search terms and complete search statements are provided in
 Table \@ref(tab:search-table).
 
 ```{r search-table}
