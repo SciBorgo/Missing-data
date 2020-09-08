@@ -5,21 +5,37 @@ output: html_document
 
 # missing data examples relevant to sports (MAR, MCAR, MNAR)
 
-For example, if a players' player ratings\--a statistic derived from
-many variables in the dataset\--are unavailable for one, or several,
-Australian Football matches, despite the individual participating in the
-match and the other variables being recorded.
+There are three broad categorisations describing why data can be 
+missing: Missing Completely at Random (MCAR), Missing at Random (MAR), 
+and Missing Not at Random (MNAR). These categorisations help describe 
+whether the missingness occurs by chance (MCAR), due to some observed 
+variable (MAR) or an unobserved variable (MNAR), with MCAR being 
+the least harmful, and MAR and MNAR biased. Here, we provide an example 
+of data MAR, MCAR and MNAR.
 
-MCAR refers to missingness that is unrelated to any observed or
-unobserved data. Missing Australian Football player ratings could be
-considered MCAR, if the missing ratings are not systematically related
-to other variables. MAR is where missingness is related to some observed
+Data MCAR could occur if an Australian Football data collector was taking 
+lunch during the third quarter of a match, resulting in data not being 
+recorded for this time period. Data is MCAR, because the missings are 
+not systematically related to other variables.
+
+Data may be considered MAR is where missingness is related to some observed
 data. Data MAR could arise if\... \^\^Rob's out on the full
 example\--players who are injured are less likely to fill out wellness
-surveys than those who are fully fit.\^\^. MNAR is when missingness is
+surveys than those who are fully fit.\^\^. 
+
+
+
+MNAR is when missingness is
 related to something unobservable. For example, data MNAR could arise
 when, if studying doping, a player was to remove their head and body
 hair, to avoid providing a hair sample for testing
 [\[4\]](https://www.zotero.org/google-docs/?4Ildjf). In this case, data
 is missing (the hair sample), and this information is not captured by
 any other variable that was collected (hair length was not recorded).
+
+# Older ideas
+
+For example, if a players' player ratings\--a statistic derived from
+many variables in the dataset\--are unavailable for one, or several,
+Australian Football matches, despite the individual participating in the
+match and the other variables being recorded.
