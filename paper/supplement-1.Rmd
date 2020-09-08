@@ -18,25 +18,17 @@ a lunch break during the third quarter of a match, resulting in data not being
 recorded for this time period. Data is MCAR, because the missings are 
 not systematically related to other variables.
 
-Data MAR are more likely to occur than data MCAR. Data MAR could arise if
-a weighing scale used to measure players' pre- and post-match body mass 
-produced more missing values when placed on soft carpet, rather than hard tiles. 
-The scale may produce more missing values because of the soft surface. If 
-surface type was recorded, data could be considered MAR, because the 
-missingness is related to some observed data (i.e., surface), but not related 
-to the value of the variable with the missing values itself.
+Data MAR could arise if a weighing scale used to measure players' pre- and 
+post-match body mass produced more missing values when placed on soft carpet, 
+rather than hard tiles. If the scales produced more missing values because of 
+the softer surface, and surface type was a recorded variable, data would be MAR, 
+because the missingness is related to some observed data (i.e., surface), but 
+not related to the value of the variable with the missing values itself (i.e., body mass). 
+(ref: https://stefvanbuuren.name/fimd/sec-MCAR.html).
 
-MNAR is when missingness is
-related to something unobservable. For example, data MNAR could arise
-when, if studying doping, a player was to remove their head and body
-hair, to avoid providing a hair sample for testing
+Data MNAR is when the missings are related to something unobservable. 
+For example, data MNAR could arise when, if studying doping, a player 
+was to remove their head and body hair, to avoid providing a hair sample for testing
 [\[4\]](https://www.zotero.org/google-docs/?4Ildjf). In this case, data
 is missing (the hair sample), and this information is not captured by
 any other variable that was collected (hair length was not recorded).
-
-# Older ideas
-
-For example, if a players' player ratings\--a statistic derived from
-many variables in the dataset\--are unavailable for one, or several,
-Australian Football matches, despite the individual participating in the
-match and the other variables being recorded.
