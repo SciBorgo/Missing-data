@@ -125,9 +125,9 @@ Qualitative study (n = 9)
 
 Articles were surveyed to determine: (a) whether a missing data
 statement was included, or if missing data were acknowledged in a
-figure/table; (b) where data were missing, whether data were considered
-MCAR, MAR or MNAR; (c) whether imputation was used, and the imputation
-method; and (d) whether articles that did not include a missing data
+figure/table; where data were missing, whether (b) data were considered
+MCAR, MAR or MNAR; (c) imputation was used; (d) the method used for imputation; 
+and (e) whether articles that did not include a missing data
 statement shared their data. Two authors independently extracted the
 data. Agreement was X%; discrepancies were resolved by NJT. Findings are
 reported as the proportion and 95% confidence interval (CI). Confidence
@@ -137,22 +137,21 @@ binomial distribution [@Clopper1934],via the 'binom' package [@binom] in R (vers
 # Results
 
 The search returned a total of 3,863 articles (Figure 1). Of the 199
-articles screened, 136 were deemed eligible, representing \~10% of total
-articles published on football related studies in 2019 (Figure X). The
-proportion of articles that included a missing data statement (or
-acknowledged missing data in a table/figure) was 5.9% \[95% confidence
+articles screened, 137 were deemed eligible, representing \~10% of total
+articles published on football related studies in 2019 (Figure 1). The
+proportion of articles that reported missing data was 5.9% \[95% confidence
 interval; X% to X%\] or 8/136. A breakdown of the extracted information
-is provided in Table XX.
+is provided in Table 2.
 
 ```{r extracted-info}
 
-extractions <- tibble(
-  Imported = 3863,
-  `After duplicates removed` = 1954,
-  `After title and abstract screen` = 1373,
-  `Random sample full-text` = "199 for 10% sample",
-  `Full-text included` = 137,
-  `Full-text excluded` = 62
+extractions <- tibble( # This is Table 2
+  `Missing data reported` = "XX",
+  `Type of missingness reported (i.e., MCAR, MAR or MNAR)` = "XX",
+  `Missing data explored` = "XX",
+  `Missing observations imputed` = "XX",
+  `Imputation method` = "XX",
+  `Data shared` = "XX"
 )
 
 ```
@@ -160,8 +159,8 @@ extractions <- tibble(
 
 # Summary
 
-A survey of 136 articles published in 2019, on football related topics
-showed that only one in 20 reported missing data. This result suggests
+A survey of 137 articles published in 2019 on football related topics
+showed that only one in 20 reported missing data, suggesting
 that missing data are rarely considered by sport science researchers.
 
 # References {-}
