@@ -14,16 +14,17 @@ the least harmful, and MAR and MNAR biased. Here, we provide an example
 of data MAR, MCAR and MNAR.
 
 Data MCAR could occur if an Australian Football data collector was taking 
-lunch during the third quarter of a match, resulting in data not being 
+a lunch break during the third quarter of a match, resulting in data not being 
 recorded for this time period. Data is MCAR, because the missings are 
 not systematically related to other variables.
 
-Data may be considered MAR is where missingness is related to some observed
-data. Data MAR could arise if\... \^\^Rob's out on the full
-example\--players who are injured are less likely to fill out wellness
-surveys than those who are fully fit.\^\^. 
-
-
+Data MAR are more likely to occur than data MCAR. Data MAR could arise if
+a weighing scale used to measure players' pre- and post-match body mass 
+produced more missing values when placed on soft carpet, rather than hard tiles. 
+The scale may produce more missing values because of the soft surface. If 
+surface type was recorded, data could be considered MAR, because the 
+missingness is related to some observed data (i.e., surface), but not related 
+to the value of the variable with the missing values itself.
 
 MNAR is when missingness is
 related to something unobservable. For example, data MNAR could arise
