@@ -3,32 +3,30 @@ title: Supplement 1
 output: html_document
 ---
 
-# missing data examples relevant to sports (MAR, MCAR, MNAR)
+# Missing data examples relevant to football
 
 There are three broad categorisations describing why data can be 
 missing: Missing Completely at Random (MCAR), Missing at Random (MAR), 
 and Missing Not at Random (MNAR). These categorisations help describe 
-whether the missingness occurs by chance (MCAR), due to some observed 
-variable (MAR) or an unobserved variable (MNAR), with MCAR being 
+whether the missingness occurs by chance (i.e., MCAR), due to some observed 
+variable (i.e., MAR) or an unobserved variable (i.e., MNAR), with MCAR being 
 the least harmful, and MAR and MNAR biased. Here, we provide an example 
-of data MAR, MCAR and MNAR.
+of data MAR, MCAR and MNAR, relevant to football.
 
-Data MCAR could occur if an Australian Football data collector was taking 
+Data could be considered MCAR if an Australian Football data collector was taking 
 a lunch break during the third quarter of a match, resulting in data not being 
 recorded for this time period. Data is MCAR, because the missings are 
 not systematically related to other variables.
 
-Data MAR could arise if a weighing scale used to measure players' pre- and 
-post-match body mass produced more missing values when placed on soft carpet, 
-rather than hard tiles. If the scales produced more missing values because of 
-the softer surface, and surface type was a recorded variable, data would be MAR, 
-because the missingness is related to some observed data (i.e., surface), but 
-not related to the value of the variable with the missing values itself (i.e., body mass). 
+Data MAR could arise if players' body mass measurements were taken with
+a weighing scale that produced more missing values when placed on soft carpet, rather than 
+hard tiles, in the team change room. If surface type was recorded, data would be MAR, 
+because the missingness is related the surface, but not related to the value of body mass itself. 
 (ref: https://stefvanbuuren.name/fimd/sec-MCAR.html).
 
-Data MNAR is when the missings are related to something unobservable. 
+**this example still needs work** Data MNAR is when the missings are related to something unobservable. 
 For example, data MNAR could arise when, if studying doping, a player 
-was to remove their head and body hair, to avoid providing a hair sample for testing
-[\[4\]](https://www.zotero.org/google-docs/?4Ildjf). In this case, data
-is missing (the hair sample), and this information is not captured by
-any other variable that was collected (hair length was not recorded).
+was to remove their head and body hair, to avoid providing a hair sample for testing 
+(https://www.zotero.org/google-docs/?4Ildjf). In this case, data is missing (the hair sample), 
+and this information is not captured by any other variable that was collected 
+(hair length was not recorded).
