@@ -73,44 +73,53 @@ search_table %>%
 ```
 
 
-Included articles were: (a) published in 2019; (b) had an accessible
-English abstract; (c) had an accessible full text, in English; and (d)
-included quantitative data. Studies containing original data, including
-case studies (with time-series data) and n=1 trials, were considered.
+Included articles were: (a) published in 2019; (b) in English; 
+(c) had an accessible full-text; and (d) included quantitative data. 
+Studies containing original data, including case studies (with time-series data) 
+and n=1 trials, were considered.
 The search results were imported into EndNote (version 9.3.2).
 Duplicates were removed, and titles and abstracts were screened against
-the inclusion criteria. Of the articles identified for full text
+the inclusion criteria. Of the articles identified for full-text
 screening, 10% were sampled, at random, for survey. Because \~30% of the
 papers from the initial random sample were not eligible for inclusion
 (e.g., full-texts not in English, conference abstracts, qualitative
-studies), an additional 5% random sample was taken\--with the
-expectation that 30% of the articles from the additional sample would
-also be ineligible\--so to preserve a 10% screen of the total papers
-published on football related topics in 2019. Figure \@ref(fig:prisma) summarises the search process.
+studies), an additional 5% random sample was taken. It was expected that 
+30% of the additional 5% random sample would also be ineligible. With this loss,
+it was expected that 10% of the articles that remained after title and abstract 
+screening would undergo survey. 
+Figure \@ref(fig:prisma) summarises the search process.
+
 
 ```{r prisma, fig.cap = "Write the figure caption here"}
-  # | Imported                        | 3,863                             |
-  # | After duplicates removed        | 1,954                             |
-  # | After title and abstract screen | 1,373                             |
-  # | Random sample full-text         | 199 (needed for 10% sample)       |
-  # | Full-text included              | 137                               |
-  # | Full-text excluded              | Full-text papers excluded (n=62)  |
-  # |                                 | with reasons:                     |
-  # |                                 | Qualitative study (n=)            |
-  # |                                 | Not in english (n=)               |
-  # |                                 | Unable to access full-text (n=)   |
-  
+  # | Imported                            | 3,863                             |
+  # | After duplicates removed            | 1,954                             |
+  # | After title and abstract screen     | 1,373                             |
+  # | Random sample for full-text screen  | 199 (needed for 10% inclusion)    |
+  # | Full-text included                  | 137                               |
+  # | Full-text excluded                  | Full-text papers excluded (n=62)  |
+
+
 prisma(found = 3863,
-       found_other = 0,
+       found_other = F,
        no_dupes = 1954, 
        screened = 1373, # (1954 - 1373) 
        screen_exclusions = 581, 
        full_text = 199,
        full_text_exclusions = 62, 
-       qualitative = 0, 
+       qualitative = 137, 
        quantitative = 0,
-       width = 800, 
-       height = 800)
+       width = 800, height = 800,
+       labels = list(
+full_text_exclusions = "Full text articles excluded (n = 62),
+with reasons:
+Commentary/letter (n = 4),
+Conference abstract (n = 21),
+Full-text not available (n = 9),
+Infographic (n = 2),
+Not in English (n = 17),
+Qualitative study (n = 9)
+"))
+
 ```
 
 
@@ -127,7 +136,7 @@ binomial distribution [@Clopper1934],via the 'binom' package [@binom] in R (vers
 
 # Results
 
-The search returned a total of 3,863 articles (Figure X). Of the 199
+The search returned a total of 3,863 articles (Figure 1). Of the 199
 articles screened, 136 were deemed eligible, representing \~10% of total
 articles published on football related studies in 2019 (Figure X). The
 proportion of articles that included a missing data statement (or

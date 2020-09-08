@@ -3,6 +3,7 @@ library(googlesheets4)
 library(janitor)
 # insert your own email address
 gs4_auth(email = "nicholas.tierney@monash.edu") 
+#gs4_auth(email = "davidnicholas.borg@gmail.com") 
 sheet_url <- "https://docs.google.com/spreadsheets/d/1bxrBnQ8_ceX9Lz0-cRAB4VGBeW3SXluDQe-V84vDARM/edit"
 gs_football_r1 <- read_sheet(sheet_url, 
                              range = "A2:O201",
