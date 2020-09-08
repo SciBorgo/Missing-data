@@ -98,7 +98,6 @@ Figure \@ref(fig:prisma) summarises the search process.
   # | Full-text included                  | 137                               |
   # | Full-text excluded                  | Full-text papers excluded (n=62)  |
 
-
 prisma(found = 3863,
        found_other = F,
        no_dupes = 1954, 
