@@ -3,7 +3,7 @@ title: "Supplement 2"
 output: 
   bookdown::html_document2
   # bookdown::pdf_document2
-bibliography: "supp-2.bib"
+bibliography: "supp2.bib"
 ---
 
 ```{r setup, echo = FALSE}
@@ -42,7 +42,7 @@ Football related articles published in 2019 were studied. Three major
 sports medicine databases were searched on May 20, 2020, using key terms and limits. 
 The databases were: SPORTDiscus, Embase and Cinahl. A
 list of the search terms and complete search statements are provided in
-Table \@ref(tab:search-table).
+Table 1 below
 
 ```{r search-table}
 search_table <- tibble(
@@ -55,7 +55,7 @@ search_table <- tibble(
               "(football OR soccer OR (indoor AND soccer) OR futsal OR rugby OR (rugby AND league) OR (rugby AND union) OR (gaelic AND football) OR 'australian rules footbal' OR (('australian'/exp OR australian) AND rules AND footbal) OR afl OR 'american football'/exp OR 'american football' OR (('american'/exp OR american) AND ('football'/exp OR football)) OR 'gridiron football' OR (gridiron AND ('football'/exp OR football)) OR 'touch football' OR (('touch'/exp OR touch) AND ('football'/exp OR football))) AND [2019-2019]/py",
              "#1 AND #2 AND [english]/lim AND 2019:py",
              "Articles: 1,756",
-             ""),
+             "blank"),
   Cinahl = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
               "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football",
               "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed",
@@ -64,14 +64,16 @@ search_table <- tibble(
 
 )
 
-search_table %>% 
-  gt() %>% 
+search_table %>%
+  gt() %>%
   cols_width(
     vars(Sportdiscus, Cinahl) ~ px(240),
     vars(Embase) ~ px(300)
     )
+
 ```
 
+_Table 1. Caption here._
 
 Included articles were: (a) published in 2019; (b) in English; 
 (c) had an accessible full-text; and (d) included quantitative data. 
