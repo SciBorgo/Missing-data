@@ -279,19 +279,16 @@ in naniar [@naniar], and the methods in (@Tierney2018).
 ## Understanding imputation
 
 Imputing data might feel wrong, as we are 'making up data'. The truth
-is, we (generally) can never know what the missing values were. The goal
+is, we can (generally) never know what the missing values were. The goal
 of imputing data is to make the best possible inference from the data.
 We recommend data is imputed, with a few caveats. Consider removing
 variables with a high proportion of missing data (e.g., variables with
-the majority or more missing than not). With respect to a 'rule of
-thumb' for when data should be imputed, we deliberately do not suggest
-any specific threshold (e.g., impute values when >5% of data are
-missing otherwise delete rows with <5% missing) and caution against
-such practice. Rather, we recommend values should generally be imputed. 
-We recommend avoiding imputation methods that impute the same value,
-such as the mean or median, and instead suggest using imputation
-methods such as: linear regression, k-nearest neighbours, or expectation
-maximisation. Missing values can occur in the both the predictors (the "independent variables") 
+the majority or more missing than not). We deliberately do not suggest a 'rule of
+thumb' for the amount of missingness that should be imputed, and caution against
+looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (such as the mean or median), and suggest using imputation methods such as: linear regression, k-nearest neighbours, or expectation
+maximisation. 
+
+Missing values can occur in the both the predictors (the "independent variables") 
 and response variable (the "dependent variables"). Care should be taken 
 when imputing data, as typically only predictors should be imputed. 
 For discussion on imputing the response value, see ... [@refs]. **(note: take a look again)**

@@ -55,7 +55,7 @@ search_table <- tibble(
               "(football OR soccer OR (indoor AND soccer) OR futsal OR rugby OR (rugby AND league) OR (rugby AND union) OR (gaelic AND football) OR 'australian rules footbal' OR (('australian'/exp OR australian) AND rules AND footbal) OR afl OR 'american football'/exp OR 'american football' OR (('american'/exp OR american) AND ('football'/exp OR football)) OR 'gridiron football' OR (gridiron AND ('football'/exp OR football)) OR 'touch football' OR (('touch'/exp OR touch) AND ('football'/exp OR football))) AND [2019-2019]/py",
              "#1 AND #2 AND [english]/lim AND 2019:py",
              "Articles: 1,756",
-             "blank"),
+             ""),
   Cinahl = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
               "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football",
               "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed",
@@ -67,8 +67,9 @@ search_table <- tibble(
 search_table %>%
   gt() %>%
   cols_width(
-    vars(Sportdiscus, Cinahl) ~ px(240),
-    vars(Embase) ~ px(300)
+    vars(Sportdiscus) ~ px(320),
+    vars(Cinahl) ~ px(280),
+    vars(Embase) ~ px(280)
     )
 
 ```
