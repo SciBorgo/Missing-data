@@ -1,14 +1,17 @@
 ---
 title: "Supplement 2"
 output: 
-  bookdown::html_document2
-  # bookdown::pdf_document2
+  bookdown::html_document2:
+    keep_md: true
+  bookdown::pdf_document2:
+    toc: false
 bibliography: "supp2.bib"
 ---
 
 ```{r setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
-                      message = FALSE)
+                      message = FALSE,
+                      fig.align = "center")
 ```
 
 
@@ -19,6 +22,7 @@ library(knitr)
 library(conflicted)
 library(gt)
 library(PRISMAstatement)
+library(DiagrammeRsvg)
 conflicted::conflict_prefer("select", "dplyr")
 conflicted::conflict_prefer("filter", "dplyr")
 ```
@@ -42,39 +46,41 @@ Football related articles published in 2019 were studied. Three major
 sports medicine databases were searched on May 20, 2020, using key terms and limits. 
 The databases were: SPORTDiscus, Embase and Cinahl. A
 list of the search terms and complete search statements are provided in
-Table 1 below
+Table \@ref(tab:search-table-print) below.
 
 ```{r search-table}
-search_table <- tibble(
-  Sportdiscus = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
-    "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football",
-    "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed",
-    "Articles: 1,372",
-    "https://gateway.library.qut.edu.au/login?url=https://search.ebscohost.com/login.aspx?direct=true&db=sph&bquery=(((football)+OR+(soccer)+OR+(indoor+soccer)+OR+(futsal)+OR+(rugby+league)+OR+(rugby+union)+OR+(gaelic+football)+OR+(australian+rules+football)+OR+(AFL)+OR+(american+football)+OR+(gridiron+football)+OR+(touch+football)))+AND+(((exercise+science)+OR+(sports+science)+OR+(physiology)+OR+(biomechanics)+OR+(nutrition)+OR+(training)+OR+(testing)+OR+(sports+medicine)+OR+(performance+analysis)+OR+(performance)+OR+(sport+psychology)+OR+(coaching)))&cli0=DT1&clv0=201901-201912&cli1=AA1&clv1=Y&cli2=RV&clv2=Y&authtype=sso&custid=qut&type=1&searchMode=Standard&site=ehost-live&scope=site"),
+table_terms <- tibble(
+  SPORTDiscus = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
+    "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football"),
   Embase = c("(exercise AND science OR (sports AND science) OR physiology OR biomechanics OR nutrition OR training OR testing OR (sports AND medicine) OR 'performance analysis' OR (('performance'/exp OR performance) AND ('analysis'/exp OR analysis)) OR 'performance'/exp OR performance OR 'sport psychology'/exp OR 'sport psychology' OR (('sport'/exp OR sport) AND ('psychology'/exp OR psychology)) OR 'coaching'/exp OR coaching) AND [2019-2019]/py",
-              "(football OR soccer OR (indoor AND soccer) OR futsal OR rugby OR (rugby AND league) OR (rugby AND union) OR (gaelic AND football) OR 'australian rules footbal' OR (('australian'/exp OR australian) AND rules AND footbal) OR afl OR 'american football'/exp OR 'american football' OR (('american'/exp OR american) AND ('football'/exp OR football)) OR 'gridiron football' OR (gridiron AND ('football'/exp OR football)) OR 'touch football' OR (('touch'/exp OR touch) AND ('football'/exp OR football))) AND [2019-2019]/py",
-             "#1 AND #2 AND [english]/lim AND 2019:py",
-             "Articles: 1,756",
-             ""),
+              "(football OR soccer OR (indoor AND soccer) OR futsal OR rugby OR (rugby AND league) OR (rugby AND union) OR (gaelic AND football) OR 'australian rules footbal' OR (('australian'/exp OR australian) AND rules AND footbal) OR afl OR 'american football'/exp OR 'american football' OR (('american'/exp OR american) AND ('football'/exp OR football)) OR 'gridiron football' OR (gridiron AND ('football'/exp OR football)) OR 'touch football' OR (('touch'/exp OR touch) AND ('football'/exp OR football))) AND [2019-2019]/py"),
   Cinahl = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
-              "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football",
-              "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed",
-              "Articles: 735",
-              "https://gateway.library.qut.edu.au/login?url=https://search.ebscohost.com/login.aspx?direct=true&db=c8h&bquery=(+exercise+science+OR+sports+science+OR+physiology+OR+biomechanics+OR+nutrition+OR+training+OR+testing+OR+sports+medicine+OR+performance+analysis+OR+performance+OR+sport+psychology+OR+coaching+)+AND+(+football+OR+soccer+OR+indoor+soccer+OR+futsal+OR+rugby+league+OR+rugby+union+OR+gaelic+football+OR+australian+rules+football+OR+AFL+OR+american+football+OR+gridiron+football+OR+touch+football+)&cli0=DT1&clv0=201901-201912&authtype=sso&custid=qut&type=1&searchMode=Standard&site=ehost-live&scope=site")
+              "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football")
 
 )
-
-search_table %>%
-  gt() %>%
-  cols_width(
-    vars(Sportdiscus) ~ px(320),
-    vars(Cinahl) ~ px(280),
-    vars(Embase) ~ px(280)
-    )
-
 ```
 
-_Table 1. Caption here._
+```{r notes-to-add-for-index, echo = FALSE, eval = FALSE}
+# from sport discuss
+# "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed"
+# "Articles: 1,372"
+
+# from Embase
+# "#1 AND #2 AND [english]/lim AND 2019:py"
+# "Articles: 1,756"
+
+# from Cinahl
+# "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed"
+# "Articles: 735"
+```
+
+
+```{r search-table-print}
+table_terms %>% 
+  kable(caption = "Key search terms and complete search statements and limits for the databases, SPORTDiscuss, Embase, and Cinahl") %>% 
+  kable_styling("striped",
+                full_width = TRUE) 
+```
 
 Included articles were: (a) published in 2019; (b) in English; 
 (c) had an accessible full-text; and (d) included quantitative data. 
@@ -93,14 +99,7 @@ screening would undergo survey.
 Figure \@ref(fig:prisma) summarises the search process.
 
 
-```{r prisma, fig.cap = "Write the figure caption here"}
-  # | Imported                            | 3,863                             |
-  # | After duplicates removed            | 1,954                             |
-  # | After title and abstract screen     | 1,373                             |
-  # | Random sample for full-text screen  | 199 (needed for 10% inclusion)    |
-  # | Full-text included                  | 137                               |
-  # | Full-text excluded                  | Full-text papers excluded (n=62)  |
-
+```{r prisma, fig.cap = "Flowchart of the article search and inclusion for the systematic search. The full-text of 137 articles was reviewed.", warning = FALSE, fig.height = 10, fig.width = 8}
 prisma(found = 3863,
        found_other = F,
        no_dupes = 1954, 
@@ -110,9 +109,11 @@ prisma(found = 3863,
        full_text_exclusions = 62, 
        qualitative = 137, 
        quantitative = 0,
-       width = 800, height = 800,
+       width = 800, 
+       height = 800,
+       font_size = 16,
        labels = list(
-full_text_exclusions = "Full text articles excluded (n = 62),
+full_text_exclusions = "Full-text articles excluded (n = 62),
 with reasons:
 Commentary/letter (n = 4),
 Conference abstract (n = 21),
@@ -138,12 +139,17 @@ binomial distribution [@Clopper1934],via the 'binom' package [@binom] in R (vers
 
 # Results
 
-The search returned a total of 3,863 articles (Figure 1). Of the 199
+The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). Of the 199
 articles screened, 137 were deemed eligible, representing \~10% of total
 articles published on football related studies in 2019 (Figure 1). The
 proportion of articles that reported missing data was 5.9% \[95% confidence
 interval; X% to X%\] or 8/136. A breakdown of the extracted information
 is provided in Table 2.
+
+```{r read-gs-data}
+
+```
+
 
 ```{r extracted-info}
 
