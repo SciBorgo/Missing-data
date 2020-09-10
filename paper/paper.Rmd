@@ -1,6 +1,6 @@
 ---
 title: "Missing data: Current practice in football research and recommendations for improvement"
-authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
+authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 output: 
   html_document:
     toc: true
@@ -21,6 +21,8 @@ library(tidyverse)
 library(naniar)
 library(visdat)
 library(patchwork)
+library(fitzRoy)
+library(mice)
 ```
 
 Affiliations: 
@@ -28,15 +30,13 @@ Affiliations:
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
-
-3: University of New South Wales, Department of Statistics, School of
+2: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia.
 
-4: Monash University, Department of Econometrics and Business Statistics,
+3: Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
 
-5: Australian Centre of Excellence for Mathematical and Statistical
+4: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia.
 
 **Acknowledgement/conflict of interest**
@@ -253,16 +253,17 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 We recommend that researchers use missing data overview graphics (see
 Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
-(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data.
+(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data. 
+The simualted data set contains ... **Add short description (1-2 sentences) here of the simulated data set** 
 
-```{r missing-overview, fig.cap = "Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)", fig.height = 10}
+```{r}
 
 # Aim of this section:
 # Simulate data from a real data set, insert missing
-# Mini study: predicting super coach scores
+# 'Study aim': predicting super coach scores
 
-d <- get_afltables_stats(start_date = "2020-01-01", 
-                         end_date = "2020-09-04")
+# Generate the x-variables
+d <- get_afltables_stats(start_date = "2020-01-01", end_date = "2020-09-04")
 
 data <-
   d %>% select(
@@ -277,39 +278,31 @@ data <-
     Contested.Possessions,
     Uncontested.Possessions
   )
-#View(data)
 
-df <- get_footywire_stats(10286:10290) # Get the fantasy scores
+```
 
-# View(df)
-df #%>% View("footywire dataset")
+```{r}
 
 # Generate the y-variable
+df <- get_footywire_stats(10286:10290) # Get the fantasy scores
 fit <- lm(AF ~ K + HB, data = df)
 summary(fit)
-data %>% mutate(fanasty_score = 4.106*Kicks + 2.175*Handballs)
+data %>% mutate(fanasty_score = 4.106*Kicks + 2.175*Handballs) # Need to work on this line
 
-# Completed dataset
-# Drop a team
-No_Richmond <- df %>% filter(Team!="Richmond")
-sort(unique(No_Richmond$Team))
-sort(unique(df$Team))
+```
 
+```{r}
+
+# Put the dataset together
 # Impute missing values
-df_first_try <- mice::ampute(data = df[,10:43])
-df_first_try <- df_first_try$amp
-
-# Examples of presenting of missing values
-naniar::vis_miss(df_first_try)
-naniar::vis_miss(df_first_try)
-naniar::gg_miss_fct(x = riskfactors, fct = marital)
-
-# Example write up of missing values
+data <- ampute(data = df[,10:43])
+data <- df_first_try$amp
 
 ```
 
 
-```{r}
+```{r missing-overview, fig.cap = "Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)", fig.height = 10}
+
 aq_vis_miss <- vis_miss(airquality)
 
 aq_upset <- gg_miss_upset(airquality)
@@ -321,8 +314,6 @@ aq_miss_case <- gg_miss_case(airquality) + labs(title = "B")
 aq_vis_miss <- vis_miss(airquality) + labs(title = "C")
 
 (aq_miss_var | aq_miss_case) / (aq_vis_miss) / (aq_fct)
-
-# can
 
 ```
 
