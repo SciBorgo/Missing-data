@@ -3,7 +3,7 @@ title: "Supplement 2"
 output: 
   bookdown::html_document2
   # bookdown::pdf_document2
-bibliography: "supp-2.bib"
+bibliography: "supp2.bib"
 ---
 
 ```{r setup, echo = FALSE}
@@ -42,7 +42,7 @@ Football related articles published in 2019 were studied. Three major
 sports medicine databases were searched on May 20, 2020, using key terms and limits. 
 The databases were: SPORTDiscus, Embase and Cinahl. A
 list of the search terms and complete search statements are provided in
-Table \@ref(tab:search-table).
+Table 1 below
 
 ```{r search-table}
 search_table <- tibble(
@@ -64,14 +64,17 @@ search_table <- tibble(
 
 )
 
-search_table %>% 
-  gt() %>% 
+search_table %>%
+  gt() %>%
   cols_width(
-    vars(Sportdiscus, Cinahl) ~ px(240),
-    vars(Embase) ~ px(300)
+    vars(Sportdiscus) ~ px(320),
+    vars(Cinahl) ~ px(280),
+    vars(Embase) ~ px(280)
     )
+
 ```
 
+_Table 1. Caption here._
 
 Included articles were: (a) published in 2019; (b) in English; 
 (c) had an accessible full-text; and (d) included quantitative data. 

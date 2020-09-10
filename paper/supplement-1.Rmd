@@ -1,32 +1,30 @@
 ---
 title: Supplement 1
 output: html_document
+bibliography: supp1.bib
 ---
 
 # Missing data examples relevant to football
 
-There are three broad categorisations describing why data can be 
-missing: Missing Completely at Random (MCAR), Missing at Random (MAR), 
-and Missing Not at Random (MNAR). These categorisations help describe 
-whether the missingness occurs by chance (i.e., MCAR), due to some observed 
-variable (i.e., MAR) or an unobserved variable (i.e., MNAR), with MCAR being 
-the least harmful, and MAR and MNAR biased. Here, we provide an example 
-of data MAR, MCAR and MNAR, relevant to football.
+One way to describe patterns of missing values is through Rubin's [@Rubin1976]
+three missing data mechanisms: Missing Completely at Random (MCAR), Missing at
+Random (MAR), and Missing Not at Random (MNAR). These mechanisms help describe
+whether the missingness occurs by chance (MCAR), due to some observed variable
+(MAR) or an unobserved variable (MNAR), with MCAR being the least harmful, and
+MAR and MNAR biased. Here, we provide an example of data MAR, MCAR and MNAR,
+relevant to football.
 
-Data could be considered MCAR if an Australian Football data collector was taking 
-a lunch break during the third quarter of a match, resulting in data not being 
-recorded for this time period. Data is MCAR, because the missings are 
-not systematically related to other variables.
+Data could be considered MCAR if an Australian Football data collector happened
+to take a lunch break during the third quarter of a match, resulting in data not
+being recorded for this time period. Data is MCAR, because the missings are not
+systematically related to other measured variables. It would also require that this lunch break related issue didn't systematically repeat itself. That is, it is completely random.
 
-Data MAR could arise if players' body mass measurements were taken with
-a weighing scale that produced more missing values when placed on soft carpet, rather than 
-hard tiles, in the team change room. If surface type was recorded, data would be MAR, 
-because the missingness is related the surface, but not related to the value of body mass itself. 
-(ref: https://stefvanbuuren.name/fimd/sec-MCAR.html).
+Data MAR could arise if players' body mass measurements were taken with a
+weighing scale that produced more missing values when placed on soft carpet,
+rather than hard tiles, in the team change room. If surface type was recorded,
+data would be MAR, because the missingness is related the surface, but not
+related to the value of body mass itself [@VanBuuren2012].
 
-**this example still needs work** Data MNAR is when the missings are related to something unobservable. 
-For example, data MNAR could arise when, if studying doping, a player 
-was to remove their head and body hair, to avoid providing a hair sample for testing 
-(https://www.zotero.org/google-docs/?4Ildjf). In this case, data is missing (the hair sample), 
-and this information is not captured by any other variable that was collected 
-(hair length was not recorded).
+Data MNAR is when the missings are related to something unobservable or something unobserved. The previous example of data MAR could be data MNAR if the surface type was not recorded in the dataset - it would then be unobserved. Data MNAR also arises when missing values are related to the values missing. This could take place if, for example, the scales used only go up to 110Kg, and then produce missing values. This is a systematic issue - it happens each time, and means that heavier players are not recorded.
+
+# References
