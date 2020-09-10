@@ -3,9 +3,6 @@ title: "Supplement 3"
 output: html_document
 ---
 
-
-
-
 ```{r library}
 library(tidyverse)
 library(fitzRoy)
@@ -22,7 +19,19 @@ library(naniar)
 d <- get_afltables_stats(start_date = "2020-01-01", 
                          end_date = "2020-09-04")
 
-data <- d %>% select(ID,  Round, First.name, Surname, Kicks, Handballs, Marks, Hit.Outs, Contested.Possessions, Uncontested.Possessions)
+data <-
+  d %>% select(
+    ID,
+    Round,
+    First.name,
+    Surname,
+    Kicks,
+    Handballs,
+    Marks,
+    Hit.Outs,
+    Contested.Possessions,
+    Uncontested.Possessions
+  )
 #View(data)
 
 df <- get_footywire_stats(10286:10290) # Get the fantasy scores
