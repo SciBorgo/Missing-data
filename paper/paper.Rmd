@@ -261,7 +261,7 @@ The simualted data set contains ... **Add short description (1-2 sentences) here
 # Aim of this section:
 # Simulate data from a real data set, insert missing
 # 'Study aim': predicting hamstring strain injury, using number of sprints and sprint distance as x-variables
-# Add a sentence in the paper talking about this
+# We need to add a sentence in the paper talking about this
 # I'm stuck at the momement how to simulate the occurance of an injury (0,1), but with only low incidence of 1's in the dataset
 # I'm also stuck how to simulate the number of sprints, but between say 50 and 200 sprints 
 
