@@ -257,6 +257,59 @@ Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
 ```{r missing-overview, fig.cap = "Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)", fig.height = 10}
 
+# Aim of this section:
+# Simulate data from a real data set, insert missing
+# Mini study: predicting super coach scores
+
+d <- get_afltables_stats(start_date = "2020-01-01", 
+                         end_date = "2020-09-04")
+
+data <-
+  d %>% select(
+    ID,
+    Round,
+    First.name,
+    Surname,
+    Kicks,
+    Handballs,
+    Marks,
+    Hit.Outs,
+    Contested.Possessions,
+    Uncontested.Possessions
+  )
+#View(data)
+
+df <- get_footywire_stats(10286:10290) # Get the fantasy scores
+
+# View(df)
+df #%>% View("footywire dataset")
+
+# Generate the y-variable
+fit <- lm(AF ~ K + HB, data = df)
+summary(fit)
+data %>% mutate(fanasty_score = 4.106*Kicks + 2.175*Handballs)
+
+# Completed dataset
+# Drop a team
+No_Richmond <- df %>% filter(Team!="Richmond")
+sort(unique(No_Richmond$Team))
+sort(unique(df$Team))
+
+# Impute missing values
+df_first_try <- mice::ampute(data = df[,10:43])
+df_first_try <- df_first_try$amp
+
+# Examples of presenting of missing values
+naniar::vis_miss(df_first_try)
+naniar::vis_miss(df_first_try)
+naniar::gg_miss_fct(x = riskfactors, fct = marital)
+
+# Example write up of missing values
+
+```
+
+
+```{r}
 aq_vis_miss <- vis_miss(airquality)
 
 aq_upset <- gg_miss_upset(airquality)
