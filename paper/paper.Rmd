@@ -32,6 +32,8 @@ library(truncnorm)
 library(janitor)
 ```
 
+Authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
+
 Affiliations: 
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
@@ -76,7 +78,7 @@ the proportion of studies in football research that included a missing
 data statement, highlight several practices to avoid in relation to
 missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
-studied. A survey of 137 articles, sampled at random, was conducted to
+studied. A survey of 136 articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
 proportion of studies in football research that included a missing data
 statement was low, at only X% (95% confidence interval; X% to X%); suggesting that 
@@ -187,7 +189,7 @@ ecology examples)(2)**references needed**. Below we discuss several practices to
 relation to missingness, and provide recommendations for exploring,
 visualising and reporting missing data.
 
-## Practices to avoid across the analysis pathway
+## Practices to avoid
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
