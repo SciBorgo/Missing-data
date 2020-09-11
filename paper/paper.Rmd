@@ -180,7 +180,7 @@ ecology examples)(2)**references needed**. Below we discuss several practices to
 relation to missingness, and provide recommendations for exploring,
 visualising and reporting missing data.
 
-## Missing data across the analysis pathway
+## Practices to avoid across the analysis pathway
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
