@@ -1,47 +1,35 @@
 ---
-title: "Missing data: Current practice in football research and recommendations for improvement"
-authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    keep_md: true
+title: 'Missing data: Current practice in football research and recommendations for
+  improvement'
 bibliography: references.bib
+output:
+  html_document:
+    keep_md: yes
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 ---
 
 
 
 
-```
-## Warning: package 'tidyr' was built under R version 3.5.2
-```
-
-```
-## Warning: package 'stringr' was built under R version 3.5.2
-```
-
-```
-## Warning: package 'forcats' was built under R version 3.5.2
-```
-
-```
-## Warning: package 'visdat' was built under R version 3.5.2
-```
 
 Affiliations: 
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
-
-3: University of New South Wales, Department of Statistics, School of
+2: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia.
 
-4: Monash University, Department of Econometrics and Business Statistics,
+3: Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
 
-5: Australian Centre of Excellence for Mathematical and Statistical
+4: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia.
 
 **Acknowledgement/conflict of interest**
@@ -84,10 +72,10 @@ Email:
 
 Method            koRpus         stringi       
 ----------------  -------------  --------------
-Word count        2319           2257          
-Character count   15290          15283         
-Sentence count    183            Not available 
-Reading time      11.6 minutes   11.3 minutes  
+Word count        2857           2794          
+Character count   18848          18841         
+Sentence count    225            Not available 
+Reading time      14.3 minutes   14 minutes    
 
 # Abstract {-}
 
@@ -143,7 +131,7 @@ occurs by chance (MCAR), due to some observed variable (MAR) or an
 unobserved variable (MNAR), with MCAR being the least harmful, and MAR and MNAR
 biased [@Newman2014]. Football relevant examples are provided in Supplement 1, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
-[@Sainani2015; @Nakagawa2008; Sterne2009].
+[@Sainani2015; @Nakagawa2008; @Sterne2009].
 
 The three categorisations of missingness types provide a useful
 framework to describe bias arising from missing data. If you strongly
@@ -210,7 +198,7 @@ ecology examples)(2)**references needed**. Below we discuss several practices to
 relation to missingness, and provide recommendations for exploring,
 visualising and reporting missing data.
 
-## Missing data across the analysis pathway
+## Practices to avoid across the analysis pathway
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. A recent paper examined the
@@ -273,7 +261,7 @@ values, surveys, an inability to collect a biological sample (e.g.,
 venous blood), equipment malfunction, failure, or not being worn.
 
 <div class="figure" style="text-align: center">
-<img src="/Users/davidborg/Dropbox/Research projects/Editorial - Missing data in sport and exercise science research/Missing data/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
+<img src="/Users/david/Dropbox/Research projects/Editorial - Missing data in sport and exercise science research/Missing data/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
 <p class="caption">Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed.</p>
 </div>
 
@@ -283,11 +271,37 @@ venous blood), equipment malfunction, failure, or not being worn.
 We recommend that researchers use missing data overview graphics (see
 Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
-(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data.
+(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset, from Australian Rules football matches, played in August 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. **should we include this last sentence?**
+
+
+```
+## Returning data from 2020-08-01 to 2020-09-01
+```
+
+```
+## Downloading data
+```
+
+```
+## 
+## Finished downloading data. Processing XMLs
+```
+
+```
+## Finished getting afltables data
+```
+
+
+
+
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+```
 
 <div class="figure" style="text-align: center">
-<img src="paper_files/figure-html/missing-overview-1.png" alt="Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)" width="75%" />
-<p class="caption">Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)</p>
+<img src="paper_files/figure-html/missing-overview-1.png" alt="Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. Panel A shows... Panel B shows ... Panel C shows ..." width="75%" />
+<p class="caption">Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. Panel A shows... Panel B shows ... Panel C shows ...</p>
 </div>
 
 To learn more about exploring missing values, we recommend the vignettes
@@ -296,19 +310,16 @@ in naniar [@naniar], and the methods in (@Tierney2018).
 ## Understanding imputation
 
 Imputing data might feel wrong, as we are 'making up data'. The truth
-is, we (generally) can never know what the missing values were. The goal
+is, we can (generally) never know what the missing values were. The goal
 of imputing data is to make the best possible inference from the data.
 We recommend data is imputed, with a few caveats. Consider removing
 variables with a high proportion of missing data (e.g., variables with
-the majority or more missing than not). With respect to a 'rule of
-thumb' for when data should be imputed, we deliberately do not suggest
-any specific threshold (e.g., impute values when >5% of data are
-missing otherwise delete rows with <5% missing) and caution against
-such practice. Rather, we recommend values should generally be imputed. 
-We recommend avoiding imputation methods that impute the same value,
-such as the mean or median, and instead suggest using imputation
-methods such as: linear regression, k-nearest neighbours, or expectation
-maximisation. Missing values can occur in the both the predictors (the "independent variables") 
+the majority or more missing than not). We deliberately do not suggest a 'rule of
+thumb' for the amount of missingness that should be imputed, and caution against
+looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (such as the mean or median), and suggest using imputation methods such as: linear regression, k-nearest neighbours, or expectation
+maximisation. 
+
+Missing values can occur in the both the predictors (the "independent variables") 
 and response variable (the "dependent variables"). Care should be taken 
 when imputing data, as typically only predictors should be imputed. 
 For discussion on imputing the response value, see ... [@refs]. **(note: take a look again)**

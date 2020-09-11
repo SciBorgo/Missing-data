@@ -3,14 +3,14 @@ title: 'Missing data: Current practice in football research and recommendations 
   improvement'
 bibliography: references.bib
 output:
-  word_document:
-    toc: yes
-  pdf_document:
-    toc: yes
   html_document:
     keep_md: yes
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
 authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 ---
 
@@ -28,6 +28,8 @@ library(visdat)
 library(patchwork)
 library(fitzRoy)
 library(mice)
+library(truncnorm)
+library(janitor)
 ```
 
 Affiliations: 
@@ -258,73 +260,51 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 We recommend that researchers use missing data overview graphics (see
 Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
-(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data. 
-The simualted data set contains ... **Add short description (1-2 sentences) here of the simulated data set** 
+(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset, from Australian Rules football matches, played in August 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. **should we include this last sentence?**
 
 ```{r}
 
 # Aim of this section:
 # Simulate data from a real data set, insert missing
 # 'Study aim': predicting hamstring strain injury, using number of sprints and sprint distance as x-variables
-# We need to add a sentence in the paper talking about this
-# I'm stuck at the momement how to simulate the occurance of an injury (0,1), but with only low incidence of 1's in the dataset
-# I'm also stuck how to simulate the number of sprints, but between say 50 and 200 sprints 
 
+# Simulate dataset
+d <- get_afltables_stats(start_date = "2020-08-01", end_date = "2020-09-01")
+ 
+data_afl <- d %>% select(ID, Round, Playing.for, Venue)
 
-# Generate the x-variables
-# d <- get_afltables_stats(start_date = "2020-01-01", end_date = "2020-09-04")
-# 
-# data <-
-#   d %>% select(
-#     ID,
-#     Round,
-#     First.name,
-#     Surname
-#     )
+# Simulate injury and sprint variables
+injury <- rbinom(n = nrow(d), 1, prob = 0.1)
+sprints <- rpois(n = nrow(d), lambda = 100)
+sprint_distance <- truncnorm::rtruncnorm(n = nrow(d), a = 0, b = Inf, mean = 2000, sd = 500) # Check if this is reasonable (mean 2 km per game)
 
-```
+data <- cbind(injury, sprints, sprint_distance)
 
+# Impute missing values
+data_impute <- ampute(data = data[,1:3])
+data_with_missing <- data_impute$amp
 
-```{r}
+# Put the dataset together
+data_plot <- cbind(data_afl, data_with_missing)
 
-# # Simulate number of sprints per game
-# Observations = nrow(data)
-# sprints <- sample.int(100, # numbers of sprints between 1 and 100
-#            nrow(data),
-#            replace = T) # observations
-# 
-# # Simulate incidence of hamstring strain injuries
-# # sample.int(100, # numbers of sprints between 1 and 100
-# #            nrow(data),
-# #            replace = T) # observations
-# 
-# data <- merge(data, sprints)
-# 
-# # Impute missing values
-# data <- ampute(data = df[,10:43])
-# data <- df_first_try$amp
-# 
-# 
-# 
-# # Put the dataset together
-# # Impute missing values
-# data <- ampute(data = df[,10:43])
-# data <- data$amp
+# Clean variable names
+data_plot <- data_plot %>% clean_names() %>% rename(team = playing_for)
 
 ```
 
 
-```{r missing-overview, fig.cap = "Overviews of missing values in airquality data. Panel A shows... Panel B shows ... Panel C shows ... (simulate data from football study, provide write up in the supplementary materials)", fig.height = 10}
 
-aq_vis_miss <- vis_miss(airquality)
+```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. Panel A shows... Panel B shows ... Panel C shows ...", fig.height = 10}
 
-aq_upset <- gg_miss_upset(airquality)
+aq_vis_miss <- vis_miss(data_plot)
 
-aq_fct <- gg_miss_fct(airquality, Month)
+aq_upset <- gg_miss_upset(data_plot)
 
-aq_miss_var <- gg_miss_var(airquality) + labs(title = "A")
-aq_miss_case <- gg_miss_case(airquality) + labs(title = "B")
-aq_vis_miss <- vis_miss(airquality) + labs(title = "C")
+aq_fct <- gg_miss_fct(data_plot, team)
+
+aq_miss_var <- gg_miss_var(data_plot) + labs(title = "A")
+aq_miss_case <- gg_miss_case(data_plot) + labs(title = "B")
+aq_vis_miss <- vis_miss(data_plot) + labs(title = "C")
 
 (aq_miss_var | aq_miss_case) / (aq_vis_miss) / (aq_fct)
 
