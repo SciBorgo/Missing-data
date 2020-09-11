@@ -1,12 +1,17 @@
 ---
-title: "Missing data: Current practice in football research and recommendations for improvement"
-authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    keep_md: true
+title: 'Missing data: Current practice in football research and recommendations for
+  improvement'
 bibliography: references.bib
+output:
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+  html_document:
+    keep_md: yes
+    toc: yes
+    toc_float: yes
+authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 ---
 
 ```{r setup, echo = FALSE}
@@ -113,7 +118,7 @@ occurs by chance (MCAR), due to some observed variable (MAR) or an
 unobserved variable (MNAR), with MCAR being the least harmful, and MAR and MNAR
 biased [@Newman2014]. Football relevant examples are provided in Supplement 1, and
 more detailed explanations of MCAR, MAR, MNAR can be found elsewhere
-[@Sainani2015; @Nakagawa2008; Sterne2009].
+[@Sainani2015; @Nakagawa2008; @Sterne2009].
 
 The three categorisations of missingness types provide a useful
 framework to describe bias arising from missing data. If you strongly
@@ -267,44 +272,44 @@ The simualted data set contains ... **Add short description (1-2 sentences) here
 
 
 # Generate the x-variables
-d <- get_afltables_stats(start_date = "2020-01-01", end_date = "2020-09-04")
-
-data <-
-  d %>% select(
-    ID,
-    Round,
-    First.name,
-    Surname
-    )
+# d <- get_afltables_stats(start_date = "2020-01-01", end_date = "2020-09-04")
+# 
+# data <-
+#   d %>% select(
+#     ID,
+#     Round,
+#     First.name,
+#     Surname
+#     )
 
 ```
 
 
 ```{r}
 
-# Simulate number of sprints per game
-Observations = nrow(data)
-sprints <- sample.int(100, # numbers of sprints between 1 and 100
-           nrow(data),
-           replace = T) # observations
-
-# Simulate incidence of hamstring strain injuries
-# sample.int(100, # numbers of sprints between 1 and 100
+# # Simulate number of sprints per game
+# Observations = nrow(data)
+# sprints <- sample.int(100, # numbers of sprints between 1 and 100
 #            nrow(data),
 #            replace = T) # observations
-
-data <- merge(data, sprints)
-
-# Impute missing values
-data <- ampute(data = df[,10:43])
-data <- df_first_try$amp
-
-
-
-# Put the dataset together
-# Impute missing values
-data <- ampute(data = df[,10:43])
-data <- data$amp
+# 
+# # Simulate incidence of hamstring strain injuries
+# # sample.int(100, # numbers of sprints between 1 and 100
+# #            nrow(data),
+# #            replace = T) # observations
+# 
+# data <- merge(data, sprints)
+# 
+# # Impute missing values
+# data <- ampute(data = df[,10:43])
+# data <- df_first_try$amp
+# 
+# 
+# 
+# # Put the dataset together
+# # Impute missing values
+# data <- ampute(data = df[,10:43])
+# data <- data$amp
 
 ```
 
