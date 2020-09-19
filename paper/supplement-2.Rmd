@@ -45,7 +45,7 @@ missing data in football research.
 Football related articles published in 2019 were studied. Three major
 sports medicine databases were searched on May 20, 2020, using key terms and limits. 
 The databases were: SPORTDiscus, Embase and Cinahl. A
-list of the search terms and complete search statements are provided in
+list of the search terms has been provided in
 Table \@ref(tab:search-table-print) below.
 
 ```{r search-table}
@@ -60,24 +60,9 @@ table_terms <- tibble(
 )
 ```
 
-```{r notes-to-add-for-index, echo = FALSE, eval = FALSE}
-# from sport discuss
-# "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed"
-# "Articles: 1,372"
-
-# from Embase
-# "#1 AND #2 AND [english]/lim AND 2019:py"
-# "Articles: 1,756"
-
-# from Cinahl
-# "Published Date: 20190101-20191231; English Abstract Available; Peer Reviewed"
-# "Articles: 735"
-```
-
-
 ```{r search-table-print}
 table_terms %>% 
-  kable(caption = "Key search terms and complete search statements and limits for the databases, SPORTDiscuss, Embase, and Cinahl") %>% 
+  kable(caption = "Key search terms and complete search statements for the databases, SPORTDiscuss, Embase, and Cinahl") %>% 
   kable_styling("striped",
                 full_width = TRUE) 
 ```
@@ -135,7 +120,7 @@ statement shared their data. Two authors independently extracted the
 data. Agreement was X%; discrepancies were resolved by NJT. Findings are
 reported as the proportion and 95% confidence interval (CI). Confidence
 intervals were calculated using the Clopper-Pearson method for the
-binomial distribution [@Clopper1934],via the 'binom' package [@binom] in R (version 4.0.2) [@rcore].
+binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R (version 4.0.2) [@rcore].
 
 # Results
 
