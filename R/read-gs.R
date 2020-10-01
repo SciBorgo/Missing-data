@@ -24,8 +24,22 @@ gs_football <- bind_rows(reviewer_1 = gs_football_r1,
   clean_names() %>% 
   mutate(study_eligibility = as.logical(as.numeric(study_eligibility)),
          exclusion_reason = replace_na(exclusion_reason, "Included")) %>% 
-  na_if("NA")
+  na_if("NA") %>% 
+  na_if("NA ") %>% 
+  na_if(" NA") %>% 
+  na_if(" ") %>% 
+  filter(study_eligibility) %>% 
+  mutate(was_data_shared = case_when(
+    was_data_shared == "At_request" ~ "0",
+    was_data_shared == "can request" ~ "0",
+    was_data_shared == "Public_data" ~ "0",
+    TRUE ~ was_data_shared
+  )) %>% 
+  mutate_at(.vars = vars(any_missing_data_statement:was_data_shared),
+            .funs = as.integer)
+  
 
+gs_football
 # data shared
 
 library(visdat)
@@ -36,12 +50,76 @@ vis_dat(gs_football_r2, sort_type = FALSE)
 vis_dat(gs_football, sort_type = FALSE)
 
 gs_football %>% 
-  filter(study_eligibility) %>% 
-  vis_dat(sort_type = FALSE)
+  select(any_missing_data_statement:was_data_shared) %>% 
+  map(unique)
+  
+gs_football %>% 
+  group_by(reviewer) %>% 
+  count(any_missing_data_statement)  %>% 
+  pivot_wider(names_from = reviewer,
+              values_from = n)
+
+gs_football %>% 
+  select(title,
+         reviewer,
+         any_missing_data_statement) %>% 
+  pivot_wider(names_from = reviewer,
+              values_from = any_missing_data_statement) %>% 
+  filter(reviewer_1 != reviewer_2)
+
+pivot_var <- function(data, var){
+  data %>% 
+  select(title,
+         reviewer,
+         {{ var }}) %>% 
+  pivot_wider(names_from = reviewer,
+              values_from = {{ var }})
+}
+
+identify_mismatch <- function(data, var){
+  pivot_var(data, {{ var }}) %>% 
+    filter(reviewer_1 != reviewer_2)
+}
+
+identify_mismatch(gs_football, any_missing_data_statement)
+identify_mismatch(gs_football, any_statement_about_mcar_mnar_mar)
+identify_mismatch(gs_football, were_missing_data_explored)
+identify_mismatch(gs_football, was_imputation_used)
+identify_mismatch(gs_football, was_data_shared)
+
+# calculate agreement
+library(irr)
+
+agree_var <- function(data, var){
+  statement_agree <- pivot_var(data, {{ var }}) %>% 
+    select(reviewer_1, reviewer_2) %>% 
+    irr::agree() 
+  
+  statement_agree$value
+}
+
+agree_var(gs_football, any_missing_data_statement)
+agree_var(gs_football, any_statement_about_mcar_mnar_mar)
+agree_var(gs_football, were_missing_data_explored)
+agree_var(gs_football, was_imputation_used)
+agree_var(gs_football, was_data_shared)
+
+#the agreement was `r agree_var(gs_football, was_data_shared)`%
+
+# something something funcitonal programming
+gs_football %>% 
+  select(reviewer,any_missing_data_statement:was_data_shared) %>% 
+  map(agree_var)
+
+
 
 gs_football %>% 
   filter(study_eligibility) %>% 
   vis_miss(sort_miss = TRUE)
+
+gs_football %>% 
+  filter(study_eligibility) %>% 
+  miss_var_summary()
 
 # preliminary study
 gs_football %>% 
@@ -53,6 +131,7 @@ gs_football %>%
   filter(study_eligibility) %>% 
   group_by(reviewer) %>% 
   count(any_missing_data_statement)
+
 
 library(irr)
 data(video)
