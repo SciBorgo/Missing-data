@@ -1,20 +1,20 @@
-variable,title,reviewer_1,reviewer_2
-any_missing_data_statement,Verifying Head Impacts Recorded by a Wearable Sensor using Video Footage in Rugby League: a Preliminary Study,0,1
-any_missing_data_statement,Vestibulo-ocular dysfunction in adolescent rugby union players with and without a history of concussion,0,1
-any_missing_data_statement,New Wearable Heart Rate Monitor for Contact Sports and Its Potential to Change Training Load Management,0,1
-any_missing_data_statement,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1
-any_missing_data_statement,"Injury incidence, characteristics and burden among female sub-elite futsal players: A prospective study with three-year follow-up",0,1
-any_missing_data_statement,"Baseline profiles of auditory, vestibular, and visual functions in youth tackle football players",0,1
-any_missing_data_statement,Epidemiology of hip and groin injuries in Swedish male first football league,0,1
-any_missing_data_statement,The effect of phase change material on recovery of neuromuscular function following competitive soccer match-play,0,1
-any_missing_data_statement,Resistance training in the heat improves strength in professional rugby athletes,0,1
-any_missing_data_statement,Exertional heat illness risk factors and physiological responses of youth football players,0,1
-any_missing_data_statement,Keeping it 100: Social Media and Self-Presentation in College Football Recruiting,0,1
-were_missing_data_explored,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1
-were_missing_data_explored,"Baseline profiles of auditory, vestibular, and visual functions in youth tackle football players",0,1
-was_imputation_used,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1
-was_data_shared,Study on professional football players - factors in recovery and preparation and performance markers during scheduled training session,1,0
-was_data_shared,Iliac crest avulsion fracture and staged return to play: a case report in youth soccer,0,1
-was_data_shared,Lifelong football training: Effects on autophagy and healthy longevity promotion,1,0
-was_data_shared,"Relative Age Effect, Playing Time and Debut in a Professional Football Club. / Edad relativa, minutos de competici√≥n y debut en f√∫tbol profesional",0,1
-was_data_shared,"Injury incidence, characteristics and burden among female sub-elite futsal players: A prospective study with three-year follow-up",0,1
+variable,title,reviewer_1,reviewer_2,third_check
+any_missing_data_statement,Verifying Head Impacts Recorded by a Wearable Sensor using Video Footage in Rugby League: a Preliminary Study,0,1,
+any_missing_data_statement,Vestibulo-ocular dysfunction in adolescent rugby union players with and without a history of concussion,0,1,
+any_missing_data_statement,New Wearable Heart Rate Monitor for Contact Sports and Its Potential to Change Training Load Management,0,1,
+any_missing_data_statement,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1,
+any_missing_data_statement,"Injury incidence, characteristics and burden among female sub-elite futsal players: A prospective study with three-year follow-up",0,1,
+any_missing_data_statement,"Baseline profiles of auditory, vestibular, and visual functions in youth tackle football players",0,1,
+any_missing_data_statement,Epidemiology of hip and groin injuries in Swedish male first football league,0,1,
+any_missing_data_statement,The effect of phase change material on recovery of neuromuscular function following competitive soccer match-play,0,1,
+any_missing_data_statement,Resistance training in the heat improves strength in professional rugby athletes,0,1,
+any_missing_data_statement,Exertional heat illness risk factors and physiological responses of youth football players,0,1,
+any_missing_data_statement,Keeping it 100: Social Media and Self-Presentation in College Football Recruiting,0,1,
+were_missing_data_explored,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1,
+were_missing_data_explored,"Baseline profiles of auditory, vestibular, and visual functions in youth tackle football players",0,1,
+was_imputation_used,A Preventive Model for Hamstring Injuries in Professional Soccer: Learning Algorithms,0,1,Unknown; I can't access supplementary material
+was_data_shared,Study on professional football players - factors in recovery and preparation and performance markers during scheduled training session,1,0,1
+was_data_shared,Iliac crest avulsion fracture and staged return to play: a case report in youth soccer,0,1,1
+was_data_shared,Lifelong football training: Effects on autophagy and healthy longevity promotion,1,0,0
+was_data_shared,"Relative Age Effect, Playing Time and Debut in a Professional Football Club. / Edad relativa, minutos de competici√≥n y debut en f√∫tbol profesional",0,1,0
+was_data_shared,"Injury incidence, characteristics and burden among female sub-elite futsal players: A prospective study with three-year follow-up",0,1,0
