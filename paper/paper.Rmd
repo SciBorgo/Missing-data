@@ -149,8 +149,7 @@ exploring and reporting missingness.
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@PRISMA]. Football related
-articles published in 2019 were studied. Three major sports medicine
+football research, we conducted a systematic search [@PRISMA]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine
 databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
@@ -166,7 +165,7 @@ as the proportion and 95% confidence interval.
 
 # Results
 
-Of the 199 articles screened, 136 met the inclcusion criteria, representing
+Of the 199 articles screened, 136 met the inclusion criteria, representing
 \~10% of the articles found (see Supplement 2, Figure 1). The proportion of
 articles that reported missing data was 5.9% (95% confidence interval;
 X% to X%) or 8/136. Of the articles that did not mention missing data
