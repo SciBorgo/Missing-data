@@ -32,7 +32,25 @@ library(truncnorm)
 library(janitor)
 ```
 
-Authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
+Authors: 
+
+David N Borg(1)
+
+ORCiD: 0000-0002-0152-571X
+
+Twitter: elborgo9
+
+Robert Nguyen(2)
+
+ORCiD:
+
+Twitter:
+
+Nicholas J Tierney(3,4)
+
+ORCiD:
+
+Twitter:
 
 Affiliations: 
 
@@ -61,6 +79,7 @@ Address:
 Email:
 
 **Data availability**
+The code to reproduce the results and plots in the paper can be accessed at: **Nick to host?**
 
 **Word count**
 
@@ -181,7 +200,8 @@ normality (e.g., Kruskall-Wallis test).
 Our survey of 136 articles published on football related topics found
 that only about one in 20 papers reported missing data. It is reasonable
 to assume that this result is representative of current practice in the wider sports science literature. 
-The low proportion of papers reporting missingness could be explained by a lack of awareness and education on missing data (https://bjsm.bmj.com/content/early/2020/08/19/bjsports-2020-102607.abstract), 
+The low proportion of papers reporting missingness could be explained by 
+a lack of awareness and education on missing data [@Sainani2020call], 
 similar to other areas of sciences (refs-education and
 ecology examples)(2)**references needed**. Below we discuss several practices to avoid in
 relation to missingness, and provide recommendations for exploring,
@@ -210,7 +230,7 @@ injured participants are removed from a study on injury prevention.
 Imputing values removes the need to conduct listwise deletion. However,
 it is critical how these values are imputed, and that the imputation
 method is documented. Authors sometimes choose to replace missing 
-observations with mean values (e.g., participant or group average) [@refs](https://doi.org/10.1016/j.jsams.2018.05.019, https://doi.org/10.1016/j.jsams.2008.01.009). 
+observations with mean values (e.g., participant or group average) [@Sampson2018; @Cresswell2009]. 
 While imputing the mean preserves the study sample size (and point estimates), it also reduces
 the variance, can alter the relationship between the variable with
 missing observations and other variables, and can bias (underestimate)
@@ -218,7 +238,7 @@ standard errors [@Scheffer2002]. Smaller standard errors typically reduce *p*-va
 incorrect inference. Mean imputation should be avoided. An imputation
 strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
-be considered. This is discussed in the recommendations section.
+be considered.
 
 Practice to avoid: *Not evaluating the effect, or choice, of imputation.* The 
 method used to impute missing data has the potential to
@@ -229,8 +249,7 @@ understanding the implications in using mean imputation, compared to
 K-nearest neighbour imputation--in terms of the effect on parameter estimates
 ('significant' versus 'not significant'), and the (un)certainty of the
 coefficients (i.e., less/more). When using imputation, authors need to
-perform a sensitivity analysis (**ref circulation article-Nick, possible reference from dave - https://doi.org/10.1191%2F1740774504cn032oa**). This is
-discussed below.
+perform a sensitivity analysis (**ref circulation article-Nick, possible reference from dave - https://doi.org/10.1191%2F1740774504cn032oa**).
 
 ## Common causes of missing values
 
@@ -256,7 +275,7 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 We recommend that researchers use missing data overview graphics (see
 Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
-(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset, from Australian Rules football matches, played in August 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. **should we include this last sentence?**
+(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
 
 ```{r}
 
@@ -290,7 +309,7 @@ data_plot <- data_plot %>% clean_names() %>% rename(team = playing_for)
 
 
 
-```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. Panel A shows... Panel B shows ... Panel C shows ...", fig.height = 10}
+```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
 
 aq_vis_miss <- vis_miss(data_plot)
 
