@@ -149,8 +149,7 @@ exploring and reporting missingness.
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@PRISMA]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine
-databases (SPORTDiscus, Embase and Cinahl) were searched, using key
+football research, we conducted a systematic search [@PRISMA]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
@@ -160,7 +159,7 @@ title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
-independently extracted the data (X% agreement). Findings are reported
+independently extracted the data (X% agreement). Results are reported
 as the proportion and 95% confidence interval.
 
 # Results
@@ -191,18 +190,15 @@ visualising and reporting missing data.
 ## Practices to avoid
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
-not reported, missing data can be obvious. A recent paper examined the
+not reported, missing data can be obvious. For example, a recent study examined the
 relationship between match performance indicators and outcome, in
-Australian Football between the 2001 and 2016. Of the 91 team performance indicators included in the analysis,
-at least one variable (i.e., 'meters gained') was not available over the entire 2001-2016 period [@Young2019]**Check this reference**. **We might need to add a sentence about 'question mark' in the figures?**
-This was not noted anywhere in the paper, or in the supplementary
+Australian Football between the 2001 and 2016, where at least one of the
+91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019]**Check this reference**. This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
 and/or extend the ideas presented in the paper, or reproduce the
 analysis. It is also difficult for a reader to evaluate how the
-missingness could bias the results. The absence of a
-missing data statement when data are missing is not unique to the study
-above [@Young2019]**Check this reference**. Authors should include a missing data statement,
+missingness could bias the results. Authors should include a missing data statement,
 irrespective of whether there is data missing, or not.
 
 Practice to avoid: *Mean imputation.* The default of most statistical software for
@@ -213,13 +209,12 @@ reducing the sample size. At worst, it introduces bias. For example, if
 injured participants are removed from a study on injury prevention.
 Imputing values removes the need to conduct listwise deletion. However,
 it is critical how these values are imputed, and that the imputation
-method is documented. One imputation method is imputing the mean value
-(e.g., participant or group average) [@Young2019]**Check this reference**. While imputing the mean
-preserves the study sample size (and point estimates), it also reduces
+method is documented. Authors sometimes choose to replace missing 
+observations with mean values (e.g., participant or group average) [@refs](https://doi.org/10.1016/j.jsams.2018.05.019, https://doi.org/10.1016/j.jsams.2008.01.009). 
+While imputing the mean preserves the study sample size (and point estimates), it also reduces
 the variance, can alter the relationship between the variable with
 missing observations and other variables, and can bias (underestimate)
-standard errors [@Scheffer2002].
-Smaller standard errors typically reduce *p*-values, which may lead to
+standard errors [@Scheffer2002]. Smaller standard errors typically reduce *p*-values, which may lead to
 incorrect inference. Mean imputation should be avoided. An imputation
 strategy that incorporates information from other related variables in
 the data -- such as linear regression, or K nearest neighbours -- should
@@ -234,7 +229,7 @@ understanding the implications in using mean imputation, compared to
 K-nearest neighbour imputation--in terms of the effect on parameter estimates
 ('significant' versus 'not significant'), and the (un)certainty of the
 coefficients (i.e., less/more). When using imputation, authors need to
-perform a sensitivity analysis (**ref circulation article-Nick**). This is
+perform a sensitivity analysis (**ref circulation article-Nick, possible reference from dave - https://doi.org/10.1191%2F1740774504cn032oa**). This is
 discussed below.
 
 ## Common causes of missing values
@@ -323,13 +318,13 @@ We recommend data is imputed, with a few caveats. Consider removing
 variables with a high proportion of missing data (e.g., variables with
 the majority or more missing than not). We deliberately do not suggest a 'rule of
 thumb' for the amount of missingness that should be imputed, and caution against
-looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (such as the mean or median), and suggest using imputation methods such as: linear regression, k-nearest neighbours, or expectation
+looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (e.g., the mean or median), and suggest using imputation methods such as: linear regression, k-nearest neighbours, or expectation
 maximisation. 
 
 Missing values can occur in the both the predictors (the "independent variables") 
 and response variable (the "dependent variables"). Care should be taken 
 when imputing data, as typically only predictors should be imputed. 
-For discussion on imputing the response value, see ... [@refs]. **(note: take a look again)**
+For discussion on imputing the response value, see ... [@refs]. **(note: take a look again - this is the discusson of missing y values section - and possible reference relevant to RCT's is this: https://doi.org/10.1191%2F1740774504cn032oa)**
 
 Much in the way of there is no single 'best' statistical method, there
 is no perfect, one-size-fits-all approach for imputing data. The goal is
@@ -359,12 +354,12 @@ example of this approach is described in the Case Study in
 
 # Recommendations
 
-The current state of reporting missing data in the sports literature has room for improvement. In this section we discuss recommended practices for exploring and
+The current state of reporting missing data in football research has room for improvement. 
+In this section we discuss recommended practices for exploring and
 reporting missing data. Our intention is not to provide a 'cookbook'
 style approach to missing data, but rather, broad recommendations to help
-researchers when writing the methods and results sections of a study,
-and assist researchers when evaluating a study during the peer-review
-process.
+authors when writing the methods and results sections of a study,
+and assist researchers when evaluating a study during the peer-review process.
 
 In the methods section of a study, we recommend the following points are
 addressed:
@@ -407,14 +402,16 @@ In the results section, we recommend addressing the following points:
 An example writeup of missing data for a results section is provided
 below:
 
-> *25 of the 280 values in the dataset (~8.92%) were missing. These were due to faults in GPS tracking as participants ran through sections of track covered by forest, a known issue with some GPS tracking. These speed values were interpolated using a nearest neighbours approach, taking inputs of speed, and altitude. The track was imputed using the known track in the area for those sections.*
+> *Twenty-five of the 280 values in the dataset (~8.92%) were missing. These were due to faults in GPS tracking as participants ran through sections of track covered by forest, a known issue with some GPS tracking. These speed values were interpolated using a nearest neighbours approach, taking inputs of speed, and altitude. The track was imputed using the known track in the area for those sections.*
 
 # Conclusion
 
 Our survey of 2019 articles on football related topics
 showed that current practice of reporting missing data is poor, 
-with only about one in 20 studies reported missing data. 
-This could suggest that this aspect of data anlaysis receives little attention. 
+with only about one in 20 studies reporting missing data.
+We speculate that this result is representative of practice in the 
+wider sports science literature. The extremely low reporting of missing 
+data could suggest that this aspect of data anlaysis receives little attention. 
 To address this issue and assist researchers,
 we have provided recommendations for reporting and exploring missing data.
 Researchers should consider these recommendations, and pay greater
