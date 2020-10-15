@@ -22,6 +22,20 @@ authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 
 
 
+```
+## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   variable = col_character(),
+##   title = col_character(),
+##   reviewer_1 = col_double(),
+##   reviewer_2 = col_double(),
+##   third_check = col_double(),
+##   notes = col_character()
+## )
+```
+
+
 
 
 
@@ -78,32 +92,11 @@ The code to reproduce the results and plots in the paper can be accessed at: **N
 **Word count**
 
 
-```
-## For information on available language packages for 'koRpus', run
-## 
-##   available.koRpus.lang()
-## 
-## and see ?install.koRpus.lang()
-```
-
-```
-## 
-## Attaching package: 'koRpus'
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     tokenize
-```
-
-
-
 |Method          |koRpus       |stringi       |
 |:---------------|:------------|:-------------|
-|Word count      |2875         |2814          |
-|Character count |19002        |19062         |
-|Sentence count  |229          |Not available |
+|Word count      |2873         |2813          |
+|Character count |19000        |19060         |
+|Sentence count  |231          |Not available |
 |Reading time    |14.4 minutes |14.1 minutes  |
 
 # Abstract {-}
@@ -150,7 +143,7 @@ case-by-case basis [@Sainani2015].
 For clarity, we describe an example of missingness. An Australian Football data collector 
 was taking lunch during the third quarter, so no data was recorded for this time period. This
 would be considered missing data. Compare this to the game being cancelled due to a pandemic. 
-There is no missing data because there is no data to be observed. Similiarly, if a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured. 
+There is no missing data because there is no data to be observed. Similarly, if a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured. 
 
 Data does not go missing the same way every time. There are three broad
 categorisations describing why data can be missing: Missing Completely
@@ -178,7 +171,7 @@ and practitioners to the wrong outcome.
 
 It is imperative that missing data, or lack thereof, are reported [@Schafer2002]. 
 While there has been significant interest in modelling missing
-data [@refs], the exploration and reporting of missings have received
+data [@Tierney2015; @Barnett2017], the exploration and reporting of missings have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
 of articles that report missing data in football research; (2) highlight
 several practices that should be avoided; and (3) provide recommendations for
@@ -187,38 +180,27 @@ exploring and reporting missingness.
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@PRISMA]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key
+football research, we conducted a systematic search [@Moher2009]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
 
 
 ```
-## [1] 91.91176
+## 
+## Attaching package: 'scales'
 ```
 
 ```
-## [1] 100
+## The following object is masked from 'package:purrr':
+## 
+##     discard
 ```
 
 ```
-## [1] 98.52941
-```
-
-```
-## [1] 99.26471
-```
-
-```
-## [1] 96.32353
-```
-
-```
-## # A tibble: 2 x 3
-##   any_missing_data_statement reviewer_1 reviewer_2
-##                        <int>      <int>      <int>
-## 1                          0        126        115
-## 2                          1         10         21
+## The following object is masked from 'package:readr':
+## 
+##     col_factor
 ```
 
 Our intention was to survey, at random, 10% of the total articles found (after 
@@ -226,8 +208,8 @@ title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
-independently extracted the data (X% agreement). Results are reported
-as the proportion and 95% confidence interval.
+independently extracted the data (91.91% agreement). Results are reported
+as the proportion and 95% confidence interval. (NOTE: need to get the final third reviewer part in)
 
 # Results
 
@@ -303,7 +285,6 @@ perform a sensitivity analysis (**ref circulation article-Nick, possible referen
 
 Broadly, there are two types of missing values in data: implicit and
 explicit missings. Explicit values are missing, but recorded; whereas
-with implicit missinges, their presence is implied based on other
 information in the data. For example, in  Table \@ref(tab:implicit-missings), player Koenen has
 missing values for quarters two and four. Sometimes values like these
 can be logically imputed, as it might be known that these values are
@@ -326,35 +307,13 @@ Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
 
 
-```
-## Returning data from 2020-08-01 to 2020-09-01
-```
-
-```
-## Downloading data
-```
-
-```
-## 
-## Finished downloading data. Processing XMLs
-```
-
-```
-## Finished getting afltables data
-```
 
 
 
 
-```
-## geom_path: Each group consists of only one observation. Do you need to adjust
-## the group aesthetic?
-```
 
-<div class="figure" style="text-align: center">
-<img src="paper_files/figure-html/missing-overview-1.png" alt="Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ..." width="75%" />
-<p class="caption">Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...</p>
-</div>
+
+<img src="paper_files/figure-html/patch-2-1.png" width="75%" style="display: block; margin: auto;" />
 
 To learn more about exploring missing values, we recommend the vignettes
 in naniar [@naniar], and the methods in (@Tierney2018).
@@ -375,7 +334,7 @@ Missing values can occur in the both the predictors (the "independent variables"
 and response variable (the "dependent variables"). 
 Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. 
 
-Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputed the outcome as they provide some sence of what the uncertainty is. For discussion on imputing the response value, see ... [@refs]. 
+Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputed the outcome as they provide some sense of what the uncertainty is. For discussion on imputing the response value, see ... [@refs]. 
 
 Missing values in the outcome can be dealt with specially for Randomised Control Trials, see - https://doi.org/10.1191%2F1740774504cn032oa.
 
@@ -466,7 +425,7 @@ showed that current practice of reporting missing data is poor,
 with only about one in 20 studies reporting missingness.
 We speculate that this result is representative of practice in the 
 wider sports science literature. The extremely low reporting of missing 
-data could suggest that this aspect of anlaysis receives little attention. 
+data could suggest that this aspect of analysis receives little attention. 
 To address this issue and assist researchers,
 we have provided recommendations for reporting and exploring missing data.
 Researchers should consider these recommendations, and pay greater

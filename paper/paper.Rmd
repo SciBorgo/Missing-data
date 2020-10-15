@@ -30,7 +30,7 @@ library(mice)
 library(truncnorm)
 library(janitor)
 library(drake)
-library(cowplot)
+library(scales)
 ```
 
 ```{r load-funs}
@@ -205,7 +205,7 @@ and practitioners to the wrong outcome.
 
 It is imperative that missing data, or lack thereof, are reported [@Schafer2002]. 
 While there has been significant interest in modelling missing
-data [@refs], the exploration and reporting of missings have received
+data [@Tierney2015; @Barnett2017], the exploration and reporting of missings have received
 less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion
 of articles that report missing data in football research; (2) highlight
 several practices that should be avoided; and (3) provide recommendations for
@@ -214,24 +214,17 @@ exploring and reporting missingness.
 # Methods and materials
 
 To estimate the proportion of articles that report missing data in
-football research, we conducted a systematic search [@PRISMA]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key
+football research, we conducted a systematic search [@Moher2009]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
 
-```{r agree-var}
-agree_var(gs_football, any_missing_data_statement)
-agree_var(gs_football, any_statement_about_mcar_mnar_mar)
-agree_var(gs_football, were_missing_data_explored)
-agree_var(gs_football, was_imputation_used)
-agree_var(gs_football, was_data_shared)
+```{r agreement}
 
-# identify table of mismatches  
-gs_football %>% 
-  group_by(reviewer) %>% 
-  count(any_missing_data_statement)  %>% 
-  pivot_wider(names_from = reviewer,
-              values_from = n)
+md_reported <- agree_var(gs_football, any_missing_data_statement) %>% 
+  percent(scale = 1,
+          accuracy = 0.1)
+
 ```
 
 Our intention was to survey, at random, 10% of the total articles found (after 
@@ -239,16 +232,68 @@ title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
-independently extracted the data (X% agreement). Results are reported
-as the proportion and 95% confidence interval.
+independently extracted the data (`r md_reported` agreement). Results are reported
+as the proportion and 95% confidence interval. (NOTE: need to get the final third reviewer part in)
 
 # Results
 
-Of the 199 articles screened, 136 met the inclusion criteria, representing
+```{r}
+# NOTE: update with the final third reviewer
+# need to update the gs_football
+library(binom)
+# !!comment to explain NAs
+successes <- sum(gs_football$any_missing_data_statement == 1, na.rm = TRUE)
+trials <- sum(!is.na(gs_football$any_missing_data_statement))
+missing_binom_conf <- binom.confint(x = successes, 
+              n = trials, 
+              conf.level = 0.95, 
+              methods = "exact")
+
+n_screened <- n_distinct(gs_football$key)
+miss_reported_pct <- percent(missing_binom_conf$mean, accuracy = 0.1)
+miss_reported_pct_lower <- percent(missing_binom_conf$lower, accuracy = 0.1)
+miss_reported_pct_upper <- percent(missing_binom_conf$upper, accuracy = 0.1)
+
+n_shared <- sum(gs_football$was_data_shared == 1)
+```
+
+
+```{r}
+# now of the articles that don't mention missingness
+gs_football_no_mention_sharing <- gs_football %>% 
+  filter(any_missing_data_statement == 0)
+
+n_no_mention_missings <- n_distinct(gs_football_no_mention_sharing$key)
+
+no_mention_successes <- sum(gs_football_no_mention_sharing$was_data_shared == 1, 
+                            na.rm = TRUE)
+no_mention_trials <- sum(!is.na(gs_football_no_mention_sharing$was_data_shared))
+n_mention_missing_binom_conf <- binom.confint(x = no_mention_successes, 
+                                              n = no_mention_trials, 
+                                              conf.level = 0.95, 
+                                              methods = "exact")
+
+percent_binom_conf <- function(binom_conf){
+  mean_pct <- percent(n_mention_missing_binom_conf$mean, accuracy = 0.1)
+lower_pct <- percent(n_mention_missing_binom_conf$lower, accuracy = 0.1)
+upper_pct <- percent(n_mention_missing_binom_conf$upper, accuracy = 0.1)
+
+return(c(mean_pct = mean_pct,
+         lower_pct = lower_pct,
+         upper_pct = upper_pct))
+}
+
+percent_binom_conf(n_mention_missing_binom_conf)
+
+```
+
+
+Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing
 \~10% of the articles found (see Supplement 2, Figure 1). The proportion of
-articles that reported missing data was 5.9% (95% confidence interval;
-X% to X%) or 8/136. Of the articles that did not mention missing data
-(128/136), 7.1% (3.3% to 13.1%) or 9/128 shared their dataset, making
+articles that reported missing data was `r miss_reported_pct` (95% confidence interval;
+`r miss_reported_pct_lower` to `r miss_reported_pct_upper`) or `r successes`/`r n_screened`. 
+
+Of the articles that did not mention missing data `n_no_mention_missings` / `r n_screened`, 7.1% (3.3% to 13.1%) shared their dataset, making
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
 data are not being reported, it does suggest that this aspect of the

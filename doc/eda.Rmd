@@ -53,7 +53,7 @@ library(irr)
 
 # Now we bring the third and final review 
 gs_mismatches <- readr::read_csv("data/missing-data-mismatches.csv")
-
+library(tidyverse)
 gs_mismatches %>% 
   pivot_longer(cols = c(reviewer_1,reviewer_2, third_check),
                names_to = "reviewer",
@@ -61,14 +61,7 @@ gs_mismatches %>%
   pivot_wider(names_from = variable,
               values_from = decision)
 
-gs_football %>% 
-  pivot_wider(names_from = reviewer,
-              values_from = )
-
 # supp materials - agreement between Reviewer 1 and Reviewer 2
-
-
-
 #the agreement was `r agree_var(gs_football, was_data_shared)`%
 
 gs_football %>% 
