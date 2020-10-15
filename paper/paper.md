@@ -1,6 +1,5 @@
 ---
-title: 'Missing data: Current practice in football research and recommendations for
-  improvement'
+title: 'Missing data: Current practice in football research and recommendations for improvement'
 bibliography: references.bib
 output:
   html_document:
@@ -13,6 +12,15 @@ output:
     toc: yes
 authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 ---
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,12 +99,12 @@ The code to reproduce the results and plots in the paper can be accessed at: **N
 
 
 
-Method            koRpus         stringi       
-----------------  -------------  --------------
-Word count        2873           2813          
-Character count   18984          19044         
-Sentence count    229            Not available 
-Reading time      14.4 minutes   14.1 minutes  
+|Method          |koRpus       |stringi       |
+|:---------------|:------------|:-------------|
+|Word count      |2875         |2814          |
+|Character count |19002        |19062         |
+|Sentence count  |229          |Not available |
+|Reading time    |14.4 minutes |14.1 minutes  |
 
 # Abstract {-}
 
@@ -183,6 +191,35 @@ football research, we conducted a systematic search [@PRISMA]. Articles on footb
 terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
+
+
+```
+## [1] 91.91176
+```
+
+```
+## [1] 100
+```
+
+```
+## [1] 98.52941
+```
+
+```
+## [1] 99.26471
+```
+
+```
+## [1] 96.32353
+```
+
+```
+## # A tibble: 2 x 3
+##   any_missing_data_statement reviewer_1 reviewer_2
+##                        <int>      <int>      <int>
+## 1                          0        126        115
+## 2                          1         10         21
+```
 
 Our intention was to survey, at random, 10% of the total articles found (after 
 title and abstract screening). We were primarily interested in
@@ -276,7 +313,7 @@ values, surveys, an inability to collect a biological sample (e.g.,
 venous blood), equipment malfunction, failure, or not being worn.
 
 <div class="figure" style="text-align: center">
-<img src="/Users/david/Dropbox/Research projects/Editorial - Missing data in sport and exercise science research/Missing data/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
+<img src="/Users/ntie0001/github/njtierney/sportmiss/paper/figures/tables.png" alt="Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed." width="75%" />
 <p class="caption">Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed.</p>
 </div>
 
@@ -307,6 +344,12 @@ Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 ```
 
 
+
+
+```
+## geom_path: Each group consists of only one observation. Do you need to adjust
+## the group aesthetic?
+```
 
 <div class="figure" style="text-align: center">
 <img src="paper_files/figure-html/missing-overview-1.png" alt="Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ..." width="75%" />

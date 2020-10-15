@@ -1,6 +1,5 @@
 ---
-title: 'Missing data: Current practice in football research and recommendations for
-  improvement'
+title: 'Missing data: Current practice in football research and recommendations for improvement'
 bibliography: references.bib
 output:
   html_document:
@@ -30,8 +29,41 @@ library(fitzRoy)
 library(mice)
 library(truncnorm)
 library(janitor)
+library(drake)
 library(cowplot)
 ```
+
+```{r load-funs}
+pivot_var <- function(data, var){
+  data %>% 
+    select(title,
+           reviewer,
+           {{ var }}) %>% 
+    pivot_wider(names_from = reviewer,
+                values_from = {{ var }})
+}
+
+agree_var <- function(data, var){
+  statement_agree <- pivot_var(data, {{ var }}) %>% 
+    select(reviewer_1, reviewer_2) %>% 
+    irr::agree() 
+  
+  statement_agree$value
+}
+
+```
+
+```{r read-data}
+gs_football <- readr::read_rds(here::here("data",
+                           "gs-football.rds"))
+```
+
+
+
+```{r load-drake}
+# loadd()
+```
+
 
 Authors: 
 
@@ -174,6 +206,21 @@ terms and search limits (Supplement 2). Included articles were: (a) written in E
 full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process,
 and further details of the search can also be found in Supplement 2. 
 
+```{r agree-var}
+agree_var(gs_football, any_missing_data_statement)
+agree_var(gs_football, any_statement_about_mcar_mnar_mar)
+agree_var(gs_football, were_missing_data_explored)
+agree_var(gs_football, was_imputation_used)
+agree_var(gs_football, was_data_shared)
+
+# identify table of mismatches  
+gs_football %>% 
+  group_by(reviewer) %>% 
+  count(any_missing_data_statement)  %>% 
+  pivot_wider(names_from = reviewer,
+              values_from = n)
+```
+
 Our intention was to survey, at random, 10% of the total articles found (after 
 title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
@@ -278,7 +325,7 @@ Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
 
-```{r}
+```{r afl-stats, cache = TRUE}
 
 # Aim of this section:
 # Simulate data from a real data set, insert missing

@@ -5,3 +5,4 @@
 .DS_Store
 *.html
 paper/paper_files/*
+paper/paper_cache/*
