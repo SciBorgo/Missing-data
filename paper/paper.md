@@ -478,6 +478,4 @@ attention to missing data and its influence on research results.
 
 # Supplement 2
 
-# Supplement 3
-
 

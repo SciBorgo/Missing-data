@@ -30,6 +30,7 @@ library(mice)
 library(truncnorm)
 library(janitor)
 library(drake)
+library(cowplot)
 ```
 
 ```{r load-funs}
@@ -362,27 +363,31 @@ data_plot <- data_plot %>% clean_names() %>% rename(team = playing_for)
 
 ```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
 
-aq_vis_miss <- vis_miss(data_plot) 
+aq_vis_miss <- vis_miss(data_plot) #+ 
+  #theme(text = element_text(size = 14))
 
-aq_upset <- gg_miss_upset(data_plot) 
-
-aq_fct <- gg_miss_fct(data_plot, team) 
+aq_fct <- gg_miss_fct(data_plot, team) + 
+  #theme(text = element_text(size = 14)) +
+  labs(x = "Team", y = "Variable")
 
 gg_miss_scatter <- ggplot(data_plot,
        aes(x = sprint_distance,
            y = sprints)) +
-  geom_miss_point()
+  geom_miss_point(size = 2) + 
+  theme_minimal() +
+  #theme(text = element_text(size = 14)) +
+  labs(x = "Total sprint distance (m)", y = "Number of sprints (count)", colour = "Missing")
 
-aq_miss_var <- gg_miss_var(data_plot) 
+aq_miss_var <- gg_miss_var(data_plot)
 
-cowplot::plot_grid(aq_vis_miss,
-                   # aq_upset,
-                   aq_fct,
-                   gg_miss_scatter,
-                   aq_miss_var, 
+# Grid plots
+cowplot::plot_grid(aq_vis_miss, aq_fct, gg_miss_scatter, aq_miss_var, 
+                   nrow = 2,
+                   ncol = 2,
                    align = "hv",
+                   axis = "tblr",
+                   label_size = 20,
                    labels = "AUTO")
-
 ```
 
 To learn more about exploring missing values, we recommend the vignettes
@@ -506,7 +511,5 @@ attention to missing data and its influence on research results.
 # Supplement 1
 
 # Supplement 2
-
-# Supplement 3
 
 
