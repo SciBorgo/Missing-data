@@ -1,5 +1,5 @@
 ---
-title: 'Missing data: Current practice in football research and recommendations for improvement'
+title: 'Missing Data: Current Practice in Football Research and Recommendations for Improvement'
 bibliography: references.bib
 output:
   html_document:
@@ -90,7 +90,7 @@ Robert Nguyen(2)
 
 ORCiD:
 
-Twitter:
+Twitter: roberto_boberto
 
 Nicholas J Tierney(3,4)
 
@@ -453,12 +453,12 @@ data_plot_clean <- data_plot %>%
 
 
 
-aq_vis_miss <- vis_miss(data_plot_clean) + labs(tag = "A")
+aq_vis_miss <- vis_miss(data_plot_clean) + labs(tag = "(A)")
   #theme(text = element_text(size = 14))
 
 aq_fct <- gg_miss_fct(data_plot_clean, team) + 
   #theme(text = element_text(size = 14)) +
-  labs(x = "Team", y = "Variable", tag = "B") +
+  labs(x = "Team", y = "Variable", tag = "(B)") +
   theme(axis.text.x = element_text(size = 5))
 
 gg_miss_scatter <- ggplot(data_plot_clean,
@@ -470,9 +470,9 @@ gg_miss_scatter <- ggplot(data_plot_clean,
   labs(x = "Total sprint distance (m)", 
        y = "Number of sprints (count)", 
        colour = "",
-       tag = "C")
+       tag = "(C)")
 
-aq_miss_var <- gg_miss_var(data_plot_clean) + labs(tag = "D")
+aq_miss_var <- gg_miss_var(data_plot_clean) + labs(tag = "(D)")
 ```
 
 ```{r patch-2, fig.height = 10}
