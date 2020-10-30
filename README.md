@@ -49,4 +49,14 @@ appropriately representative.
 To recreate the paper
 =====================
 
-*instructions incoming*
+Use `drake` and `capsule` to recreate the paper.
+
+You can install `capsule` with:
+
+    install_github("milesmcbain/capsule")
+
+Then run
+
+    capsule::run(drake::r_make())
+
+This will generate the paper.

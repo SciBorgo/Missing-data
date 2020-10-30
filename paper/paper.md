@@ -1,5 +1,5 @@
 ---
-title: 'Missing data: Current practice in football research and recommendations for improvement'
+title: 'Missing Data: Current Practice in Football Research and Recommendations for Improvement'
 bibliography: references.bib
 output:
   html_document:
@@ -22,56 +22,40 @@ authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
 
 
 
-```
-## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   variable = col_character(),
-##   title = col_character(),
-##   reviewer_1 = col_double(),
-##   reviewer_2 = col_double(),
-##   third_check = col_double(),
-##   notes = col_character()
-## )
-```
-
-
-
-
-
-
 Authors: 
 
-David N Borg(1)
+David N Borg(1,2)
 
 ORCiD: 0000-0002-0152-571X
 
 Twitter: elborgo9
 
-Robert Nguyen(2)
+Robert Nguyen(3)
 
-ORCiD:
+ORCiD: 0000-0001-9373-3753
 
-Twitter:
+Twitter: roberto_boberto
 
-Nicholas J Tierney(3,4)
+Nicholas J Tierney(4,5)
 
-ORCiD:
+ORCiD: 0000-0003-1460-8722
 
-Twitter:
+Twitter: nj_tierney
 
-Affiliations: 
+Affiliations
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: University of New South Wales, Department of Statistics, School of
+2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
+
+3: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia.
 
-3: Monash University, Department of Econometrics and Business Statistics,
+4: Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
 
-4: Australian Centre of Excellence for Mathematical and Statistical
+5: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia.
 
 **Acknowledgement/conflict of interest**
@@ -83,21 +67,26 @@ The authors declare no conflicts of interest.
 Nicholas J Tierney
 Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
-Address:
-Email:
+Address: 
+Email: nicholas.tierney@monash.edu
 
 **Data availability**
-The code to reproduce the results and plots in the paper can be accessed at: **Nick to host?**
+
+The code to reproduce the results and plots in the paper can be accessed at the following github repository: 
 
 **Word count**
 
 
 |Method          |koRpus       |stringi       |
 |:---------------|:------------|:-------------|
-|Word count      |2873         |2813          |
-|Character count |19000        |19060         |
-|Sentence count  |231          |Not available |
-|Reading time    |14.4 minutes |14.1 minutes  |
+|Word count      |2862         |2817          |
+|Character count |19075        |19157         |
+|Sentence count  |228          |Not available |
+|Reading time    |14.3 minutes |14.1 minutes  |
+
+
+
+
 
 # Abstract {-}
 
@@ -112,7 +101,7 @@ reporting missingness. Football related articles, published in 2019 were
 studied. A survey of 136 articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
 proportion of studies in football research that included a missing data
-statement was low, at only X% (95% confidence interval; X% to X%); suggesting that 
+statement was low, at only 11.0%(95% CI; 6.3% to 17.5%); suggesting that 
 missingness is seldom considered by researchers. It is suspected that this result 
 is consistent with practice in the wider sports science literature. We recommend 
 researchers describe the number and percentage of missing
@@ -186,38 +175,22 @@ full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2
 and further details of the search can also be found in Supplement 2. 
 
 
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
 
 Our intention was to survey, at random, 10% of the total articles found (after 
 title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
-independently extracted the data (91.91% agreement). Results are reported
-as the proportion and 95% confidence interval. (NOTE: need to get the final third reviewer part in)
+independently extracted the data (91.9% agreement). Disagreements were resolved by author DNB. Results are reported as the proportion and 95% confidence interval (CI).
 
 # Results
 
 Of the 199 articles screened, 136 met the inclusion criteria, representing
 \~10% of the articles found (see Supplement 2, Figure 1). The proportion of
-articles that reported missing data was 5.9% (95% confidence interval;
-X% to X%) or 8/136. Of the articles that did not mention missing data
-(128/136), 7.1% (3.3% to 13.1%) or 9/128 shared their dataset, making
+articles that reported missing data was 11.0%(95% CI; 6.3% to 17.5%).
+
+
+Of the articles that did not mention missing data 121 / 136, 7.4%(95% CI; 3.5% to 13.7%). shared their dataset, making
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
 data are not being reported, it does suggest that this aspect of the
@@ -228,7 +201,7 @@ normality (e.g., Kruskall-Wallis test).
 # Discussion
 
 Our survey of 136 articles published on football related topics found
-that only about one in 20 papers reported missing data. It is reasonable
+that only one in 13 papers (11.0%) reported missing data. It is reasonable
 to assume that this result is representative of current practice in the wider sports science literature. 
 The low proportion of papers reporting missingness could be explained by 
 a lack of awareness and education on missing data [@Sainani2020call], 
@@ -240,10 +213,10 @@ visualising and reporting missing data.
 ## Practices to avoid
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
-not reported, missing data can be obvious. For example, a recent study examined the
+not reported, missing data can be obvious. For example, a study examined the
 relationship between match performance indicators and outcome, in
-Australian Football between the 2001 and 2016, where at least one of the
-91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019]**Check this reference**. This was not noted anywhere in the paper, or in the supplementary
+Australian Football between the 2001 and 2016 [@Young2019], where at least one of the
+91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019_mention_of_missing]. This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
 and/or extend the ideas presented in the paper, or reproduce the
@@ -305,10 +278,6 @@ We recommend that researchers use missing data overview graphics (see
 Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
-
-
-
-
 
 
 

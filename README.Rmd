@@ -54,7 +54,20 @@ least supplementary materials. Missing values should almost always be
 imputed, and imputation methods should be explored to ensure they are
 appropriately representative.
 
-
 # To recreate the paper
 
-_instructions incoming_
+Use `drake` and `capsule` to recreate the paper.
+
+You can install `capsule` with:
+
+```r
+install_github("milesmcbain/capsule")
+```
+
+Then run
+
+```{r example, eval = FALSE}
+capsule::run(drake::r_make())
+```
+
+This will generate the paper.
