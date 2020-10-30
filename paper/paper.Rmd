@@ -80,19 +80,19 @@ gs_mismatch_pivot <- gs_mismatches %>%
 
 Authors: 
 
-David N Borg(1)
+David N Borg(1,2)
 
 ORCiD: 0000-0002-0152-571X
 
 Twitter: elborgo9
 
-Robert Nguyen(2)
+Robert Nguyen(3)
 
-ORCiD:
+ORCiD: 0000-0001-9373-3753
 
 Twitter: roberto_boberto
 
-Nicholas J Tierney(3,4)
+Nicholas J Tierney(4,5)
 
 ORCiD:
 
@@ -103,13 +103,15 @@ Affiliations:
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: University of New South Wales, Department of Statistics, School of
+2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
+
+3: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia.
 
-3: Monash University, Department of Econometrics and Business Statistics,
+4: Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
 
-4: Australian Centre of Excellence for Mathematical and Statistical
+5: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia.
 
 **Acknowledgement/conflict of interest**
@@ -316,10 +318,10 @@ visualising and reporting missing data.
 ## Practices to avoid
 
 Practice to avoid: *Unreported missing values.* While not always the case, even if
-not reported, missing data can be obvious. For example, a recent study examined the
+not reported, missing data can be obvious. For example, a study examined the
 relationship between match performance indicators and outcome, in
-Australian Football between the 2001 and 2016, where at least one of the
-91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019]**Check this reference**. This was not noted anywhere in the paper, or in the supplementary
+Australian Football between the 2001 and 2016 [@Young2019], where at least one of the
+91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019_mention_of_missing]. This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
 and/or extend the ideas presented in the paper, or reproduce the
