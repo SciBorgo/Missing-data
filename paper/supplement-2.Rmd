@@ -15,19 +15,6 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 
-```{r libraries, message = FALSE}
-library(tidyverse)
-library(kableExtra)
-library(knitr)
-library(conflicted)
-library(gt)
-library(PRISMAstatement)
-library(DiagrammeRsvg)
-conflicted::conflict_prefer("select", "dplyr")
-conflicted::conflict_prefer("filter", "dplyr")
-```
-
-
 # Systematic search details
 
 The systematic search was performed in accordance with the reporting
@@ -131,10 +118,12 @@ proportion of articles that reported missing data was 5.9% \[95% confidence
 interval; X% to X%\] or 8/136. A breakdown of the extracted information
 is provided in Table 2.
 
-```{r read-gs-data}
-
+```{r loadd-targets}
+loadd(gs_football)
+loadd(gs_mismatches)
+loadd(simulated_afl_data)
+loadd(gs_football_final_matches)
 ```
-
 
 ```{r extracted-info}
 
