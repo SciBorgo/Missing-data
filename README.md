@@ -55,6 +55,10 @@ You can install `capsule` with:
 
     install_github("milesmcbain/capsule")
 
+Get the R packages used with:
+
+    capsule::reproduce_lib()
+
 Then run
 
     capsule::run(drake::r_make())

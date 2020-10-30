@@ -64,6 +64,13 @@ You can install `capsule` with:
 install_github("milesmcbain/capsule")
 ```
 
+Get the R packages used with:
+
+```r
+capsule::reproduce_lib()
+```
+
+
 Then run
 
 ```{r example, eval = FALSE}
