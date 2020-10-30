@@ -25,6 +25,6 @@ rather than hard tiles, in the team change room. If surface type was recorded,
 data would be MAR, because the missingness is related the surface, but not
 related to the value of body mass itself [@VanBuuren2012].
 
-Data MNAR is when the missings are related to something unobservable or something unobserved. The previous example of data MAR could be data MNAR if the surface type was not recorded in the dataset - it would then be unobserved. Data MNAR also arises when missing values are related to the values missing. This could take place if, for example, the scales used only measure up to 110Kg, and then produce missing values. This is a systematic issue - it happens each time, and means that heavier players are not recorded.
+Data MNAR is when the missings are related to something unobservable or something unobserved. The previous example of data MAR could be data MNAR if the surface type was not recorded in the dataset - it would then be unobserved. Data MNAR also arises when missing values are related to the values missing. This could take place if, for example, the scales used only measure up to 110 Kg, and then produce missing values. This is a systematic issue - it happens each time, and means that heavier players are not recorded.
 
 # References
