@@ -53,7 +53,8 @@ Use `drake` and `capsule` to recreate the paper.
 
 You can install `capsule` with:
 
-    install_github("milesmcbain/capsule")
+    # install.packages("remotes")
+    remotes::install_github("milesmcbain/capsule")
 
 Get the R packages used with:
 
