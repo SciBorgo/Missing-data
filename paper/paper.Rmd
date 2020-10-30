@@ -53,12 +53,12 @@ agree_var <- function(data, var){
 
 ```
 
-```{r read-data, message = FALSE}
+```{r read-data, message = FALSE, include = FALSE}
 gs_football <- readr::read_rds(here::here("data",
                            "gs-football.rds"))
 ```
 
-```{r mismatch}
+```{r mismatch, message = FALSE, include = FALSE}
 # Now we bring the third and final review 
 gs_mismatches <- readr::read_csv(here::here("data",
 "missing-data-mismatches.csv"))
@@ -69,14 +69,45 @@ gs_mismatch_pivot <- gs_mismatches %>%
                values_to = "decision") %>% 
   pivot_wider(names_from = variable,
               values_from = decision)
+
+gs_mismatch_pivot %>% 
+  slice(1:3)
+
+gs_football
 ```
 
+```{r finalise-matches}
+gs_football_final_matches <- gs_football %>% 
+  pivot_longer(cols = any_missing_data_statement:was_data_shared,
+               names_to = "variable",
+               values_to = "value") %>% 
+  pivot_wider(names_from = reviewer) %>% 
+  left_join({ 
+      select(gs_mismatches, 
+             -reviewer_1,
+             -reviewer_2)
+    }, 
+            by = c("variable", "title")) %>% 
+  # double check that we get our data back
+  # filter(reviewer_1 != reviewer_2)
+  mutate(third_check = as.integer(third_check),
+         final_check = case_when(
+    is.na(third_check) ~ reviewer_1,
+    reviewer_1 != reviewer_2 ~ third_check
+  ))  %>%  select(-c(reviewer_1, 
+            reviewer_2,
+            third_check,
+            notes)) %>% 
+  pivot_wider(names_from = variable,
+              values_from = final_check)
+  # filter(reviewer_1 != reviewer_2)
+  
+```
 
 
 ```{r load-drake}
 # loadd()
 ```
-
 
 Authors: 
 
@@ -94,11 +125,11 @@ Twitter: roberto_boberto
 
 Nicholas J Tierney(4,5)
 
-ORCiD:
+ORCiD: 
 
-Twitter:
+Twitter: nj_tierney
 
-Affiliations: 
+Affiliations: 0000-0003-1460-8722
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
@@ -123,17 +154,72 @@ The authors declare no conflicts of interest.
 Nicholas J Tierney
 Monash University, Department of Econometrics and Business Statistics,
 Melbourne, Australia.
-Address:
-Email:
+Address: 
+Email: nicholas.tierney@monash.edu
 
 **Data availability**
-The code to reproduce the results and plots in the paper can be accessed at: **Nick to host?**
+
+The code to reproduce the results and plots in the paper can be accessed at the following github repository: 
 
 **Word count**
 
 ```{r count-words, message = FALSE, warning = FALSE}
 wordcountaddin::text_stats()
 ```
+
+```{r fun-pct-binom-conf}
+percent_binom_conf <- function(binom_conf){
+  mean_pct <- percent(binom_conf$mean, accuracy = 0.1)
+lower_pct <- percent(binom_conf$lower, accuracy = 0.1)
+upper_pct <- percent(binom_conf$upper, accuracy = 0.1)
+
+return(data.frame(mean_pct = mean_pct,
+                  lower_pct = lower_pct,
+                  upper_pct = upper_pct))
+}
+
+```
+
+
+```{r binom-ci-fun}
+# need to update the gs_football
+library(binom)
+
+football_binom_confint <- function(data, var){
+  
+  var_vec <- data %>% pull({{ var }})
+  successes <- sum(var_vec, na.rm = TRUE)
+  trials <- sum(!is.na(var_vec))
+  
+  binom.confint(x = successes, 
+              n = trials, 
+              conf.level = 0.95, 
+              methods = "exact")
+}
+```
+
+
+```{r binom-ci-reporting}
+n_screened <- nrow(gs_football_final_matches)
+n_shared <- sum(gs_football_final_matches$was_data_shared == 1)
+
+binom_ci_miss_reported <- football_binom_confint(gs_football_final_matches, 
+                                                 any_missing_data_statement) %>% 
+  percent_binom_conf()
+
+# now of the articles that don't mention missingness
+gs_football_final_matches_dont_report <- gs_football_final_matches %>% 
+  filter(any_missing_data_statement == 0)
+
+n_no_mention_missings <- nrow(gs_football_final_matches_dont_report)
+
+binom_ci_data_shared <- gs_football_final_matches_dont_report %>% 
+  football_binom_confint(var = was_data_shared) %>% 
+  percent_binom_conf()
+
+
+```
+
 
 # Abstract {-}
 
@@ -145,10 +231,10 @@ the proportion of studies in football research that included a missing
 data statement, highlight several practices to avoid in relation to
 missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
-studied. A survey of 136 articles, sampled at random, was conducted to
+studied. A survey of `r n_screened` articles, sampled at random, was conducted to
 determine whether a missing data statement was included. As expected, the
 proportion of studies in football research that included a missing data
-statement was low, at only X% (95% confidence interval; X% to X%); suggesting that 
+statement was low, at only `r binom_ci_miss_reported$mean_pct`(95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`); suggesting that 
 missingness is seldom considered by researchers. It is suspected that this result 
 is consistent with practice in the wider sports science literature. We recommend 
 researchers describe the number and percentage of missing
@@ -234,68 +320,16 @@ title and abstract screening). We were primarily interested in
 whether missing data was reported or acknowledged; and if not, whether
 a dataset was shared. Where applicable, information relating to how missing
 values were treated was also extracted (see Supplement 2). Two authors
-independently extracted the data (`r md_reported` agreement). Results are reported
-as the proportion and 95% confidence interval. (NOTE: need to get the final third reviewer part in)
+independently extracted the data (`r md_reported` agreement). Disagreements were resolved by author DNB. Results are reported as the proportion and 95% confidence interval (CI).
 
 # Results
 
-```{r}
-# NOTE: update with the final third reviewer
-# need to update the gs_football
-library(binom)
-# !!comment to explain NAs
-successes <- sum(gs_football$any_missing_data_statement == 1, na.rm = TRUE)
-trials <- sum(!is.na(gs_football$any_missing_data_statement))
-missing_binom_conf <- binom.confint(x = successes, 
-              n = trials, 
-              conf.level = 0.95, 
-              methods = "exact")
-
-n_screened <- n_distinct(gs_football$key)
-miss_reported_pct <- percent(missing_binom_conf$mean, accuracy = 0.1)
-miss_reported_pct_lower <- percent(missing_binom_conf$lower, accuracy = 0.1)
-miss_reported_pct_upper <- percent(missing_binom_conf$upper, accuracy = 0.1)
-
-n_shared <- sum(gs_football$was_data_shared == 1)
-```
-
-
-```{r}
-# now of the articles that don't mention missingness
-gs_football_no_mention_sharing <- gs_football %>% 
-  filter(any_missing_data_statement == 0)
-
-n_no_mention_missings <- n_distinct(gs_football_no_mention_sharing$key)
-
-no_mention_successes <- sum(gs_football_no_mention_sharing$was_data_shared == 1, 
-                            na.rm = TRUE)
-no_mention_trials <- sum(!is.na(gs_football_no_mention_sharing$was_data_shared))
-n_mention_missing_binom_conf <- binom.confint(x = no_mention_successes, 
-                                              n = no_mention_trials, 
-                                              conf.level = 0.95, 
-                                              methods = "exact")
-
-percent_binom_conf <- function(binom_conf){
-  mean_pct <- percent(n_mention_missing_binom_conf$mean, accuracy = 0.1)
-lower_pct <- percent(n_mention_missing_binom_conf$lower, accuracy = 0.1)
-upper_pct <- percent(n_mention_missing_binom_conf$upper, accuracy = 0.1)
-
-return(c(mean_pct = mean_pct,
-         lower_pct = lower_pct,
-         upper_pct = upper_pct))
-}
-
-percent_binom_conf(n_mention_missing_binom_conf)
-
-```
-
-
 Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing
 \~10% of the articles found (see Supplement 2, Figure 1). The proportion of
-articles that reported missing data was `r miss_reported_pct` (95% confidence interval;
-`r miss_reported_pct_lower` to `r miss_reported_pct_upper`) or `r successes`/`r n_screened`. 
+articles that reported missing data was `r binom_ci_miss_reported$mean_pct`(95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`).
 
-Of the articles that did not mention missing data `n_no_mention_missings` / `r n_screened`, 7.1% (3.3% to 13.1%) shared their dataset, making
+
+Of the articles that did not mention missing data `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct`(95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`). shared their dataset, making
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
 data are not being reported, it does suggest that this aspect of the
@@ -305,8 +339,8 @@ normality (e.g., Kruskall-Wallis test).
 
 # Discussion
 
-Our survey of 136 articles published on football related topics found
-that only about one in 20 papers reported missing data. It is reasonable
+Our survey of `r n_screened` articles published on football related topics found
+that only one in 13 papers (`r binom_ci_miss_reported$mean_pct`) reported missing data. It is reasonable
 to assume that this result is representative of current practice in the wider sports science literature. 
 The low proportion of papers reporting missingness could be explained by 
 a lack of awareness and education on missing data [@Sainani2020call], 
@@ -424,7 +458,7 @@ data_plot <- data_plot %>% clean_names() %>% rename(team = playing_for)
 
 ```
 
-```{r}
+```{r rename-afl-data}
 data_plot_clean <- data_plot %>% 
   mutate(team = recode(team, 
                         "Gold Coast" = "GC",
