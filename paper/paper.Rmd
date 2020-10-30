@@ -125,11 +125,11 @@ Twitter: roberto_boberto
 
 Nicholas J Tierney(4,5)
 
-ORCiD: 
+ORCiD: 0000-0003-1460-8722
 
 Twitter: nj_tierney
 
-Affiliations: 0000-0003-1460-8722
+Affiliations
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
