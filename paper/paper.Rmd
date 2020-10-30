@@ -33,81 +33,23 @@ library(drake)
 library(scales)
 ```
 
-```{r load-funs}
-pivot_var <- function(data, var){
-  data %>% 
-    select(title,
-           reviewer,
-           {{ var }}) %>% 
-    pivot_wider(names_from = reviewer,
-                values_from = {{ var }})
-}
-
-agree_var <- function(data, var){
-  statement_agree <- pivot_var(data, {{ var }}) %>% 
-    select(reviewer_1, reviewer_2) %>% 
-    irr::agree() 
-  
-  statement_agree$value
-}
-
-```
-
-```{r read-data, message = FALSE, include = FALSE}
-gs_football <- readr::read_rds(here::here("data",
-                           "gs-football.rds"))
+```{r load-targets}
+loadd(gs_football)
+loadd(gs_mismatches)
+loadd(simulated_afl_data)
+loadd(gs_football_final_matches)
 ```
 
 ```{r mismatch, message = FALSE, include = FALSE}
 # Now we bring the third and final review 
-gs_mismatches <- readr::read_csv(here::here("data",
-"missing-data-mismatches.csv"))
-
 gs_mismatch_pivot <- gs_mismatches %>% 
   pivot_longer(cols = c(reviewer_1,reviewer_2, third_check),
                names_to = "reviewer",
                values_to = "decision") %>% 
   pivot_wider(names_from = variable,
               values_from = decision)
-
-gs_mismatch_pivot %>% 
-  slice(1:3)
-
-gs_football
 ```
 
-```{r finalise-matches}
-gs_football_final_matches <- gs_football %>% 
-  pivot_longer(cols = any_missing_data_statement:was_data_shared,
-               names_to = "variable",
-               values_to = "value") %>% 
-  pivot_wider(names_from = reviewer) %>% 
-  left_join({ 
-      select(gs_mismatches, 
-             -reviewer_1,
-             -reviewer_2)
-    }, 
-            by = c("variable", "title")) %>% 
-  # double check that we get our data back
-  # filter(reviewer_1 != reviewer_2)
-  mutate(third_check = as.integer(third_check),
-         final_check = case_when(
-    is.na(third_check) ~ reviewer_1,
-    reviewer_1 != reviewer_2 ~ third_check
-  ))  %>%  select(-c(reviewer_1, 
-            reviewer_2,
-            third_check,
-            notes)) %>% 
-  pivot_wider(names_from = variable,
-              values_from = final_check)
-  # filter(reviewer_1 != reviewer_2)
-  
-```
-
-
-```{r load-drake}
-# loadd()
-```
 
 Authors: 
 
@@ -167,44 +109,15 @@ The code to reproduce the results and plots in the paper can be accessed at the 
 wordcountaddin::text_stats()
 ```
 
-```{r fun-pct-binom-conf}
-percent_binom_conf <- function(binom_conf){
-  mean_pct <- percent(binom_conf$mean, accuracy = 0.1)
-lower_pct <- percent(binom_conf$lower, accuracy = 0.1)
-upper_pct <- percent(binom_conf$upper, accuracy = 0.1)
-
-return(data.frame(mean_pct = mean_pct,
-                  lower_pct = lower_pct,
-                  upper_pct = upper_pct))
-}
-
-```
-
-
-```{r binom-ci-fun}
-# need to update the gs_football
-library(binom)
-
-football_binom_confint <- function(data, var){
-  
-  var_vec <- data %>% pull({{ var }})
-  successes <- sum(var_vec, na.rm = TRUE)
-  trials <- sum(!is.na(var_vec))
-  
-  binom.confint(x = successes, 
-              n = trials, 
-              conf.level = 0.95, 
-              methods = "exact")
-}
-```
-
 
 ```{r binom-ci-reporting}
 n_screened <- nrow(gs_football_final_matches)
 n_shared <- sum(gs_football_final_matches$was_data_shared == 1)
 
-binom_ci_miss_reported <- football_binom_confint(gs_football_final_matches, 
-                                                 any_missing_data_statement) %>% 
+binom_ci_miss_reported <- football_binom_confint(
+  gs_football_final_matches, 
+  any_missing_data_statement
+  ) %>% 
   percent_binom_conf()
 
 # now of the articles that don't mention missingness
@@ -216,7 +129,6 @@ n_no_mention_missings <- nrow(gs_football_final_matches_dont_report)
 binom_ci_data_shared <- gs_football_final_matches_dont_report %>% 
   football_binom_confint(var = was_data_shared) %>% 
   percent_binom_conf()
-
 
 ```
 
@@ -418,87 +330,21 @@ Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
 (Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
 
-```{r afl-stats, cache = TRUE}
-
-# Aim of this section:
-# Simulate data from a real data set, insert missing
-# 'Study aim': predicting hamstring strain injury, using number of sprints and sprint distance as x-variables
-
-# Simulate dataset
-# NOTE: fix this later in the drake plan
-# d <- get_afltables_stats(start_date = "2020-08-01", end_date = "2020-09-01")
-# write_rds(d, here::here("data", "afl-data.rds"))
-d <- readr::read_rds(here::here("data", "afl-data.rds"))
-afl_data <- d %>% select(ID, Round, Playing.for, Venue)
-
-# Simulate injury and sprint variables
-injury <- rbinom(n = nrow(d), 1, prob = 0.1)
-sprints <- rpois(n = nrow(d), lambda = 100)
-sprint_distance <- truncnorm::rtruncnorm(n = nrow(afl_data), 
-                                         a = 0, 
-                                         b = Inf, 
-                                         mean = 2000, 
-                                         sd = 500) # Check if this is reasonable (mean 2 km per game)
-
-data <- cbind(injury, sprints, sprint_distance)
-
-# Ampute missing values
-data_ampute <- ampute(data = data[,1:3])
-# try and tinker with the amount of missings - so the variables have different
-# amounts of missingness
-# try and introduce some missingness mechanisms
-
-data_with_missing <- data_ampute$amp
-
-# Put the dataset together
-data_plot <- cbind(afl_data, data_with_missing)
-
-# Clean variable names
-data_plot <- data_plot %>% clean_names() %>% rename(team = playing_for)
-
-```
-
-```{r rename-afl-data}
-data_plot_clean <- data_plot %>% 
-  mutate(team = recode(team, 
-                        "Gold Coast" = "GC",
-                        "Greater Western Sydney" = "GWS",
-                        "Fremantle" = "FRE",
-                        "Collingwood" = "COL",
-                        "Port Adelaide" = "PA",
-                        "Western Bulldogs" = "WB",
-                        "Richmond" = "RIC",
-                        "Brisbane Lions" = "BL",
-                        "Geelong" = "GEE",
-                        "North Melbourne" = "NM",
-                        "Adelaide" = "ADE",
-                        "Melbourne" = "MEL",
-                        "Sydney" = "SYD",
-                        "St Kilda" = "STK",
-                        "Essendon" = "ESS",
-                        "West Coast" = "WC",
-                        "Carlton" = "CAR",
-                        "Hawthorn" = "HAW")) %>% 
-  as_tibble() %>% 
-  rename(sprint_dist = sprint_distance)
-
-```
-
 
 ```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
 
 
 
-aq_vis_miss <- vis_miss(data_plot_clean) + labs(tag = "(A)")
+aq_vis_miss <- vis_miss(simulated_afl_data) + labs(tag = "(A)")
   #theme(text = element_text(size = 14))
 
-aq_fct <- gg_miss_fct(data_plot_clean, team) + 
+aq_fct <- gg_miss_fct(simulated_afl_data, team) + 
   #theme(text = element_text(size = 14)) +
   labs(x = "Team", y = "Variable", tag = "(B)") +
   theme(axis.text.x = element_text(size = 5))
 
-gg_miss_scatter <- ggplot(data_plot_clean,
-       aes(x = sprint_distance,
+gg_miss_scatter <- ggplot(simulated_afl_data,
+       aes(x = sprint_dist,
            y = sprints)) +
   geom_miss_point(size = 2) + 
   theme_minimal() +
@@ -508,7 +354,7 @@ gg_miss_scatter <- ggplot(data_plot_clean,
        colour = "",
        tag = "(C)")
 
-aq_miss_var <- gg_miss_var(data_plot_clean) + labs(tag = "(D)")
+aq_miss_var <- gg_miss_var(simulated_afl_data) + labs(tag = "(D)")
 ```
 
 ```{r patch-2, fig.height = 10}
