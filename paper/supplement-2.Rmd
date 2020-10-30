@@ -125,19 +125,55 @@ loadd(simulated_afl_data)
 loadd(gs_football_final_matches)
 ```
 
-```{r extracted-info}
+```{r}
+gs_football_missings_stated  <- gs_football_final_matches %>% 
+  filter(any_missing_data_statement == 1)
+```
 
-extractions <- tibble( # This is Table 2
-  `Missing data reported` = "XX",
-  `Type of missingness reported (i.e., MCAR, MAR or MNAR)` = "XX",
-  `Missing data explored` = "XX",
-  `Missing observations imputed` = "XX",
-  `Imputation method` = "XX",
-  `Data shared` = "XX"
-)
+
+```{r}
+gs_football_binom_statement <- gs_football_missings_stated %>% 
+  football_binom_confint(any_statement_about_mcar_mnar_mar)  %>% 
+  percent_binom_conf()
+
+gs_football_binom_explored <- gs_football_missings_stated %>% 
+  football_binom_confint(were_missing_data_explored)  %>% 
+  percent_binom_conf()
+
+gs_football_binom_imputation <- gs_football_missings_stated %>% 
+  football_binom_confint(was_imputation_used) %>% 
+  percent_binom_conf()
 
 ```
 
+```{r}
+report_cis <- function(var){
+  ci_mean <- var$mean_pct
+  ci_upper <- var$lower_pct
+  ci_lower <- var$upper_pct
+  
+  glue::glue("{var$mean_pct} \\
+           [{var$lower_pct} - \\
+           {var$upper_pct}]")
+}
+```
+
+```{r extracted-info}
+
+extractions <- tibble( # This is Table 2
+  `Type of missingness reported (i.e., MCAR, MAR or MNAR)` = report_cis(gs_football_binom_statement),
+  `Missing data explored` = report_cis(gs_football_binom_explored),
+  `Missing observations imputed` = report_cis(gs_football_binom_imputation)
+)
+
+# pivot_then
+extractions 
+
+knitr::kable(extractions)
+
+```
+
+There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data
 
 # Summary
 
