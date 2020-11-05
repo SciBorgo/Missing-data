@@ -170,8 +170,8 @@ missing many ways. For example, accidentally skipping a survey question,
 equipment failure, or intentionally not recording values. Before
 analysis, missing data must be handled, with values typically deleted or
 imputed. There is no universal approach to handling missing data. 
-Contextual factors--such as, the study design and objective, and
-pattern of missingness--determine how missings should be handled, on a
+Contextual factors---such as, the study design and objective, and
+pattern of missingness---determine how missings should be handled, on a
 case-by-case basis [@Sainani2015].
 
 For clarity, we describe an example of missingness. An Australian Football data collector 
@@ -245,7 +245,7 @@ Of the articles that did not mention missing data `r n_no_mention_missings` / `r
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
 data are not being reported, it does suggest that this aspect of the
-analysis process receives little consideration--especially in contrast
+analysis process receives little consideration---especially in contrast
 to many of the papers that included (potentially meaningless) tests of
 normality (e.g., Kruskall-Wallis test).
 
@@ -291,7 +291,7 @@ missing observations and other variables, and can bias (underestimate)
 standard errors [@Scheffer2002]. Smaller standard errors typically reduce *p*-values, which may lead to
 incorrect inference. Mean imputation should be avoided. An imputation
 strategy that incorporates information from other related variables in
-the data -- such as linear regression, or K nearest neighbours -- should
+the data---such as linear regression, or K nearest neighbours---should
 be considered.
 
 Practice to avoid: *Not evaluating the effect, or choice, of imputation.* The 
@@ -300,7 +300,7 @@ affect the outcome of a study. It is important that authors
 understand, and document, how imputation affected the goal of the
 analysis (i.e., inference, prediction, or both). For example,
 understanding the implications in using mean imputation, compared to
-K-nearest neighbour imputation--in terms of the effect on parameter estimates
+K-nearest neighbour imputation---in terms of the effect on parameter estimates
 ('significant' versus 'not significant'), and the (un)certainty of the
 coefficients (i.e., less/more). When using imputation, authors need to
 perform a sensitivity analysis (**ref circulation article-Nick, possible reference from dave - https://doi.org/10.1191%2F1740774504cn032oa**).
@@ -426,7 +426,7 @@ and assist researchers when evaluating a study during the peer-review process.
 In the methods section of a study, we recommend the following points are
 addressed:
 
-1.  Describe screening procedures (define or example -- think about screened out?).
+1.  Describe screening procedures **(define or example---think about screened out?)**.
 
 2.  State if any observations were dropped (if any).
 
