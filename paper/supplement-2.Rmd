@@ -10,8 +10,25 @@ bibliography: "supp2.bib"
 
 ```{r setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
+                      cache = FALSE,
                       message = FALSE,
                       fig.align = "center")
+```
+
+
+```{r loadd-targets}
+loadd(gs_football)
+loadd(gs_mismatches)
+loadd(simulated_afl_data)
+loadd(gs_football_final_matches)
+loadd(binom_ci_miss_reported)
+loadd(n_no_mention_missings)
+loadd(binom_ci_data_shared)
+```
+
+```{r check}
+loadd(n_screened)
+print(n_screened)
 ```
 
 
@@ -111,27 +128,22 @@ binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R (ver
 
 # Results
 
-The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). Of the 199
-articles screened, 137 were deemed eligible, representing \~10% of total
-articles published on football related studies in 2019 (Figure 1). The
-proportion of articles that reported missing data was 5.9% \[95% confidence
-interval; X% to X%\] or 8/136. A breakdown of the extracted information
-is provided in Table 2.
+The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). 
 
-```{r loadd-targets}
-loadd(gs_football)
-loadd(gs_mismatches)
-loadd(simulated_afl_data)
-loadd(gs_football_final_matches)
-```
+Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (see Supplement 2, Figure 1). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct`(95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`).
 
-```{r}
+Of the articles that did not mention missing data `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct`(95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`). shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
+
+A breakdown of the extracted information is provided in Table 2.
+
+
+```{r filter-states}
 gs_football_missings_stated  <- gs_football_final_matches %>% 
   filter(any_missing_data_statement == 1)
 ```
 
 
-```{r}
+```{r binom-calcs}
 gs_football_binom_statement <- gs_football_missings_stated %>% 
   football_binom_confint(any_statement_about_mcar_mnar_mar)  %>% 
   percent_binom_conf()
@@ -143,37 +155,28 @@ gs_football_binom_explored <- gs_football_missings_stated %>%
 gs_football_binom_imputation <- gs_football_missings_stated %>% 
   football_binom_confint(was_imputation_used) %>% 
   percent_binom_conf()
-
-```
-
-```{r}
-report_cis <- function(var){
-  ci_mean <- var$mean_pct
-  ci_upper <- var$lower_pct
-  ci_lower <- var$upper_pct
-  
-  glue::glue("{var$mean_pct} \\
-           [{var$lower_pct} - \\
-           {var$upper_pct}]")
-}
 ```
 
 ```{r extracted-info}
 
 extractions <- tibble( # This is Table 2
-  `Type of missingness reported (i.e., MCAR, MAR or MNAR)` = report_cis(gs_football_binom_statement),
-  `Missing data explored` = report_cis(gs_football_binom_explored),
-  `Missing observations imputed` = report_cis(gs_football_binom_imputation)
+  `Type (i.e., MCAR, MAR or MNAR)` = report_ci(gs_football_binom_statement),
+  `Missing data were explored` = report_ci(gs_football_binom_explored),
+  `Missing data were imputed` = report_ci(gs_football_binom_imputation)
 )
 
 # pivot_then
-extractions 
-
-knitr::kable(extractions)
-
+extractions %>% 
+  pivot_longer(cols = everything(),
+               names_to = "Reporting of Missingness",
+               values_to = "Mean and 95% CI") %>% 
+  # turns it into a table
+  knitr::kable() %>% 
+  kable_styling("striped",
+                full_width = TRUE) 
 ```
 
-There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data
+There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data.
 
 # Summary
 

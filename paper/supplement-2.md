@@ -11,6 +11,14 @@ bibliography: "supp2.bib"
 
 
 
+
+
+
+```
+## [1] 136
+```
+
+
 # Systematic search details
 
 The systematic search was performed in accordance with the reporting
@@ -93,17 +101,44 @@ binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R (ver
 
 # Results
 
-The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). Of the 199
-articles screened, 137 were deemed eligible, representing \~10% of total
-articles published on football related studies in 2019 (Figure 1). The
-proportion of articles that reported missing data was 5.9% \[95% confidence
-interval; X% to X%\] or 8/136. A breakdown of the extracted information
-is provided in Table 2.
+The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). 
+
+Of the 199 articles screened, 136 met the inclusion criteria, representing \~10% of the articles found (see Supplement 2, Figure 1). The proportion of articles that reported missing data was 11.0%(95% CI; 6.3% to 17.5%).
+
+Of the articles that did not mention missing data 121 / 136, 7.4%(95% CI; 3.5% to 13.7%). shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
+
+A breakdown of the extracted information is provided in Table 2.
 
 
 
 
 
+
+
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Reporting of Missingness </th>
+   <th style="text-align:left;"> Mean and 95% CI </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Type (i.e., MCAR, MAR or MNAR) </td>
+   <td style="text-align:left;"> 26.7% [7.8% - 55.1%] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Missing data were explored </td>
+   <td style="text-align:left;"> 40.0% [16.3% - 67.7%] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Missing data were imputed </td>
+   <td style="text-align:left;"> 26.7% [7.8% - 55.1%] </td>
+  </tr>
+</tbody>
+</table>
+
+There were 15 studies that provided some statement about missing data.
 
 # Summary
 
