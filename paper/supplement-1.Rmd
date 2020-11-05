@@ -17,7 +17,7 @@ relevant to football.
 Data could be considered MCAR if an Australian Football data collector happened
 to take a lunch break during the third quarter of a match, resulting in data not
 being recorded for this time period. Data is MCAR, because the missings are not
-systematically related to other measured variables. It would also require that this lunch break related issue didn't systematically repeat itself. That is, it is completely random.
+systematically related to other measured variables. For data to be MCAR, this lunch break related issue would need to occur completely at random, not systematically repeated each game.
 
 Data MAR could arise if players' body mass measurements were taken with a
 weighing scale that produced more missing values when placed on soft carpet,
@@ -25,6 +25,6 @@ rather than hard tiles, in the team change room. If surface type was recorded,
 data would be MAR, because the missingness is related the surface, but not
 related to the value of body mass itself [@VanBuuren2012].
 
-Data MNAR is when the missings are related to something unobservable or something unobserved. The previous example of data MAR could be data MNAR if the surface type was not recorded in the dataset - it would then be unobserved. Data MNAR also arises when missing values are related to the values missing. This could take place if, for example, the scales used only go up to 110Kg, and then produce missing values. This is a systematic issue - it happens each time, and means that heavier players are not recorded.
+Data MNAR is when the missings are related to something unobservable or unobserved. The previous example of data MAR could be data MNAR if the surface type was not recorded in the dataset---it would then be unobserved. Data MNAR also arises when missing values are related to the values missing. This could take place if, for example, the scales used only measure up to 110 Kg, and then produce missing values. This is a systematic issue---it happens each time, and means that heavier players are not recorded.
 
 # References
