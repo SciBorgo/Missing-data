@@ -2,15 +2,16 @@
 title: 'Missing Data: Current Practice in Football Research and Recommendations for Improvement'
 bibliography: references.bib
 output:
+  bookdown::pdf_document2:
+    toc: no
   html_document:
     keep_md: yes
     toc: yes
     toc_float: yes
-  pdf_document:
-    toc: yes
   word_document:
     toc: yes
 authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
+csl: sport-medicine.csl
 ---
 
 ```{r setup, echo = FALSE}
@@ -100,9 +101,9 @@ Nicholas J Tierney Monash University, Department of Econometrics and Business St
 
 The code to reproduce the results and plots in the paper can be accessed at the following github repository:
 
-**Word count**
+<!-- **Word count** -->
 
-```{r count-words, message = FALSE, warning = FALSE}
+```{r count-words, message = FALSE, warning = FALSE, eval = FALSE}
 wordcountaddin::text_stats()
 ```
 
@@ -122,7 +123,6 @@ Data does not go missing the same way every time. There are three broad categori
 
 The three categorisations of missingness types provide a useful framework to describe bias arising from missing data. If you strongly suspect data is MCAR, your results are less likely to be biased. If you suspect MAR or MNAR, there is bias in your results. This does not mean data MAR or MNAR make results invalid, instead it identifies potential bias, which can be used to help improve future research design. However, these categorisations do not necessarily guide the user in their subsequent actions in analysis, or describe specifically how values go missing. To identify possible mechanisms for missingness, the data must be explored. It can be challenging to identify the missingness mechanism in data, but it is critical, since missing values could change the outcome of a study. This could mean the work cannot be reproduced, and worse, may lead scientists and practitioners to the wrong outcome.
 
-<<<<<<< Updated upstream
 Missing data are values that should have been observed, but were not. Since the
 values are unobserved, this can mean the population of interest might not be 
 properly sampled, inducing bias into a study's results. Left undetected or poorly handled, 
@@ -183,7 +183,6 @@ Our intention was to survey, at random, 10% of the total articles found (after t
 
 Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (see Supplement 2, Figure 1). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct`(95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`).
 
-<<<<<<< Updated upstream
 Of the articles that did not mention missing data `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct`(95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`). shared their dataset, making
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
@@ -192,14 +191,12 @@ analysis process receives little consideration---especially in contrast
 to many of the papers that included (potentially meaningless) tests of
 normality (e.g., Kruskall-Wallis test).
 
-
 # Discussion
 
 Our survey of `r n_screened` articles published on football related topics found that only one in 13 papers (`r binom_ci_miss_reported$mean_pct`) reported missing data. It is reasonable to assume that this result is representative of current practice in the wider sports science literature. The low proportion of papers reporting missingness could be explained by a lack of awareness and education on missing data [@Sainani2020call], similar to other areas of sciences (refs-education and ecology examples)(2)**references needed**. Below we discuss several practices to avoid in relation to missingness, and provide recommendations for exploring, visualising and reporting missing data.
 
 ## Practices to avoid
 
-<<<<<<< Updated upstream
 Practice to avoid: *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. For example, a study examined the
 relationship between match performance indicators and outcome, in
@@ -297,9 +294,9 @@ Imputing data might feel wrong, as we are 'making up data'. The truth is, we can
 
 Missing values can occur in the both the predictors (the "independent variables") and response variable (the "dependent variables"). Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis.
 
-Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputed the outcome as they provide some sense of what the uncertainty is. For discussion on imputing the response value, see ... [@refs].
+Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the outcome as they describe the uncertainty [@Krausky2018]. Missing values in the outcome can be dealt with specially for Randomised Control Trials, see - <https://doi.org/10.1191%2F1740774504cn032oa>.
 
-Missing values in the outcome can be dealt with specially for Randomised Control Trials, see - <https://doi.org/10.1191%2F1740774504cn032oa>.
+<!-- For discussion on imputing the response value, see ... [@refs]. -->
 
 Much in the way of there is no single 'best' statistical method, there is no perfect, one-size-fits-all approach for imputing data. The goal is to generate similar values that might have been otherwise recorded. Sometimes this means using a neighborhood approach of finding similar values. Or it could mean predicting responses using linear or tree models. Other times the most likely value might have been 0 or the last or first value carried forward. For detailed descriptions, and a summary of these methods, we suggest [@Van_Buuren2012; @Schafer2002; @Cheema2014].
 
@@ -356,7 +353,3 @@ An example writeup of missing data for a results section is provided below:
 Our survey of articles on football related topics showed that current practice of reporting missing data is poor, with only about one in 20 studies reporting missingness. We speculate that this result is representative of practice in the wider sports science literature. The extremely low reporting of missing data could suggest that this aspect of analysis receives little attention. To address this issue and assist researchers, we have provided recommendations for reporting and exploring missing data. Researchers should consider these recommendations, and pay greater attention to missing data and its influence on research results.
 
 # References {.unnumbered}
-
-# Supplement 1
-
-# Supplement 2

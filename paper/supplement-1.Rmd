@@ -1,6 +1,6 @@
 ---
 title: Supplement 1
-output: html_document
+output: pdf_document
 bibliography: supp1.bib
 ---
 
