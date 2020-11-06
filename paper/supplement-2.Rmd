@@ -17,7 +17,6 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r}
 library(kableExtra)
-options(kableExtra.latex.load_packages = FALSE)
 ```
 
 
@@ -36,7 +35,6 @@ loadd(write_prisma_figure)
 loadd(n_screened)
 print(n_screened)
 ```
-
 
 # Systematic search details
 
