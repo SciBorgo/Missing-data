@@ -7,6 +7,14 @@ the_plan <-
   simulated_afl_data = generate_afl_data(),
   gs_football_final_matches = finalise_reviews(gs_mismatches, gs_football),
   
+  n_screened = nrow(gs_football_final_matches),
+  n_shared = sum(gs_football_final_matches$was_data_shared == 1),
+  binom_ci_miss_reported = calc_binom_ci_miss_reported(gs_football_final_matches),
+  n_no_mention_missings = calc_n_no_mention_missings(gs_football_final_matches),
+  binom_ci_data_shared = calc_binom_ci_data_shared(gs_football_final_matches),
+  prisma_figure = create_prisma_figure(),
+  write_prisma_figure = PRISMAstatement:::prisma_pdf(x = prisma_figure, 
+                                                     filename = "paper/figures/prisma-figure.pdf"),
    paper = target(
      command = {
        rmarkdown::render(knitr_in("paper/paper.Rmd"))

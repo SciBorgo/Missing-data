@@ -6,3 +6,7 @@
 *.html
 paper/paper_files/*
 paper/paper_cache/*
+*/*_cache/*
+.md$
+*.tex
+*.log

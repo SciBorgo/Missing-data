@@ -1,19 +1,40 @@
 ---
 title: "Supplement 2"
 output: 
-  bookdown::html_document2:
-    keep_md: true
   bookdown::pdf_document2:
     toc: false
+  bookdown::html_document2:
+    keep_md: true
 bibliography: "supp2.bib"
 ---
 
 ```{r setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
+                      cache = FALSE,
                       message = FALSE,
                       fig.align = "center")
 ```
 
+```{r}
+library(kableExtra)
+```
+
+
+```{r loadd-targets}
+loadd(gs_football)
+loadd(gs_mismatches)
+loadd(simulated_afl_data)
+loadd(gs_football_final_matches)
+loadd(binom_ci_miss_reported)
+loadd(n_no_mention_missings)
+loadd(binom_ci_data_shared)
+loadd(write_prisma_figure)
+```
+
+```{r check}
+loadd(n_screened)
+print(n_screened)
+```
 
 # Systematic search details
 
@@ -49,9 +70,10 @@ table_terms <- tibble(
 
 ```{r search-table-print}
 table_terms %>% 
-  kable(caption = "Key search terms and complete search statements for the databases, SPORTDiscuss, Embase, and Cinahl") %>% 
+  kbl(caption = "Key search terms and complete search statements for the databases, SPORTDiscuss, Embase, and Cinahl",
+      booktabs = TRUE) %>% 
   kable_styling("striped",
-                full_width = TRUE) 
+                full_width = TRUE)
 ```
 
 Included articles were: (a) published in 2019; (b) in English; 
@@ -72,29 +94,7 @@ Figure \@ref(fig:prisma) summarises the search process.
 
 
 ```{r prisma, fig.cap = "Flowchart of the article search and inclusion for the systematic search. The full-text of 137 articles was reviewed.", warning = FALSE, fig.height = 10, fig.width = 8}
-prisma(found = 3863,
-       found_other = F,
-       no_dupes = 1954, 
-       screened = 1373, # (1954 - 1373) 
-       screen_exclusions = 581, 
-       full_text = 199,
-       full_text_exclusions = 62, 
-       qualitative = 137, 
-       quantitative = 0,
-       width = 800, 
-       height = 800,
-       font_size = 16,
-       labels = list(
-full_text_exclusions = "Full-text articles excluded (n = 62),
-with reasons:
-Commentary/letter (n = 4),
-Conference abstract (n = 21),
-Full-text not available (n = 9),
-Infographic (n = 2),
-Not in English (n = 17),
-Qualitative study (n = 9)
-"))
-
+knitr::include_graphics("figures/prisma-figure.pdf")
 ```
 
 
@@ -111,27 +111,19 @@ binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R (ver
 
 # Results
 
-The search returned a total of 3,863 articles (Figure \@ref(fig:prisma)). Of the 199
-articles screened, 137 were deemed eligible, representing \~10% of total
-articles published on football related studies in 2019 (Figure 1). The
-proportion of articles that reported missing data was 5.9% \[95% confidence
-interval; X% to X%\] or 8/136. A breakdown of the extracted information
-is provided in Table 2.
+The search returned a total of 3,863 articles. Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (Figure \@ref(fig:prisma)). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct` (95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`).
 
-```{r loadd-targets}
-loadd(gs_football)
-loadd(gs_mismatches)
-loadd(simulated_afl_data)
-loadd(gs_football_final_matches)
-```
+Of the articles that did not mention missing data `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct` (95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`). shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
 
-```{r}
+A breakdown of the extracted information is provided in Table \@ref(tab:extracted-info).
+
+
+```{r filter-states}
 gs_football_missings_stated  <- gs_football_final_matches %>% 
   filter(any_missing_data_statement == 1)
 ```
 
-
-```{r}
+```{r binom-calcs}
 gs_football_binom_statement <- gs_football_missings_stated %>% 
   football_binom_confint(any_statement_about_mcar_mnar_mar)  %>% 
   percent_binom_conf()
@@ -143,42 +135,34 @@ gs_football_binom_explored <- gs_football_missings_stated %>%
 gs_football_binom_imputation <- gs_football_missings_stated %>% 
   football_binom_confint(was_imputation_used) %>% 
   percent_binom_conf()
-
-```
-
-```{r}
-report_cis <- function(var){
-  ci_mean <- var$mean_pct
-  ci_upper <- var$lower_pct
-  ci_lower <- var$upper_pct
-  
-  glue::glue("{var$mean_pct} \\
-           [{var$lower_pct} - \\
-           {var$upper_pct}]")
-}
 ```
 
 ```{r extracted-info}
 
 extractions <- tibble( # This is Table 2
-  `Type of missingness reported (i.e., MCAR, MAR or MNAR)` = report_cis(gs_football_binom_statement),
-  `Missing data explored` = report_cis(gs_football_binom_explored),
-  `Missing observations imputed` = report_cis(gs_football_binom_imputation)
+  `Type (i.e., MCAR, MAR or MNAR)` = report_ci(gs_football_binom_statement),
+  `Missing data were explored` = report_ci(gs_football_binom_explored),
+  `Missing data were imputed` = report_ci(gs_football_binom_imputation)
 )
 
 # pivot_then
-extractions 
-
-knitr::kable(extractions)
-
+extractions %>% 
+  pivot_longer(cols = everything(),
+               names_to = "Reporting of Missingness",
+               values_to = "Mean and 95% CI") %>% 
+  # turns it into a table
+  kbl(booktabs = TRUE,
+      caption = "Reporting of missingness, many papers did not explore missings in a meaningful way, and there was the same number of papers who imputed values as reported MCAR, MAR, or MNAR.") %>% 
+  kable_styling("striped",
+                full_width = TRUE)
 ```
 
-There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data
+There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data.
 
 # Summary
 
-A survey of 137 articles published in 2019 on football related topics
-showed that only one in 20 reported missing data, suggesting
+A survey of `r n_screened` articles published in 2019 on football related topics
+showed that only one in nine reported missing data, suggesting
 that missing data are rarely considered by sport science researchers.
 
 # References {-}
