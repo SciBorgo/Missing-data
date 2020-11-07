@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-Missing data in sports science: Current practice in football research and recommendations for reporting missingness
+Missing data: Current practice in football research and recommendations for reporting missingness
 ===================================================================================================================
 
 <!-- badges: start -->
