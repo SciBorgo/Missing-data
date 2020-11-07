@@ -10,7 +10,7 @@ output:
     toc_float: yes
   word_document:
     toc: yes
-authors: David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)
+authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
 csl: sport-medicine.csl
 ---
 
@@ -310,7 +310,7 @@ The current state of reporting missing data in football research has room for im
 
 In the methods section of a study, we recommend the following points are addressed:
 
-1.  Describe screening procedures **(define or example---think about screened out?)**.
+1.  Describe screening procedures (define or example).
 
 2.  State if any observations were dropped (if any).
 
@@ -326,7 +326,7 @@ In the results section, we recommend addressing the following points:
 
 > Examples: "*There were no missing values*" or "*25 of 280 values were missing (8.92%)*"
 
-2.  State if missing data was explored. If there is missingness, provide a summary graphic (see figure XX)
+2.  State if missing data was explored. If there is missingness, provide a summary graphic (see (Figure \@ref(fig:missing-overview)))
 
 > Examples: "*Missing data was explored, revealing a relationship between missingness and age*", "*Missing data was not explored, as the reasons and impacts were known*"
 
@@ -342,7 +342,7 @@ In the results section, we recommend addressing the following points:
 
 6.  Explore how imputation or lack of imputation impacts results.
 
-> Missing values of ZZ were imputed with a linear regression using terms XX. Missing values were imputed with the mean values
+> Missing values of ZZ were imputed with a linear regression using terms XX. Missing values were imputed with the mean values.
 
 An example writeup of missing data for a results section is provided below:
 
@@ -350,6 +350,6 @@ An example writeup of missing data for a results section is provided below:
 
 # Conclusion
 
-Our survey of articles on football related topics showed that current practice of reporting missing data is poor, with only about one in 20 studies reporting missingness. We speculate that this result is representative of practice in the wider sports science literature. The extremely low reporting of missing data could suggest that this aspect of analysis receives little attention. To address this issue and assist researchers, we have provided recommendations for reporting and exploring missing data. Researchers should consider these recommendations, and pay greater attention to missing data and its influence on research results.
+Our survey of articles on football related topics showed that current practice of reporting missing data is poor, with only one in nine studies reporting missingness. We speculate that this result is representative of practice in the wider sports science literature. The extremely low reporting of missing data could suggest that this aspect of analysis receives little attention. To address this issue and assist researchers, we have provided recommendations for reporting and exploring missing data. Researchers should consider these recommendations, and pay greater attention to missing data and its influence on research results.
 
 # References {.unnumbered}
