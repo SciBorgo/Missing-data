@@ -7,7 +7,7 @@ Missing data: Current practice in football research and recommendations for repo
 <!-- badges: start -->
 <!-- badges: end -->
 
-*David N Borg(1,2), Robert Nguyen(2), Nicholas J Tierney(4,5)*
+*David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)*
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
