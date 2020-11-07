@@ -79,8 +79,7 @@ table_terms %>%
 Included articles were: (a) published in 2019; (b) in English; 
 (c) had an accessible full-text; and (d) included quantitative data. 
 Studies containing original data, including case studies (with time-series data) 
-and n=1 trials, were considered.
-The search results were imported into EndNote (version 9.3.2).
+and n=1 trials, were considered. The search results were imported into EndNote (version 9.3.2).
 Duplicates were removed, and titles and abstracts were screened against
 the inclusion criteria. Of the articles identified for full-text
 screening, 10% were sampled, at random, for survey. Because \~30% of the
@@ -97,6 +96,11 @@ Figure \@ref(fig:prisma) summarises the search process.
 knitr::include_graphics("figures/prisma-figure.pdf")
 ```
 
+```{r agreement}
+md_reported <- agree_var(gs_football, any_missing_data_statement) %>% 
+  percent(scale = 1,
+          accuracy = 0.1)
+```
 
 Articles were surveyed to determine: (a) whether a missing data
 statement was included, or if missing data were acknowledged in a
@@ -104,18 +108,16 @@ figure/table; where data were missing, whether (b) data were considered
 MCAR, MAR or MNAR; (c) imputation was used; (d) the method used for imputation; 
 and (e) whether articles that did not include a missing data
 statement shared their data. Two authors independently extracted the
-data. Agreement was X%; discrepancies were resolved by NJT. Findings are
+data. Agreement was `r md_reported`; discrepancies were resolved by DNB. Findings are
 reported as the proportion and 95% confidence interval (CI). Confidence
 intervals were calculated using the Clopper-Pearson method for the
-binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R (version 4.0.2) [@rcore].
+binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R [@rcore].
 
 # Results
 
-The search returned a total of 3,863 articles. Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (Figure \@ref(fig:prisma)). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct` (95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`).
+The search returned a total of 3,863 articles. Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (Figure \@ref(fig:prisma)). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct` (95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`). Of the articles that did not mention missing data, `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct` (95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`) shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
 
-Of the articles that did not mention missing data `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct` (95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`). shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
-
-A breakdown of the extracted information is provided in Table \@ref(tab:extracted-info).
+There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data. A breakdown of the extracted information from these studies is provided in Table \@ref(tab:extracted-info).
 
 
 ```{r filter-states}
@@ -156,8 +158,6 @@ extractions %>%
   kable_styling("striped",
                 full_width = TRUE)
 ```
-
-There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data.
 
 # Summary
 
