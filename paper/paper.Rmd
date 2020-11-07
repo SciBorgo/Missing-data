@@ -1,17 +1,20 @@
 ---
-title: 'Missing Data: Current Practice in Football Research and Recommendations for Improvement'
+title: 'Missing Data: Current Practice in Football Research and Recommendations for
+  Improvement'
 bibliography: references.bib
+csl: sport-medicine.csl
 output:
   html_document:
     keep_md: yes
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
   bookdown::pdf_document2:
     toc: no
   word_document:
     toc: yes
 authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
-csl: sport-medicine.csl
 ---
 
 ```{r setup, echo = FALSE}
