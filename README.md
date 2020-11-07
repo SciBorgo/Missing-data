@@ -7,18 +7,20 @@ Missing data in sports science: Current practice in football research and recomm
 <!-- badges: start -->
 <!-- badges: end -->
 
-*David N Borg(1), Robert Nguyen(2), Nicholas J Tierney(3,4)*
+*David N Borg(1,2), Robert Nguyen(2), Nicholas J Tierney(4,5)*
 
 1: Griffith University, Menzies Health Institute Queensland, The Hopkins
 Centre, Brisbane, Australia.
 
-2: University of New South Wales, Department of Statistics, School of
+2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
+
+3: University of New South Wales, Department of Statistics, School of
 Mathematics and Statistics, Sydney, Australia
 
-3: Monash University, Department of Econometrics and Business
+4: Monash University, Department of Econometrics and Business
 Statistics, Melbourne, Australia
 
-4: Australian Centre of Excellence for Mathematical and Statistical
+5: Australian Centre of Excellence for Mathematical and Statistical
 Frontiers (ACEMS), Melbourne, Australia
 
 Abstract
@@ -32,10 +34,10 @@ the proportion of studies in football research that included a missing
 data statement, highlight several improvable practices in relation to
 missing data, and provide recommendations for exploring, visualising and
 reporting missingness. Football related articles, published in 2019 were
-studied. A survey of 137 articles, sampled at random, was conducted to
+studied. A survey of 136 articles, sampled at random, was conducted to
 determine whether a missing data was included. As expected, the
 proportion of studies in football research including a missing data
-statement was low, at only X%; which suggests that this aspect of data
+statement was low, at only 11%; which suggests that this aspect of data
 analysis is seldom considered by researchers. We suspect that this
 result is consistent with the wider sports science literature. We
 recommend researchers describe the number and percentage of missing
