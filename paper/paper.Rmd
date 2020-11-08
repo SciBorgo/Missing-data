@@ -35,6 +35,8 @@ library(truncnorm)
 library(janitor)
 library(drake)
 library(scales)
+library(tidyr)
+library(irr)
 ```
 
 ```{r load-targets}
@@ -92,7 +94,7 @@ Affiliations:
 
 5: Australian Centre of Excellence for Mathematical and Statistical Frontiers (ACEMS), Melbourne, Australia.
 
-**Acknowledgement/conflict of interest**
+**Conflict of interest**
 
 The authors declare no conflicts of interest.
 
@@ -112,7 +114,7 @@ wordcountaddin::text_stats()
 
 # Abstract {.unnumbered}
 
-Missing data are often unavoidable. The reason values go missing, along with decisions made of how missing data are handled (deleted or imputed), can have a profound effect on the validity, accuracy and usability of a study's results. In this article, we aimed to: estimate the proportion of studies in football research that included a missing data statement, highlight several practices to avoid in relation to missing data, and provide recommendations for exploring, visualising and reporting missingness. Football related articles, published in 2019 were studied. A survey of `r n_screened` articles, sampled at random, was conducted to determine whether a missing data statement was included. As expected, the proportion of studies in football research that included a missing data statement was low, at only `r binom_ci_miss_reported$mean_pct`(95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`); suggesting that missingness is seldom considered by researchers. It is suspected that this result is consistent with practice in the wider sports science literature. We recommend researchers describe the number and percentage of missing values, including when there are no missing values. Exploratory analysis should be conducted to explore missing values, and visualisations describing missingness overall should be provided in the paper, or at least supplementary materials. Missing values should almost always be imputed, and imputation methods should be explored to ensure they are appropriately representative.
+Missing data are often unavoidable. The reason values go missing, along with decisions made of how missing data are handled (deleted or imputed), can have a profound effect on the validity, accuracy and usability of a study's results. In this article, we aimed to: estimate the proportion of studies in football research that included a missing data statement, highlight several practices to avoid in relation to missing data, and provide recommendations for exploring, visualising and reporting missingness. Football related articles, published in 2019 were studied. A survey of `r n_screened` articles, sampled at random, was conducted to determine whether a missing data statement was included. As expected, the proportion of studies in football research that included a missing data statement was low, at only `r binom_ci_miss_reported$mean_pct` (95% CI: `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`); suggesting that missingness is seldom considered by researchers. It is suspected that this result is consistent with practice in the wider sports science literature. We recommend researchers describe the number and percentage of missing values, including when there are no missing values. Exploratory analysis should be conducted to explore missing values, and visualisations describing missingness overall should be provided in the paper, or at least supplementary materials. Missing values should almost always be imputed, and imputation methods should be explored to ensure they are appropriately representative.
 
 **Keywords:** Exercise, imputation, missingness, missings, naniar, sport
 
@@ -174,6 +176,27 @@ It is imperative that missing data, or lack thereof, are reported [@Schafer2002]
 
 To estimate the proportion of articles that report missing data in football research, we conducted a systematic search [@Moher2009]. Articles on football topics (or involving footballers) published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process, and further details of the search can also be found in Supplement 2.
 
+```{r agree}
+agree_var <- function(data, var){
+  statement_agree <- pivot_var(data, {{ var }}) %>% 
+    select(reviewer_1, reviewer_2) %>% 
+    irr::agree() 
+  
+  statement_agree$value
+}
+```
+
+```{r pivot}
+pivot_var <- function(data, var){
+  data %>% 
+    select(title,
+           reviewer,
+           {{ var }}) %>% 
+    pivot_wider(names_from = reviewer,
+                values_from = {{ var }})
+}
+```
+
 ```{r agreement}
 md_reported <- agree_var(gs_football, any_missing_data_statement) %>% 
   percent(scale = 1,
@@ -194,7 +217,7 @@ normality (e.g., Kruskall-Wallis test).
 
 # Discussion
 
-Our survey of `r n_screened` articles published on football related topics found that only one in 13 papers (`r binom_ci_miss_reported$mean_pct`) reported missing data. It is reasonable to assume that this result is representative of current practice in the wider sports science literature. The low proportion of papers reporting missingness could be explained by a lack of awareness and education [@Sainani2020call], similar to other science areas [@Peugh2004; @Jelivcic2009]. Below we discuss several practices to avoid in relation to missingness, and provide recommendations for exploring, visualising and reporting missing data.
+Our survey of `r n_screened` articles published on football related topics found that only one in nine papers (`r binom_ci_miss_reported$mean_pct`) reported missing data. It is reasonable to assume that this result is representative of current practice in the wider sports science literature. The low proportion of papers reporting missingness could be explained by a lack of awareness and education [@Sainani2020call], similar to other science areas [@Peugh2004; @Jelivcic2009]. Below we discuss several practices to avoid in relation to missingness, and provide recommendations for exploring, visualising and reporting missing data.
 
 ## Practices to avoid
 
@@ -253,9 +276,9 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 
 We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017].
 
-(Figure \@ref(fig:missing-overview)) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
+Figure \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
 
-```{r missing-overview, fig.cap = "Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
+```{r missing-overview, fig.cap = "Figure 1. Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
 
 
 
@@ -287,19 +310,19 @@ aq_miss_var <- gg_miss_var(simulated_afl_data) + labs(tag = "(D)")
         legend.position = "bottom")
 ```
 
-To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in (@Tierney2018).
+To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
 
 ## Understanding imputation
 
 Imputing data might feel wrong, as we are 'making up data'. The truth is, we can (generally) never know what the missing values were. The goal of imputing data is to make the best possible inference from the data. We recommend data is imputed, with a few caveats. Consider removing variables with a high proportion of missing data (e.g., variables with the majority or more missing than not). We deliberately do not suggest a 'rule of thumb' for the amount of missingness that should be imputed, and caution against looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (e.g., the mean or median), and suggest using imputation methods such as: linear regression, k-nearest neighbours, or expectation maximisation.
 
-Missing values can occur in the both the predictors (the "independent variables") and the response variable (the "dependent variables"). Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the outcome as they describe the uncertainty (see Chapter 15 in [@McElreath2020]). Missing values in the outcome can be dealt with specially for Randomised Control Trials [@Jakobsen2017; @Wood2004].
+Missing values can occur in the both the predictors (the "independent variables") and the response variable (the "dependent variables"). Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the outcome as they describe the uncertainty---see Chapter 15 in [@McElreath2020]. Missing values in the outcome can be dealt with specially for Randomised Control Trials [@Jakobsen2017; @Wood2004].
 
 Much in the way of there is no single 'best' statistical method, there is no perfect, one-size-fits-all approach for imputing data. The goal is to generate similar values that might have been otherwise recorded. Sometimes this means using a neighborhood approach of finding similar values. Or it could mean predicting responses using linear or tree models. Other times the most likely value might have been 0 or the last or first value carried forward. For detailed descriptions, and a summary of these methods, we suggest [@Van_Buuren2012; @Schafer2002; @Cheema2014].
 
-The imputation methods discussed so far impute a single value for each missing value, and have the eponymous name, "single imputation". Multiple imputation is a method where multiple values are imputed for each missing value, creating "m" datasets, which are then specially combined during analysis. Multiple imputation is generally seen as the best method to get the most reasonable inference from the data, as it reflects the uncertainty in the missing values. For more information on using multiple imputation, we recommend Stefan van Buuren's book, @Van_Buuren2012.
+The imputation methods discussed so far impute a single value for each missing value, and have the eponymous name, "single imputation". Multiple imputation is a method where multiple values are imputed for each missing value, creating "m" datasets, which are then specially combined during analysis. Multiple imputation is generally seen as the best method to get the most reasonable inference from the data, as it reflects the uncertainty in the missing values. For more information on using multiple imputation, we recommend Stefan van Buuren's book [@Van_Buuren2012].
 
-Irrespective of the imputation method used, it is essential to compare results of different missing data handling to understand how they may bias the results. For example, comparing analysis results from applying listwise deletion, compared to mean imputation, compared to linear regression imputation. This can reveal bias occurring in imputation methods. An example of this approach is described in the Case Study in @Tierney2018.
+Irrespective of the imputation method used, it is essential to compare results of different missing data handling to understand how they may bias the results. For example, comparing analysis results from applying listwise deletion, compared to mean imputation, compared to linear regression imputation. This can reveal bias occurring in imputation methods. An example of this approach is described in the Case Study in [@Tierney2018].
 
 # Recommendations
 

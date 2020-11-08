@@ -96,19 +96,13 @@ Figure \@ref(fig:prisma) summarises the search process.
 knitr::include_graphics("figures/prisma-figure.pdf")
 ```
 
-```{r agreement}
-md_reported <- agree_var(gs_football, any_missing_data_statement) %>% 
-  percent(scale = 1,
-          accuracy = 0.1)
-```
-
 Articles were surveyed to determine: (a) whether a missing data
 statement was included, or if missing data were acknowledged in a
 figure/table; where data were missing, whether (b) data were considered
 MCAR, MAR or MNAR; (c) imputation was used; (d) the method used for imputation; 
 and (e) whether articles that did not include a missing data
 statement shared their data. Two authors independently extracted the
-data. Agreement was `r md_reported`; discrepancies were resolved by DNB. Findings are
+data. Discrepancies were resolved by DNB. Findings are
 reported as the proportion and 95% confidence interval (CI). Confidence
 intervals were calculated using the Clopper-Pearson method for the
 binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R [@rcore].
