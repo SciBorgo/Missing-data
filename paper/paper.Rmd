@@ -235,6 +235,8 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 
 ## Visualising Missing Values
 
+We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]). The panels in \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in a simulated injury dataset. To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
+
 ```{r}
 
 aq_vis_miss <- vis_miss(simulated_afl_data) + labs(tag = "(A)")
@@ -258,8 +260,6 @@ gg_miss_scatter <- ggplot(simulated_afl_data,
 
 aq_miss_var <- gg_miss_var(simulated_afl_data) + labs(tag = "(D)")
 ```
-
-We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]. The panels in \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in an simulated injury dataset. To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
 
 
 ```{r missing-overview,  fig.cap = "Overviews of missing values in simulated injury data from Australian Football matches played in August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Panel A shows the location of missing (black) and complete (grey) cases, and the percentage of missing data in each variable and overall. Panel B shows the percentage of missings for each team, in each variable. Panel C shows the relationship between two variables in the dataset, including missing values (red) which are shifted, so that they can be visualised on the same axes as the regular values. Panel D shows the number of missing values in each variable", fig.height = 7.75}
