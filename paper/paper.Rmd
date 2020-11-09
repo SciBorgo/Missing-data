@@ -1,6 +1,7 @@
 ---
 title: 'Missing Data: Current Practice in Football Research and Recommendations for
   Improvement'
+
 bibliography: references.bib
 csl: sport-medicine.csl
 output:
@@ -21,7 +22,8 @@ authors: David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
 knitr::opts_chunk$set(out.width = "75%",
                       dev = "png",
                       fig.align = "center",
-                      echo = FALSE)
+                      echo = FALSE,
+                      dpi = 600)
 ```
 
 ```{r libraries, message = FALSE}
@@ -62,33 +64,47 @@ gs_mismatch_pivot <- gs_mismatches %>%
               values_from = decision)
 ```
 
-**Authors**
 
+\begin{center}
 David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
-
+\end{center}
+\vspace{5mm}
 **Affiliations**
 
-1: Griffith University, Menzies Health Institute Queensland, The Hopkins Centre, Brisbane, Australia.
-2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.
-3: University of New South Wales, Department of Statistics, School of Mathematics and Statistics, Sydney, Australia.
-4: Monash University, Department of Econometrics and Business Statistics, Melbourne, Australia.
+1: Griffith University, Menzies Health Institute Queensland, The Hopkins Centre, Brisbane, Australia.\hfill \break
+2: Griffith University, School of Allied Health Sciences, Brisbane, Australia.\hfill \break
+3: University of New South Wales, Department of Statistics, School of Mathematics and Statistics, Sydney, Australia.\hfill \break
+4: Monash University, Department of Econometrics and Business Statistics, Melbourne, Australia.\hfill \break
 5: Australian Centre of Excellence for Mathematical and Statistical Frontiers (ACEMS), Melbourne, Australia.
 
-**Twitter handles** 
+\vspace{5mm}
+**Citation:** Borg DN, Nguyen R, and Tierney NJ. (2020). Missing Data: Current Practice in Football Research and Recommendations for Improvement.
 
-elborgo9, roberto_boberto, nj_tierney
+\vspace{5mm}
+**Twitter:** elborgo9, roberto_boberto, nj_tierney
 
-**Conflict of interest**
+\vspace{5mm}
+**Corresponding Author**
+
+Nicholas J Tierney\hfill \break
+Monash University, Department of Econometrics and Business Statistics, Melbourne, Australia.\hfill \break
+Email: [nicholas.tierney\@monash.edu](mailto:nicholas.tierney@monash.edu){.email}
+
+\vspace{5mm}
+**Conflict of Interest**
 
 The authors declare no conflicts of interest.
 
-**Corresponding author**
+\vspace{5mm}
+**Funding**
 
-Nicholas J Tierney Monash University, Department of Econometrics and Business Statistics, Melbourne, Australia. Address: Email: [nicholas.tierney\@monash.edu](mailto:nicholas.tierney@monash.edu){.email}
+No funding was awarded for this project.
 
-**Data availability**
+\vspace{5mm}
+**Data Availability**
 
-The code to reproduce the results and plots in the paper can be accessed at the following GitHub repository: [https://github.com/SciBorgo/Missing-data.git](https://github.com/SciBorgo/Missing-data.git).
+The code to reproduce the results and plots in the paper can be accessed at the GitHub repository: [https://github.com/SciBorgo/Missing-data.git](https://github.com/SciBorgo/Missing-data.git).
+
 
 
 <!-- **Word count** -->
@@ -115,7 +131,7 @@ The three categorisations of missingness types provide a useful framework to des
 
 It is imperative that missing data, or lack thereof, are reported [@Schafer2002]. While there has been significant interest in modelling missing data [@Tierney2015; @Barnett2017], the exploration and reporting of missings have received less attention [@Schafer2002]. This article aimed to: (1) estimate the proportion of articles that report missing data in football research; (2) highlight several practices that should be avoided; and (3) provide recommendations for exploring and reporting missingness.
 
-# Methods and materials
+# Methods and Materials
 
 To estimate the proportion of articles that report missing data in football research, we conducted a systematic search [@Moher2009]. Articles on football topics, or involving footballers, published in 2019 were studied. Three major sports medicine databases (SPORTDiscus, Embase and Cinahl) were searched, using key terms and search limits (Supplement 2). Included articles were: (a) written in English; (b) had an accessible full-text; and (c) included quantitative data. The PRISMA figure in Supplement 2 summarises the search process, and further details of the search can also be found in Supplement 2.
 
@@ -162,7 +178,7 @@ normality (e.g., Kruskall-Wallis test).
 
 Our survey of `r n_screened` articles published on football related topics found that only one in nine papers (`r binom_ci_miss_reported$mean_pct`) reported missing data. It is reasonable to assume that this result is representative of current practice in the wider sports science literature. The low proportion of papers reporting missingness could be explained by a lack of awareness and education [@Sainani2020call], similar to other sciences [@Peugh2004; @Jelivcic2009]. Below we discuss several practices to avoid in relation to missingness, and provide recommendations for exploring, visualising and reporting missing data.
 
-## Practices to avoid
+## Practices to Avoid
 
 *Unreported missing values.* While not always the case, even if
 not reported, missing data can be obvious. For example, a study examined the
@@ -206,21 +222,20 @@ K-nearest neighbour imputation---in terms of the effect on parameter estimates
 coefficients (i.e., less/more). When using imputation, authors need to
 perform a sensitivity analysis [@Wood2004].
 
-## Common causes of missing values
+## Common Causes of Missing Values
 
 Broadly, there are two types of missing values in data: implicit and explicit missings. Explicit values are missing, but recorded; whereas information in the data. For example, in \@ref(fig:implicit-missings), player Koenen has missing values for quarters two and four. Sometimes values like these can be logically imputed, as it might be known that these values are recorded as 0 in this format, rather than NA. Other places missing data can arise include: through joins when merging data without corresponding values, surveys, an inability to collect a biological sample (e.g., venous blood), equipment malfunction, failure, or not being worn.
+
+\vspace{5mm}
 
 ```{r implicit-missings, fig.cap = "Two tables demonstrating explicit and implicit missing. The first table shows the number of goals scored for a player in a given quarter of an AFL match with the first column showing the player name, the second the quarter they played, and the third the goals they scored. Note that Player, 'Koenen' has no entries for Quarter 2 and 4. The second table shows the same information from the first table pivoted, with each row being a player and the number of goals they scored in each quarter, with each quarter being a column. We notice that in the second form of the data, we can clearly see that Koenen has missing values. These types of missing values have a name, implicit missing values. The first table has implicit missing values, meaning they are implied, and the second table has those implicit missing values explicitly expressed."}
 
 knitr::include_graphics(here::here("paper/figures/tables.png"))
 ```
 
-## Visualising missing values
+## Visualising Missing Values
 
-We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]. The panels in \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in an simulated injury dataset.
-
-```{r missing-overview, fig.cap = "**Overviews of missing values in simulated injury data in Australian Football matches for August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Researchers might be interested in investigating the relationship between number of sprints and total sprint distance with incidence of injury. Panel A shows... Panel B shows ... Panel C shows ... Panel D shows ...", fig.height = 10}
-
+```{r}
 
 aq_vis_miss <- vis_miss(simulated_afl_data) + labs(tag = "(A)")
   #theme(text = element_text(size = 14))
@@ -233,7 +248,7 @@ aq_fct <- gg_miss_fct(simulated_afl_data, team) +
 gg_miss_scatter <- ggplot(simulated_afl_data,
        aes(x = sprint_dist,
            y = sprints)) +
-  geom_miss_point(size = 2) + 
+  geom_miss_point(size = 2, alpha = 0.15) + 
   theme_minimal() +
   #theme(text = element_text(size = 14)) +
   labs(x = "Total sprint distance (m)", 
@@ -244,15 +259,18 @@ gg_miss_scatter <- ggplot(simulated_afl_data,
 aq_miss_var <- gg_miss_var(simulated_afl_data) + labs(tag = "(D)")
 ```
 
-```{r patch-2, fig.height = 10}
-(aq_vis_miss + aq_fct) / (gg_miss_scatter + aq_miss_var) & 
+We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]. The panels in \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in an simulated injury dataset. To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
+
+
+```{r missing-overview,  fig.cap = "Overviews of missing values in simulated injury data from Australian Football matches played in August, 2020. The dataset contains observed player id, team, and match venue data, in addition to simulated data on injury incidence, and number of sprints per match, and total sprint distance per match. Panel A shows the location of missing (black) and complete (grey) cases, and the percentage of missing data in each variable and overall. Panel B shows the percentage of missings for each team, in each variable. Panel C shows the relationship between two variables in the dataset, including missing values (red) which are shifted, so that they can be visualised on the same axes as the regular values. Panel D shows the number of missing values in each variable", fig.height = 7.75}
+
+(aq_vis_miss + aq_fct)/(gg_miss_scatter + aq_miss_var) & 
   theme(aspect.ratio = 1,
         legend.position = "bottom")
 ```
 
-To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
 
-## Understanding imputation
+## Understanding Imputation
 
 Imputing data might feel wrong, as we are 'making up data'. The truth is, we can (generally) never know what the missing values were. The goal of imputing data is to make the best possible inference from the data. We recommend data is imputed, with a few caveats. Consider removing variables with a high proportion of missing data (e.g., variables with the majority or more missing than not). We deliberately do not suggest a 'rule of thumb' for the amount of missingness that should be imputed, and caution against looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (e.g., the mean or median), and suggest using imputation methods such as linear regression, k-nearest neighbours, or expectation maximisation.
 
@@ -313,3 +331,4 @@ An example writeup of missing data for a results section is provided below:
 Our survey of articles on football related topics showed that current practice of reporting missing data is poor, with only one in nine studies reporting missingness. We speculate that this result is representative of practice in the wider sports science literature. The extremely low reporting of missing data could suggest that this aspect of analysis receives little attention. To address this issue and assist researchers, we have provided recommendations for reporting and exploring missing data. Researchers should consider these recommendations, and pay greater attention to missing data and its influence on research results.
 
 # References {.unnumbered}
+
