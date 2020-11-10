@@ -67,6 +67,9 @@ gs_mismatch_pivot <- gs_mismatches %>%
 
 \begin{center}
 David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
+\vspace{5mm}
+
+10 November 2020
 \end{center}
 \vspace{5mm}
 **Affiliations**
