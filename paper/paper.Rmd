@@ -69,7 +69,10 @@ gs_mismatch_pivot <- gs_mismatches %>%
 David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
 \vspace{5mm}
 
-10 November 2020
+17 November 2020
+\vspace{5mm}
+
+Preprint (not peer reviewed)
 \end{center}
 \vspace{5mm}
 **Affiliations**
@@ -81,7 +84,7 @@ David N Borg(1,2), Robert Nguyen(3), Nicholas J Tierney(4,5)
 5: Australian Centre of Excellence for Mathematical and Statistical Frontiers (ACEMS), Melbourne, Australia.
 
 \vspace{5mm}
-**Citation:** Borg DN, Nguyen R, and Tierney NJ. (2020). Missing Data: Current Practice in Football Research and Recommendations for Improvement.
+**Citation:** Borg DN, Nguyen R, and Tierney NJ. (2020). Missing Data: Current Practice in Football Research and Recommendations for Improvement. *SportRxiv*. https://doi.org/xxxx
 
 \vspace{5mm}
 **Twitter:** elborgo9, roberto_boberto, nj_tierney
@@ -94,14 +97,9 @@ Monash University, Department of Econometrics and Business Statistics, Melbourne
 Email: [nicholas.tierney\@monash.edu](mailto:nicholas.tierney@monash.edu){.email}
 
 \vspace{5mm}
-**Conflict of Interest**
+**Conflict of Interest and Funding**
 
-The authors declare no conflicts of interest.
-
-\vspace{5mm}
-**Funding**
-
-No funding was awarded for this project.
+The authors declare no conflicts of interest. No funding was awarded for this project.
 
 \vspace{5mm}
 **Data Availability**

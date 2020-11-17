@@ -4,7 +4,7 @@ output: pdf_document
 bibliography: supp1.bib
 ---
 
-# Missing data examples relevant to football
+# Missing Data Examples Relevant to Australian Football
 
 One way to describe patterns of missing values is through Rubin's [@Rubin1976]
 three missing data mechanisms: Missing Completely at Random (MCAR), Missing at
