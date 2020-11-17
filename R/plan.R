@@ -12,9 +12,9 @@ the_plan <-
   binom_ci_miss_reported = calc_binom_ci_miss_reported(gs_football_final_matches),
   n_no_mention_missings = calc_n_no_mention_missings(gs_football_final_matches),
   binom_ci_data_shared = calc_binom_ci_data_shared(gs_football_final_matches),
-  prisma_figure = create_prisma_figure(),
-  write_prisma_figure = PRISMAstatement:::prisma_pdf(x = prisma_figure, 
-                                                     filename = "paper/figures/prisma-figure.pdf"),
+  #prisma_figure = create_prisma_figure(),
+  #write_prisma_figure = PRISMAstatement:::prisma_pdf(x = prisma_figure, 
+  #                                                   filename = "paper/figures/prisma-figure.pdf"),
    paper = target(
      command = {
        rmarkdown::render(knitr_in("paper/paper.Rmd"))

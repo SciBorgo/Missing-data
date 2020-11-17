@@ -12,7 +12,7 @@ Random (MAR), and Missing Not at Random (MNAR). These mechanisms help describe
 whether the missingness occurs by chance (MCAR), due to some observed variable
 (MAR) or an unobserved variable (MNAR), with MCAR being the least harmful, and
 MAR and MNAR biased. Here, we provide an example of data MAR, MCAR and MNAR,
-relevant to football.
+relevant to Australian Football.
 
 Data could be considered MCAR if an Australian Football data collector happened
 to take a lunch break during the third quarter of a match, resulting in data not

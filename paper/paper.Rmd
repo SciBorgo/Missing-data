@@ -122,7 +122,7 @@ Missing data are often unavoidable. The reason values go missing, along with dec
 
 # Introduction {#intro}
 
-Missing data are values that should have been observed, but were not. Since the values are unobserved, this can mean the population of interest might not be properly sampled, inducing bias into a study's results. Left undetected or poorly handled, missing data can undermine the validity and accuracy of research results [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go missing many ways. For example, accidentally skipping a survey question, equipment failure, or intentionally not recording values. Before analysis, missing data must be handled, with values typically deleted or imputed. There is no universal approach to handling missing data. Contextual factors---such as, the study design and objective, and pattern of missingness---determine how missings should be handled, on a case-by-case basis [@Sainani2015].
+Missing data are values that should have been observed, but were not. Since the values are unobserved, this can mean the population of interest might not be properly sampled, inducing bias into a study's results. Left undetected or poorly handled, missing data can undermine the validity and accuracy of research results [@Sainani2015; @Nakagawa2008; @Sterne2009]. Data can go missing in many ways. For example, accidentally skipping a survey question, equipment failure, or intentionally not recording values. Before analysis, missing data must be handled, with values typically deleted or imputed. There is no universal approach to handling missing data. Contextual factors---such as, the study design and objective, and pattern of missingness---determine how missings should be handled, on a case-by-case basis [@Sainani2015].
 
 For clarity, we describe an example of missingness. An Australian Football data collector was taking lunch during the third quarter, so no data was recorded for this time period. This would be considered missing data. Compare this to the game being cancelled due to a pandemic. There is no missing data because there is no data to be observed. Similarly, if a study screens out individuals who do not meet inclusion criteria, this is not a missing value, because there is no intent for these values to be observed or measured.
 
@@ -171,9 +171,7 @@ Of the 199 articles screened, `r n_screened` met the inclusion criteria, represe
 it difficult to determine whether there was any missingness. While the
 absence of a missing data statement does not necessarily mean missing
 data are not being reported, it does suggest that this aspect of the
-analysis process receives little consideration---especially in contrast
-to many of the papers that included (potentially meaningless) tests of
-normality (e.g., Kruskall-Wallis test).
+analysis process receives little consideration.
 
 # Discussion
 
@@ -225,7 +223,7 @@ perform a sensitivity analysis [@Wood2004].
 
 ## Common Causes of Missing Values
 
-Broadly, there are two types of missing values in data: implicit and explicit missings. Explicit values are missing, but recorded; whereas information in the data. For example, in \@ref(fig:implicit-missings), player Koenen has missing values for quarters two and four. Sometimes values like these can be logically imputed, as it might be known that these values are recorded as 0 in this format, rather than NA. Other places missing data can arise include: through joins when merging data without corresponding values, surveys, an inability to collect a biological sample (e.g., venous blood), equipment malfunction, failure, or not being worn.
+Broadly, there are two types of missing values in data: implicit and explicit missings. Explicit values are missing, but recorded; whereas information in the data. For example, in Figure 1, player Koenen has missing values for quarters two and four. Sometimes values like these can be logically imputed, as it might be known that these values are recorded as 0 in this format, rather than NA. Other places missing data can arise include: through joins when merging data without corresponding values, surveys, an inability to collect a biological sample (e.g., venous blood), equipment malfunction, failure, or not being worn.
 
 \vspace{5mm}
 
@@ -236,7 +234,7 @@ knitr::include_graphics(here::here("paper/figures/tables.png"))
 
 ## Visualising Missing Values
 
-We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]). The panels in \@ref(fig:missing-overview) give an overall sense of the extent of missing and complete data, in a simulated injury dataset. To learn more about exploring missing values, we recommend the vignettes in naniar [@naniar], and the methods in [@Tierney2018].
+We recommend that researchers use missing data overview graphics (see Graphics section in [@Tierney2018]; for example, overview plots [@Tierney2017]). The panels in Figure 2 give an overall sense of the extent of missing and complete data, in a simulated injury dataset. To learn more about exploring missing values, we recommend the vignettes in *naniar* [@naniar], and the methods in [@Tierney2018].
 
 ```{r}
 
@@ -275,7 +273,7 @@ aq_miss_var <- gg_miss_var(simulated_afl_data) + labs(tag = "(D)")
 
 Imputing data might feel wrong, as we are 'making up data'. The truth is, we can (generally) never know what the missing values were. The goal of imputing data is to make the best possible inference from the data. We recommend data is imputed, with a few caveats. Consider removing variables with a high proportion of missing data (e.g., variables with the majority or more missing than not). We deliberately do not suggest a 'rule of thumb' for the amount of missingness that should be imputed, and caution against looking for a specific threshold. Rather, we recommend: values should generally be imputed, avoiding methods imputing the same value (e.g., the mean or median), and suggest using imputation methods such as linear regression, k-nearest neighbours, or expectation maximisation.
 
-Missing values can occur in the both the predictors (the "independent variables") and the response variable (the "dependent variables"). Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the outcome as they describe the uncertainty---see Chapter 15 in [@McElreath2020]. Missing values in the outcome can be dealt with specially for Randomised Control Trials [@Jakobsen2017; @Wood2004].
+Missing values can occur in the both the predictors (the "independent variables") and the response variable (the "dependent variables"). Care should be taken when imputing the response variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. Methods that provide multiple imputed values for a response variable, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the response variable as they describe the uncertainty---see Chapter 15 in [@McElreath2020]. Missing values in the outcome can be dealt with specially for Randomised Control Trials [@Jakobsen2017; @Wood2004].
 
 Much in the way of there is no single 'best' statistical method, there is no perfect, one-size-fits-all approach for imputing data. The goal is to generate similar values that might have been otherwise recorded. Sometimes this means using a neighborhood approach of finding similar values. Or it could mean predicting responses using linear or tree models. Other times the most likely value might have been 0 or the last or first value carried forward. For detailed descriptions, and a summary of these methods, we suggest [@VanBuuren2012; @Schafer2002; @Cheema2014].
 

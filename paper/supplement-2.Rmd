@@ -1,6 +1,6 @@
 ---
 title: "Supplement 2"
-output: 
+output:
   bookdown::html_document2:
     keep_md: true
   bookdown::pdf_document2:
@@ -33,7 +33,6 @@ loadd(write_prisma_figure)
 
 ```{r check}
 loadd(n_screened)
-print(n_screened)
 ```
 
 # Systematic search details
@@ -59,10 +58,13 @@ Table \@ref(tab:search-table-print) below.
 ```{r search-table}
 table_terms <- tibble(
   SPORTDiscus = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
+                  "AND",
     "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football"),
   Embase = c("(exercise AND science OR (sports AND science) OR physiology OR biomechanics OR nutrition OR training OR testing OR (sports AND medicine) OR 'performance analysis' OR (('performance'/exp OR performance) AND ('analysis'/exp OR analysis)) OR 'performance'/exp OR performance OR 'sport psychology'/exp OR 'sport psychology' OR (('sport'/exp OR sport) AND ('psychology'/exp OR psychology)) OR 'coaching'/exp OR coaching) AND [2019-2019]/py",
+             "AND",
               "(football OR soccer OR (indoor AND soccer) OR futsal OR rugby OR (rugby AND league) OR (rugby AND union) OR (gaelic AND football) OR 'australian rules footbal' OR (('australian'/exp OR australian) AND rules AND footbal) OR afl OR 'american football'/exp OR 'american football' OR (('american'/exp OR american) AND ('football'/exp OR football)) OR 'gridiron football' OR (gridiron AND ('football'/exp OR football)) OR 'touch football' OR (('touch'/exp OR touch) AND ('football'/exp OR football))) AND [2019-2019]/py"),
   Cinahl = c("exercise science OR sports science OR physiology OR biomechanics OR nutrition OR training OR testing OR sports medicine OR performance analysis OR performance OR sport psychology OR coaching",
+             "AND",
               "football OR soccer OR indoor soccer OR futsal OR rugby league OR rugby union OR gaelic football OR australian rules football OR AFL OR american football OR gridiron football OR touch football")
 
 )
@@ -105,13 +107,9 @@ statement shared their data. Two authors independently extracted the
 data. Discrepancies were resolved by DNB. Findings are
 reported as the proportion and 95% confidence interval (CI). Confidence
 intervals were calculated using the Clopper-Pearson method for the
-binomial distribution [@Clopper1934], via the 'binom' package [@binom] in R [@rcore].
+binomial distribution [@Clopper1934] via the *binom* package [@binom] in R [@rcore].
 
 # Results
-
-The search returned a total of 3,863 articles. Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (Figure \@ref(fig:prisma)). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct` (95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`). Of the articles that did not mention missing data, `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct` (95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`) shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration--especially in contrast to many of the papers that included (potentially meaningless) tests of normality (e.g., Kruskall-Wallis test).
-
-There were `r nrow(gs_football_missings_stated)` studies that provided some statement about missing data. A breakdown of the extracted information from these studies is provided in Table \@ref(tab:extracted-info).
 
 
 ```{r filter-states}
@@ -152,6 +150,12 @@ extractions %>%
   kable_styling("striped",
                 full_width = TRUE)
 ```
+
+
+The search returned a total of 3,863 articles. Of the 199 articles screened, `r n_screened` met the inclusion criteria, representing \~10% of the articles found (Figure \@ref(fig:prisma)). The proportion of articles that reported missing data was `r binom_ci_miss_reported$mean_pct` (95% CI; `r binom_ci_miss_reported$lower_pct` to `r binom_ci_miss_reported$upper_pct`). Of the articles that did not mention missing data, `r n_no_mention_missings` / `r n_screened`, `r binom_ci_data_shared$mean_pct` (95% CI; `r binom_ci_data_shared$lower_pct` to `r binom_ci_data_shared$upper_pct`) shared their dataset, making it difficult to determine whether there was any missingness. While the absence of a missing data statement does not necessarily mean missing data are not being reported, it does suggest that this aspect of the analysis process receives little consideration.
+
+There were `r nrow(gs_football_missings_stated)` studies that provided a statement about missing data. A breakdown of the extracted information from these studies is provided in Table \@ref(tab:extracted-info).
+
 
 # Summary
 
