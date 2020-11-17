@@ -84,7 +84,7 @@ Preprint (not peer reviewed)
 5: Australian Centre of Excellence for Mathematical and Statistical Frontiers (ACEMS), Melbourne, Australia.
 
 \vspace{5mm}
-**Citation:** Borg DN, Nguyen R, and Tierney NJ. (2020). Missing Data: Current Practice in Football Research and Recommendations for Improvement. *SportRxiv*. https://doi.org/xxxx
+**Citation:** Borg DN, Nguyen R, and Tierney NJ. (2020). Missing Data: Current Practice in Football Research and Recommendations for Improvement. *SportR$\chi$iv*. https://doi.org/xxxx
 
 \vspace{5mm}
 **Twitter:** elborgo9, roberto_boberto, nj_tierney
@@ -185,7 +185,7 @@ Our survey of `r n_screened` articles published on football related topics found
 not reported, missing data can be obvious. For example, a study examined the
 relationship between match performance indicators and outcome, in
 Australian Football between the 2001 and 2016 [@Young2019], where at least one of the
-91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019_mention_of_missing]. This was not noted anywhere in the paper, or in the supplementary
+91 performance indicators ('meters gained') included in the analysis was not available over the entire 2001-2016 period [@Young2019mentionofmissing]. This was not noted anywhere in the paper, or in the supplementary
 materials. It is unknown whether imputation was undertaken. Without
 these details, it is difficult for other analysts and researchers to use
 and/or extend the ideas presented in the paper, or reproduce the
@@ -277,9 +277,9 @@ Imputing data might feel wrong, as we are 'making up data'. The truth is, we can
 
 Missing values can occur in the both the predictors (the "independent variables") and the response variable (the "dependent variables"). Care should be taken when imputing the outcome variables, and in general they should not be imputed with a single imputation, as this will bias the subsequent analysis. Methods that provide multiple imputed values for the outcome, such as multiple imputation, or using a Bayesian framework that generates a distribution of posterior values, can be appropriate for imputing the outcome as they describe the uncertainty---see Chapter 15 in [@McElreath2020]. Missing values in the outcome can be dealt with specially for Randomised Control Trials [@Jakobsen2017; @Wood2004].
 
-Much in the way of there is no single 'best' statistical method, there is no perfect, one-size-fits-all approach for imputing data. The goal is to generate similar values that might have been otherwise recorded. Sometimes this means using a neighborhood approach of finding similar values. Or it could mean predicting responses using linear or tree models. Other times the most likely value might have been 0 or the last or first value carried forward. For detailed descriptions, and a summary of these methods, we suggest [@Van_Buuren2012; @Schafer2002; @Cheema2014].
+Much in the way of there is no single 'best' statistical method, there is no perfect, one-size-fits-all approach for imputing data. The goal is to generate similar values that might have been otherwise recorded. Sometimes this means using a neighborhood approach of finding similar values. Or it could mean predicting responses using linear or tree models. Other times the most likely value might have been 0 or the last or first value carried forward. For detailed descriptions, and a summary of these methods, we suggest [@VanBuuren2012; @Schafer2002; @Cheema2014].
 
-The imputation methods discussed so far impute a single value for each missing value, and have the eponymous name, "single imputation". Multiple imputation is a method where multiple values are imputed for each missing value, creating "m" datasets, which are then specially combined during analysis. Multiple imputation is generally seen as the best method to get the most reasonable inference from the data, as it reflects the uncertainty in the missing values. For more information on using multiple imputation, we recommend Stefan van Buuren's book [@Van_Buuren2012].
+The imputation methods discussed so far impute a single value for each missing value, and have the eponymous name, "single imputation". Multiple imputation is a method where multiple values are imputed for each missing value, creating "m" datasets, which are then specially combined during analysis. Multiple imputation is generally seen as the best method to get the most reasonable inference from the data, as it reflects the uncertainty in the missing values. For more information on using multiple imputation, we recommend Stefan van Buuren's book [@VanBuuren2012].
 
 Irrespective of the imputation method used, it is essential to compare results of different missing data handling to understand how they may bias the results. For example, comparing analysis results from applying listwise deletion, compared to mean imputation, compared to linear regression imputation. This can reveal bias occurring in imputation methods. An example of this approach is described in the Case Study in [@Tierney2018].
 
